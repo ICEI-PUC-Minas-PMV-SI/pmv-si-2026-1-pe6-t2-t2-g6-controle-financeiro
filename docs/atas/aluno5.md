@@ -1,4 +1,4 @@
-# ATA de Acompanhamento - Nome completo do aluno 5
+# ATA de Acompanhamento - Joao Vitor Jangola Mendes
 
 ## Registro de Atividades Semanais
 

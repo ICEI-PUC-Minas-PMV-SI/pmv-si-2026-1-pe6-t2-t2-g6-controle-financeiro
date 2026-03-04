@@ -1,4 +1,4 @@
-# ATA de Acompanhamento - Nome completo do aluno 6
+# ATA de Acompanhamento - Maryana Nunes Morato
 
 ## Registro de Atividades Semanais
 

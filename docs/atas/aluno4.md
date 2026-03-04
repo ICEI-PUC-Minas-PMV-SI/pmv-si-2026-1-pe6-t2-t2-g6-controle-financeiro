@@ -1,4 +1,4 @@
-# ATA de Acompanhamento - Nome completo do aluno 4
+# ATA de Acompanhamento - João Pedro Lindenberg Pimenta
 
 ## Registro de Atividades Semanais
 

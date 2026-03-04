@@ -1,4 +1,4 @@
-# ATA de Acompanhamento - Nome completo do aluno 3
+# ATA de Acompanhamento - Gustavo Henrique de Moura Luz
 
 ## Registro de Atividades Semanais
 

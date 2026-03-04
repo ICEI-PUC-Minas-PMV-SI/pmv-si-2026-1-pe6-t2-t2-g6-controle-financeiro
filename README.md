@@ -1,4 +1,4 @@
-# TÍTULO DO PROJETO
+# CONTROLE FINANCEIRO
 
 `CURSO: Sistemas de Informação`
 
@@ -10,16 +10,16 @@ Descrever resumidamente, em um ou dois parágrafos, o projeto que está sendo de
 
 ## Integrantes
 
-* [Nome completo do aluno 1](docs/atas/aluno1.md)
-* [Nome completo do aluno 2](docs/atas/aluno2.md)
-* [Nome completo do aluno 3](docs/atas/aluno3.md)
-* [Nome completo do aluno 4](docs/atas/aluno4.md)
-* [Nome completo do aluno 5](docs/atas/aluno5.md)
-* [Nome completo do aluno 6](docs/atas/aluno6.md)
+* [Ana Clara Pinheiro Campos](docs/atas/aluno1.md)
+* [Gabriel Ferreira dos Santos](docs/atas/aluno2.md)
+* [Gustavo Henrique de Moura Luz](docs/atas/aluno3.md)
+* [João Pedro Lindenberg Pimenta](docs/atas/aluno4.md)
+* [Joao Vitor Jangola Mendes](docs/atas/aluno5.md)
+* [Maryana Nunes Morato](docs/atas/aluno6.md)
 
 ## Orientador
 
-* Nome completo do professor 1
+* Kleber Jacques Ferreira de Souza
 
 ## 📊 Relatório de Contribuições
 
