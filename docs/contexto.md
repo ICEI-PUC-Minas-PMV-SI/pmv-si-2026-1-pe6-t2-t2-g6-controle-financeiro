@@ -10,12 +10,11 @@ Nesse cenário, soluções digitais voltadas à gestão financeira pessoal repre
 
 ## Problema
 
-Grande parte da população brasileira não possui ferramentas adequadas ou o hábito consolidado de registrar e acompanhar suas transações financeiras de forma sistemática. O controle financeiro, quando feito, ocorre de maneira informal, por meio de anotações avulsas, planilhas improvisadas ou simplesmente pela percepção subjetiva do saldo disponível em conta.
+Grande parcela da população brasileira ainda não dispõe de ferramentas adequadas, nem possui o hábito consolidado de registrar e acompanhar suas movimentações financeiras de maneira organizada e sistemática. Quando esse controle é realizado, muitas vezes ocorre de forma informal, por meio de anotações dispersas, planilhas pouco estruturadas ou até mesmo com base apenas na percepção subjetiva do valor disponível em conta.
 
-Essa ausência de método gera consequências diretas: dificuldade em identificar para onde o dinheiro está indo, incapacidade de poupar para objetivos específicos, surpresas com compromissos financeiros e vulnerabilidade diante de imprevistos.
+A ausência de um método consistente para o gerenciamento das finanças pessoais produz impactos diretos no cotidiano. Entre eles, destacam-se a dificuldade de compreender com clareza para onde os recursos estão sendo direcionados, a limitação para economizar com foco em objetivos específicos, os imprevistos causados por compromissos financeiros esquecidos e a maior fragilidade diante de despesas inesperadas.
 
-O problema central que motiva este projeto pode ser formulado da seguinte forma: como desenvolver uma ferramenta digital acessível e intuitiva que auxilie o usuário a registrar suas receitas e despesas, acompanhar metas de poupança e tomar decisões financeiras mais conscientes no cotidiano?
-
+Nesse contexto, o problema central que fundamenta este projeto pode ser expresso da seguinte maneira: como desenvolver uma solução digital acessível, intuitiva e eficiente, capaz de auxiliar o usuário no registro de receitas e despesas, no acompanhamento de metas de economia e na adoção de decisões financeiras mais conscientes no dia a dia?
 ## Objetivos
 
 **Objetivo Geral**
