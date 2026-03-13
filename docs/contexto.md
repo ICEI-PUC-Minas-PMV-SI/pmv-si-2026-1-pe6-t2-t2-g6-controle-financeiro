@@ -33,13 +33,13 @@ Desenvolver um sistema web de organização financeira pessoal, denominado Poupa
 
 ## Justificativa
 
-A relevância do PoupaBem se sustenta em três dimensões complementares: social, econômica e tecnológica.
+O PoupaBem não se limita a ser apenas uma ferramenta de controle financeiro, pois sua relevância se estende a diferentes dimensões. Entre elas, destacam-se os impactos sociais, os benefícios econômicos e as contribuições tecnológicas envolvidas em sua concepção e utilização.
 
-Do ponto de vista social, o sistema contribui para a promoção da educação financeira, especialmente entre jovens adultos que estão iniciando sua vida financeira de forma independente. Ao facilitar o registro e a visualização de gastos, o PoupaBem estimula a reflexão sobre hábitos de consumo e o desenvolvimento de comportamentos financeiros mais saudáveis.
+Sob a perspectiva social, a plataforma atua como um recurso de apoio à educação financeira, principalmente para jovens adultos que estão iniciando sua independência financeira. Ao permitir o acompanhamento detalhado dos gastos, o sistema promove maior percepção sobre o comportamento de consumo e incentiva a adoção de práticas financeiras mais saudáveis no cotidiano.
 
-No aspecto econômico, uma ferramenta eficiente de controle financeiro pode reduzir o endividamento dos usuários, ampliar sua capacidade de poupança e contribuir para o alcance de objetivos financeiros de médio e longo prazo, impactando positivamente sua qualidade de vida.
+Do ponto de vista econômico, a utilização de um recurso como esse pode auxiliar os usuários a administrar melhor seu dinheiro, reduzindo situações de endividamento e ampliando a possibilidade de economizar. Esse acompanhamento mais organizado das finanças também favorece o planejamento e a realização de objetivos de médio e longo prazo, gerando efeitos positivos no bem-estar e na qualidade de vida.
 
-Do ponto de vista tecnológico, o projeto proporciona à equipe de desenvolvimento a oportunidade de aplicar na prática os conceitos estudados ao longo do curso, como arquitetura de sistemas distribuídos, desenvolvimento de APIs RESTful, microsserviços e desenvolvimento front-end moderno, consolidando competências essenciais para a atuação profissional na área.
+Ao mesmo tempo, o projeto possui relevância tecnológica por representar uma oportunidade concreta de aplicação prática dos conhecimentos desenvolvidos durante a formação acadêmica. A construção do sistema envolve conceitos importantes, como arquitetura de sistemas distribuídos, microsserviços, APIs RESTful e front-end moderno, contribuindo para o fortalecimento das competências necessárias no mercado de tecnologia.
 
 ## Público-Alvo
 
