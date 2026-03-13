@@ -293,8 +293,8 @@ O banco de dados armazenará informações como usuários, transações financei
 
 ## Hospedagem
 
-A aplicação poderá ser hospedada em serviços de computação em nuvem, como AWS, Azure ou Google Cloud.
+A aplicação poderá ser implantada em serviços de computação em nuvem, como AWS, Microsoft Azure ou Google Cloud Platform, garantindo maior flexibilidade e confiabilidade para o sistema.
 
-O front-end poderá ser hospedado em plataformas como Vercel ou Netlify, enquanto o back-end poderá ser executado em servidores cloud utilizando containers Docker.
+O front-end poderá ser publicado em plataformas especializadas, como Vercel ou Netlify, que oferecem praticidade no processo de deploy e bom desempenho na entrega da interface aos usuários. Já o back-end poderá ser executado em servidores na nuvem com o uso de containers Docker, o que facilita a padronização do ambiente, a implantação e a manutenção da aplicação.
 
-Essa infraestrutura permite escalabilidade, facilidade de manutenção e disponibilidade da aplicação para os usuários.
+Essa estrutura de hospedagem contribui para a escalabilidade do sistema, simplifica sua administração e favorece a alta disponibilidade, permitindo que a aplicação atenda os usuários de forma estável e eficiente.
