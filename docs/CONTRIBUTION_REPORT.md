@@ -1,6 +1,6 @@
 # 📊 Relatório de Contribuições do Projeto
 
-**Última atualização:** 16/03/2026 22:22
+**Última atualização:** 16/03/2026 23:01
 
 ---
 
@@ -8,16 +8,17 @@
 
 | Aluno                 |   Commits |   Linhas+ |   Linhas- |   Arquivos |   Docs Commits |   Docs Arquivos |
 |-----------------------|-----------|-----------|-----------|------------|----------------|-----------------|
-| Gabriel Santos        |         4 |       202 |       100 |          8 |              4 |               8 |
+| Gabriel Santos        |         5 |       205 |       103 |          8 |              5 |               8 |
 | Gustavo Moura         |         6 |        17 |        18 |          2 |              6 |               2 |
 | JoaoJangola           |         1 |         4 |         4 |          1 |              1 |               1 |
 | acpcampos-gif         |         2 |       145 |        64 |          2 |              2 |               2 |
+| github-actions[bot]   |         1 |        24 |        31 |          3 |              1 |               1 |
 | github-classroom[bot] |         1 |      2152 |         0 |         45 |              1 |              13 |
 
 
 ## 📅 Contribuições Semanais (Todo o Semestre)
 
-**2026-03-09**: Gustavo Moura: 5
+**2026-03-09**: Gabriel Santos: 1, Gustavo Moura: 5, github-actions[bot]: 1
 
 **2026-03-02**: Gabriel Santos: 4, Gustavo Moura: 1, JoaoJangola: 1, acpcampos-gif: 2
 
