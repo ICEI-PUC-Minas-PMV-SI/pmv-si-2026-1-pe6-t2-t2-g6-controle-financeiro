@@ -1,4 +1,4 @@
-# ATA de Acompanhamento - Ana Clara Pinheiro Campos
+s# ATA de Acompanhamento - Ana Clara Pinheiro Campos
 
 ## Registro de Atividades Semanais
 
@@ -11,8 +11,8 @@
 | 09/03 - 15/03 | APIs e Web Services - Unidade 1 | ✅ | Reunião para entender as necessidades do projeto e definir a divisão das tarefas | Reunião para entender as necessidades do projeto e definir a divisão das tarefas |
 | 16/03 - 22/03 | APIs e Web Services - Unidade 2 | ✅ | Revisão e adição de detalhes no tópico "Catálogo de Serviços" | Revisão e adição de detalhes no tópico "Catálogo de Serviços" |
 | 23/03 - 29/03 | APIs e Web Services - Unidade 2 | ⬜ |  |  |
-| 30/03 - 05/04 | Recuperação de Informação na Web e Redes Sociais - Unidade 1 | ⬜ |  |  |
-| 06/04 - 12/04 | Recuperação de Informação na Web e Redes Sociais - Unidade 2 | ⬜ |  |  |
+| 30/03 - 05/04 | Recuperação de Informação na Web e Redes Sociais - Unidade 1 | ⬜ | Planejar e desenvolver o design no figma para o Front End da Aplição Web e Mobile |  |
+| 06/04 - 12/04 | Recuperação de Informação na Web e Redes Sociais - Unidade 2 | ⬜ | Desenvolvimento da Aplicação Web |  |
 | 13/04 - 19/04 | Computação Ubíqua e Pervasiva e IoT - Unidade 1 | ⬜ |  |  |
 | 20/04 - 26/04 | Computação Ubíqua e Pervasiva e IoT - Unidade 2 | ⬜ |  |  |
 | 27/04 - 03/05 | Desenvolvimento de Aplicações Móveis - Unidade 1 | ⬜ |  |  |
