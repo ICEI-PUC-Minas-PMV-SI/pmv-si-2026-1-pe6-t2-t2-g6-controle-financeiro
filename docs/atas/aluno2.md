@@ -8,11 +8,11 @@
 | 16/02 - 22/02 | Gestão de Serviços de TI - Unidade 2 | ✅ | Definição do tema | Definição do tema |
 | 23/02 - 01/03 | Arquitetura de Software Distribuído - Unidade 1 e 2 | ✅ | Estruturação e inicio da documentação | Estruturação e inicio da documentação |
 | 02/03 - 08/03 | Arquitetura de Software Distribuído - Unidade 3 | ✅ | Revisão e prenchimento dos topicos (Restrições, Catálogo de Serviços, Arquitetura da Solução e Hospedagem) | Revisão e prenchimento dos topicos (Restrições, Catálogo de Serviços, Arquitetura da Solução e Hospedagem) |
-| 09/03 - 15/03 | APIs e Web Services - Unidade 1 | ⬜ |  |  |
-| 16/03 - 22/03 | APIs e Web Services - Unidade 2 | ⬜ |  |  |
-| 23/03 - 29/03 | APIs e Web Services - Unidade 2 | ⬜ |  |  |
-| 30/03 - 05/04 | Recuperação de Informação na Web e Redes Sociais - Unidade 1 | ⬜ |  |  |
-| 06/04 - 12/04 | Recuperação de Informação na Web e Redes Sociais - Unidade 2 | ⬜ |  |  |
+| 09/03 - 15/03 | APIs e Web Services - Unidade 1 | ✅ | Reunião para entender as necessidades do projeto e definir a divisão das tarefas | Reunião para entender as necessidades do projeto e definir a divisão das tarefas |
+| 16/03 - 22/03 | APIs e Web Services - Unidade 2 | ✅ | Reunião para entender as necessidades do projeto e definir a divisão das tarefas | Reunião para entender as necessidades do projeto e definir a divisão das tarefas |
+| 23/03 - 29/03 | APIs e Web Services - Unidade 2 | ✅ | Planejamento da Estruturação e Modelagem | Planejamento da Estruturação e Modelagem |
+| 30/03 - 05/04 | Recuperação de Informação na Web e Redes Sociais - Unidade 1 | ⬜ | Implementação do Backend |  |
+| 06/04 - 12/04 | Recuperação de Informação na Web e Redes Sociais - Unidade 2 | ⬜ | Implementação do Backend |  |
 | 13/04 - 19/04 | Computação Ubíqua e Pervasiva e IoT - Unidade 1 | ⬜ |  |  |
 | 20/04 - 26/04 | Computação Ubíqua e Pervasiva e IoT - Unidade 2 | ⬜ |  |  |
 | 27/04 - 03/05 | Desenvolvimento de Aplicações Móveis - Unidade 1 | ⬜ |  |  |
