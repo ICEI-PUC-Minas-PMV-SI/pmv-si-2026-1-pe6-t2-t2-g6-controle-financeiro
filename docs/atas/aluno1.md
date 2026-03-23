@@ -8,8 +8,8 @@
 | 16/02 - 22/02 | Gestão de Serviços de TI - Unidade 2 | ✅ | Definição do tema | Definição do tema |
 | 23/02 - 01/03 | Arquitetura de Software Distribuído - Unidade 1 e 2 | ✅ | Escopo da documentação | Escopo da documentação |
 | 02/03 - 08/03 | Arquitetura de Software Distribuído - Unidade 3 | ✅ | Preenchimento da documentação (Introdução, Problema, Justificativa, Público Alvo, Especificações) | Preenchimento da documentação (Introdução, Problema, Justificativa, Público Alvo, Especificações) |
-| 09/03 - 15/03 | APIs e Web Services - Unidade 1 | ⬜ |  |  |
-| 16/03 - 22/03 | APIs e Web Services - Unidade 2 | ⬜ |  |  |
+| 09/03 - 15/03 | APIs e Web Services - Unidade 1 | ✅ | Reunião para entender as necessidades do projeto e definir a divisão das tarefas | Reunião para entender as necessidades do projeto e definir a divisão das tarefas |
+| 16/03 - 22/03 | APIs e Web Services - Unidade 2 | ✅ | Revisão e adição de detalhes no tópico "Catálogo de Serviços" | Revisão e adição de detalhes no tópico "Catálogo de Serviços" |
 | 23/03 - 29/03 | APIs e Web Services - Unidade 2 | ⬜ |  |  |
 | 30/03 - 05/04 | Recuperação de Informação na Web e Redes Sociais - Unidade 1 | ⬜ |  |  |
 | 06/04 - 12/04 | Recuperação de Informação na Web e Redes Sociais - Unidade 2 | ⬜ |  |  |
