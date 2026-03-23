@@ -1,6 +1,6 @@
 # 📊 Relatório de Contribuições do Projeto
 
-**Última atualização:** 23/03/2026 18:38
+**Última atualização:** 23/03/2026 19:42
 
 ---
 
@@ -11,16 +11,16 @@
 | Ana Clara Pinheiro    |         3 |        17 |        12 |          2 |              3 |               2 |
 | Gabriel Santos        |         5 |       205 |       103 |          8 |              5 |               8 |
 | Gustavo Moura         |         6 |        17 |        18 |          2 |              6 |               2 |
-| JoaoJangola           |         1 |         4 |         4 |          1 |              1 |               1 |
+| JoaoJangola           |         2 |         9 |         9 |          1 |              2 |               1 |
 | Maryana Morato        |         1 |         4 |         4 |          1 |              1 |               1 |
 | acpcampos-gif         |         2 |       145 |        64 |          2 |              2 |               2 |
-| github-actions[bot]   |         6 |        51 |        53 |          3 |              6 |               1 |
+| github-actions[bot]   |         7 |        55 |        57 |          3 |              7 |               1 |
 | github-classroom[bot] |         1 |      2152 |         0 |         45 |              1 |              13 |
 
 
 ## 📅 Contribuições Semanais (Todo o Semestre)
 
-**2026-03-16**: Ana Clara Pinheiro: 3, Gabriel Santos: 1, Maryana Morato: 1, github-actions[bot]: 6
+**2026-03-16**: Ana Clara Pinheiro: 3, Gabriel Santos: 1, JoaoJangola: 1, Maryana Morato: 1, github-actions[bot]: 7
 
 **2026-03-09**: Gustavo Moura: 5
 
