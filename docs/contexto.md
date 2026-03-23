@@ -168,15 +168,20 @@ Com base no público-alvo definido, foram elaboradas as seguintes personas, repr
 
 A arquitetura do sistema será composta por diferentes serviços responsáveis por funcionalidades específicas.
 
-**Serviço de Autenticação** Responsável pelo cadastro, login e gerenciamento de sessões de usuários.
+**Serviço de Autenticação**
+Responsável pelo cadastro, login e gerenciamento de sessões de usuários. Permite que o usuário crie uma conta informando e-mail e senha, acesse o sistema mediante autenticação e tenha sua sessão controlada por tokens JWT. Também oferece a funcionalidade de redefinição de senha por e-mail para casos de esquecimento.
 
-**Serviço de Transações Financeiras** Responsável pelo registro, edição e exclusão de receitas e despesas.
+**Serviço de Transações Financeiras**
+Responsável pelo registro, edição e exclusão de receitas e despesas. Permite que o usuário lance suas movimentações financeiras informando valor, tipo, categoria e data, consulte seu histórico com filtros por período e categoria, e acompanhe o saldo e o resumo financeiro do período selecionado.
 
-**Serviço de Categorias** Responsável pela organização das transações em categorias como alimentação, transporte, moradia e lazer.
+**Serviço de Categorias**
+Responsável pela organização das transações em categorias como alimentação, transporte, moradia e lazer. O sistema disponibiliza categorias padrão e permite que o usuário crie, edite e remova suas próprias categorias personalizadas, tornando a organização financeira mais aderente à sua realidade.
 
-**Serviço de Metas Financeiras** Permite a criação e acompanhamento de metas de economia, representadas por cofrinhos virtuais.
+**Serviço de Metas Financeiras**
+Permite a criação e acompanhamento de metas de economia, representadas por cofrinhos virtuais. O usuário pode criar um cofrinho com nome e valor-alvo, registrar aportes progressivos ao longo do tempo e acompanhar visualmente o percentual de evolução de cada meta até o seu alcance.
 
-**Serviço de Relatórios** Responsável por gerar relatórios e gráficos sobre receitas, despesas e progresso de metas.
+**Serviço de Relatórios**
+Responsável por gerar relatórios e gráficos sobre receitas, despesas e progresso de metas. Oferece visões consolidadas mensais e anuais, distribuição de gastos por categoria e dados resumidos para o dashboard principal, além de permitir a exportação do extrato financeiro em PDF ou CSV para consulta externa.
 
 # Arquitetura da Solução
 
