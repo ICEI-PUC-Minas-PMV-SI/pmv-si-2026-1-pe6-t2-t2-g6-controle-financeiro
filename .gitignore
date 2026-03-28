@@ -1,0 +1,25 @@
+# .NET
+bin/
+obj/
+
+# Visual Studio
+.vs/
+**/.vs/
+
+# User files
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+
+# Logs
+*.log
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Node (se tiver frontend)
+node_modules/
+.next/
+dist/
