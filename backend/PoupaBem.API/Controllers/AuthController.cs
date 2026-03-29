@@ -48,7 +48,13 @@ public class AuthController : ControllerBase
         {
             userId = User.FindFirst("sub")?.Value,
             email = User.FindFirst("email")?.Value,
-            userName = User.Identity?.Name
+            userName = User.FindFirst("unique_name")?.Value,
+
+            claims = User.Claims.Select(x => new
+            {
+                x.Type,
+                x.Value,
+            })
         });
     }
 }

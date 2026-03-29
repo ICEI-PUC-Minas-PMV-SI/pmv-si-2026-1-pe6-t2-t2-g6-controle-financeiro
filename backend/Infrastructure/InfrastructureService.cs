@@ -1,6 +1,8 @@
-﻿using Application.Interfaces.Security;
+﻿using Application.Interfaces.Repositories;
+using Application.Interfaces.Security;
 using Infrastructure.Identity;
 using Infrastructure.Persistence;
+using Infrastructure.Repositories;
 using Infrastructure.Security;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Identity;
@@ -48,6 +50,7 @@ public static class InfrastructureService
         })
         .AddJwtBearer(options =>
         {
+            options.MapInboundClaims = false;
             options.TokenValidationParameters = new TokenValidationParameters
             {
                 ValidateIssuer = true,
@@ -64,6 +67,8 @@ public static class InfrastructureService
         services.AddAuthorization();
         services.AddScoped<IJwtTokenService, JwtTokenService>();
         services.AddScoped<IAuthService, AuthService>();
+        services.AddScoped<ICategoryRepository, CategoryRepository>();
+        services.AddScoped<ITransactionRepository, TransactionRepository>();
 
         return services;
     }

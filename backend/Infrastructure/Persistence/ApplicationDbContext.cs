@@ -1,4 +1,5 @@
-﻿using Infrastructure.Identity;
+﻿using Domain.Entites;
+using Infrastructure.Identity;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
@@ -29,5 +30,57 @@ public class ApplicationDbContext(DbContextOptions<ApplicationDbContext> options
             entity.Property(x => x.RefreshToken)
                 .HasMaxLength(500);
         });
+
+        builder.Entity<Category>(entity =>
+        {
+            entity.ToTable("categories");
+
+            entity.HasKey(x => x.Id);
+
+            entity.Property(x => x.Name)
+                .HasMaxLength(100)
+                .IsRequired();
+
+            entity.Property(x => x.Type)
+                .IsRequired();
+
+            entity.Property(x => x.CreatedAt)
+                .IsRequired();
+        });
+
+        builder.Entity<Transaction>(entity =>
+        {
+            entity.ToTable("transactions");
+            entity.HasKey(x => x.Id);
+
+            entity.Property(x => x.Title)
+                .HasMaxLength(150)
+                .IsRequired();
+
+            entity.Property(x => x.Description)
+                .HasMaxLength(500);
+
+            entity.Property(x => x.Amount)
+                .HasColumnType("numeric(18,2)")
+                .IsRequired();
+
+            entity.Property(x => x.TransactionType)
+                .IsRequired();
+
+            entity.Property(x => x.OcurredAt)
+                .IsRequired();
+
+            entity.Property(x => x.CreatedAt)
+                .IsRequired();
+
+            entity.HasOne<Category>()
+                .WithMany()
+                .HasForeignKey(x => x.CategoryId)
+                .OnDelete(DeleteBehavior.Restrict);
+        });
     }
+
+    public DbSet<Category> Categories { get; set; }
+    public DbSet<Transaction> Transactions { get; set; }
+
 }
