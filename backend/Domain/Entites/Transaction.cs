@@ -53,6 +53,7 @@ public class Transaction
         string title,
         string? description,
         decimal amount,
+        TransactionType transactionType,
         Guid categoryId,
         DateTime ocurredAt)
     {
@@ -68,6 +69,7 @@ public class Transaction
         Title = title.Trim();
         Description = string.IsNullOrWhiteSpace(description) ? null : description.Trim();
         Amount = amount;
+        TransactionType = transactionType;
         CategoryId = categoryId;
         OcurredAt = ocurredAt;
         UpdatedAt = DateTime.UtcNow;

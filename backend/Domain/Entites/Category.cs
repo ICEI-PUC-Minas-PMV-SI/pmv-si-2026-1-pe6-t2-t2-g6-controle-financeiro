@@ -23,4 +23,13 @@ public class Category
         UserId = userId;
         CreatedAt = DateTime.UtcNow;
     }
+
+    public void Update(string name, TransactionType type)
+    {
+        if (string.IsNullOrWhiteSpace(name))
+            throw new ApplicationException("O nome da categoria é obrigatório.");
+
+        Name = name.Trim();
+        Type = type;
+    }
 }

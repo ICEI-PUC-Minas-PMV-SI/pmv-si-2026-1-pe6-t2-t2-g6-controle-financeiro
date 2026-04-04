@@ -78,9 +78,32 @@ public class ApplicationDbContext(DbContextOptions<ApplicationDbContext> options
                 .HasForeignKey(x => x.CategoryId)
                 .OnDelete(DeleteBehavior.Restrict);
         });
+
+        builder.Entity<SavingsGoal>(entity =>
+        {
+            entity.ToTable("savings_goals");
+
+            entity.HasKey(x => x.Id);
+
+            entity.Property(x => x.Name)
+                .HasMaxLength(120)
+                .IsRequired();
+
+            entity.Property(x => x.TargetAmount)
+                .HasColumnType("numeric(18,2)")
+                .IsRequired();
+
+            entity.Property(x => x.CurrentAmount)
+                .HasColumnType("numeric(18,2)")
+                .IsRequired();
+
+            entity.Property(x => x.CreatedAt)
+                .IsRequired();
+        });
     }
 
     public DbSet<Category> Categories { get; set; }
     public DbSet<Transaction> Transactions { get; set; }
+    public DbSet<SavingsGoal> SavingsGoals { get; set; }
 
 }

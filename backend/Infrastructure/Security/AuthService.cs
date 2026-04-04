@@ -2,6 +2,7 @@
 using Application.Interfaces.Security;
 using Infrastructure.Identity;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Options;
 
 namespace Infrastructure.Security;
@@ -40,7 +41,7 @@ public class AuthService(UserManager<ApplicationUser> userManager, IJwtTokenServ
         var refreshToken = _jwtTokenService.GeneratorRefreshToken();
 
         user.RefreshToken = refreshToken;
-        user.RefreshTokenExpiresAt = DateTime.UtcNow.AddMinutes(_jwtOptions.RefreshTokenExpirationDays);
+        user.RefreshTokenExpiresAt = DateTime.UtcNow.AddDays(_jwtOptions.RefreshTokenExpirationDays);
         user.UpdatedAt = DateTime.UtcNow;
         
         await _userManager.UpdateAsync(user);
@@ -123,7 +124,9 @@ public class AuthService(UserManager<ApplicationUser> userManager, IJwtTokenServ
         if (string.IsNullOrEmpty(request.RefreshToken))
             throw new ApplicationException("Refresh token não informado.");
 
-        var user = _userManager.Users.FirstOrDefault(x => x.RefreshToken == request.RefreshToken) ?? throw new ApplicationException("Refresh token inválido");
+        var user = await _userManager.Users
+            .FirstOrDefaultAsync(x => x.RefreshToken == request.RefreshToken, cancellationToken)
+            ?? throw new ApplicationException("Refresh token inválido");
 
         if (!user.IsActive)
             throw new ApplicationException("Usuário Inátivo");
@@ -138,7 +141,7 @@ public class AuthService(UserManager<ApplicationUser> userManager, IJwtTokenServ
 
     }
 
-    private async Task <AuthResponse> GenerateAuthResponseAsync(ApplicationUser user)
+    private async Task<AuthResponse> GenerateAuthResponseAsync(ApplicationUser user)
     {
         var roles = await _userManager.GetRolesAsync(user);
         var accessToken = _jwtTokenService.GeneratorAccessToken(

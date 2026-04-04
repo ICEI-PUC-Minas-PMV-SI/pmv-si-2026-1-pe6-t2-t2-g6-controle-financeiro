@@ -69,6 +69,8 @@ public static class InfrastructureService
         services.AddScoped<IAuthService, AuthService>();
         services.AddScoped<ICategoryRepository, CategoryRepository>();
         services.AddScoped<ITransactionRepository, TransactionRepository>();
+        services.AddScoped<ISavingsGoalRepository, SavingsGoalRepository>();
+        services.AddScoped<IFinancialReportRepository, FinancialReportRepository>();
 
         return services;
     }

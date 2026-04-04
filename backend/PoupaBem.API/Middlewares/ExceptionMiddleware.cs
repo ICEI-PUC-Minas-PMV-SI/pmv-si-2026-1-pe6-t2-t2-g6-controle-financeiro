@@ -22,7 +22,7 @@ public class ExceptionMiddleware(
         {
             _logger.LogError(
                 ex,
-                "Error não tratado na requisição {Method} {Path}",
+                "Erro não tratado na requisição {Method} {Path}",
                 context.Request.Method,
                 context.Request.Path);
 

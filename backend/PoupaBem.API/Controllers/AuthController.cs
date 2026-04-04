@@ -2,7 +2,6 @@
 using Application.Interfaces.Security;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using System.ComponentModel.DataAnnotations;
 
 namespace PoupaBem.API.Controllers;
 
