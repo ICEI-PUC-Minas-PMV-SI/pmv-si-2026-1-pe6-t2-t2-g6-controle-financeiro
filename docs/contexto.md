@@ -15,6 +15,7 @@ Grande parcela da população brasileira ainda não dispõe de ferramentas adequ
 A ausência de um método consistente para o gerenciamento das finanças pessoais produz impactos diretos no cotidiano. Entre eles, destacam-se a dificuldade de compreender com clareza para onde os recursos estão sendo direcionados, a limitação para economizar com foco em objetivos específicos, os imprevistos causados por compromissos financeiros esquecidos e a maior fragilidade diante de despesas inesperadas.
 
 Nesse contexto, o problema central que fundamenta este projeto pode ser expresso da seguinte maneira: como desenvolver uma solução digital acessível, intuitiva e eficiente, capaz de auxiliar o usuário no registro de receitas e despesas, no acompanhamento de metas de economia e na adoção de decisões financeiras mais conscientes no dia a dia?
+
 ## Objetivos
 
 **Objetivo Geral**
@@ -168,62 +169,58 @@ Com base no público-alvo definido, foram elaboradas as seguintes personas, repr
 
 A arquitetura do sistema será composta por diferentes serviços responsáveis por funcionalidades específicas.
 
-**Serviço de Autenticação**
-Responsável pelo cadastro, login e gerenciamento de sessões de usuários. Permite que o usuário crie uma conta informando e-mail e senha, acesse o sistema mediante autenticação e tenha sua sessão controlada por tokens JWT. Também oferece a funcionalidade de redefinição de senha por e-mail para casos de esquecimento.
+**Serviço de Autenticação** Responsável pelo cadastro, login e gerenciamento de sessões de usuários. Permite que o usuário crie uma conta informando e-mail e senha, acesse o sistema mediante autenticação e tenha sua sessão controlada por tokens JWT. Também oferece a funcionalidade de redefinição de senha por e-mail para casos de esquecimento.
 
-**Serviço de Transações Financeiras**
-Responsável pelo registro, edição e exclusão de receitas e despesas. Permite que o usuário lance suas movimentações financeiras informando valor, tipo, categoria e data, consulte seu histórico com filtros por período e categoria, e acompanhe o saldo e o resumo financeiro do período selecionado.
+**Serviço de Transações Financeiras** Responsável pelo registro, edição e exclusão de receitas e despesas. Permite que o usuário lance suas movimentações financeiras informando valor, tipo, categoria e data, consulte seu histórico com filtros por período e categoria, e acompanhe o saldo e o resumo financeiro do período selecionado.
 
-**Serviço de Categorias**
-Responsável pela organização das transações em categorias como alimentação, transporte, moradia e lazer. O sistema disponibiliza categorias padrão e permite que o usuário crie, edite e remova suas próprias categorias personalizadas, tornando a organização financeira mais aderente à sua realidade.
+**Serviço de Categorias** Responsável pela organização das transações em categorias como alimentação, transporte, moradia e lazer. O sistema disponibiliza categorias padrão e permite que o usuário crie, edite e remova suas próprias categorias personalizadas, tornando a organização financeira mais aderente à sua realidade.
 
-**Serviço de Metas Financeiras**
-Permite a criação e acompanhamento de metas de economia, representadas por cofrinhos virtuais. O usuário pode criar um cofrinho com nome e valor-alvo, registrar aportes progressivos ao longo do tempo e acompanhar visualmente o percentual de evolução de cada meta até o seu alcance.
+**Serviço de Metas Financeiras** Permite a criação e acompanhamento de metas de economia, representadas por cofrinhos virtuais. O usuário pode criar um cofrinho com nome e valor-alvo, registrar aportes progressivos ao longo do tempo e acompanhar visualmente o percentual de evolução de cada meta até o seu alcance.
 
-**Serviço de Relatórios**
-Responsável por gerar relatórios e gráficos sobre receitas, despesas e progresso de metas. Oferece visões consolidadas mensais e anuais, distribuição de gastos por categoria e dados resumidos para o dashboard principal, além de permitir a exportação do extrato financeiro em PDF ou CSV para consulta externa.
+**Serviço de Relatórios** Responsável por gerar relatórios e gráficos sobre receitas, despesas e progresso de metas. Oferece visões consolidadas mensais e anuais, distribuição de gastos por categoria e dados resumidos para o dashboard principal, além de permitir a exportação do extrato financeiro em PDF ou CSV para consulta externa.
 
 # Arquitetura da Solução
 
 ```
-                    ┌───────────────┐
-                    │    Usuário    │
-                    └───────┬───────┘
-                            │
-                            ▼
-                    ┌───────────────┐
-                    │ Navegador Web │
-                    └───────┬───────┘
-                            │
-                            ▼
-                    ┌───────────────┐
-                    │   Frontend    │
-                    │    (React)    │
-                    └───────┬───────┘
-                            │
-                            ▼
-                    ┌───────────────┐
-                    │   API Gateway │
-                    │    (Express)  │
-                    └───────┬───────┘
-                            │
-        ┌───────────────────┼───────────────────┐
-        ▼                   ▼                   ▼
-┌──────────────┐   ┌──────────────┐   ┌──────────────┐
-│ Auth Service │   │ Finance API  │   │ Goals API    │
-│              │   │              │   │              │
-│ Login        │   │ Receitas     │   │ Metas        │
-│ Cadastro     │   │ Despesas     │   │ Cofrinhos    │
-│ Sessões      │   │ Categorias   │   │ Progresso    │
-│              │   │ Relatórios   │   │              │
-└──────┬───────┘   └──────┬───────┘   └──────┬───────┘
-       │                  │                  │
-       └───────────────┬──┴──────────────────┘
-                       ▼
-               ┌───────────────┐
-               │   Database    │
-               │    MongoDB    │
-               └───────────────┘
+                        ┌───────────────┐
+                        │    Usuário    │
+                        └───────┬───────┘
+                                │
+                ┌───────────────┴───────────────┐
+                ▼                               ▼
+        ┌───────────────┐               ┌───────────────┐
+        │ Navegador Web │               │  App Mobile   │
+        └───────┬───────┘               └───────┬───────┘
+                │                               │
+                ▼                               ▼
+        ┌───────────────┐               ┌───────────────┐
+        │ Frontend Web  │               │ Frontend App  │
+        │    (React)    │               │ (React Native)│
+        └───────┬───────┘               └───────┬───────┘
+                └───────────────┬───────────────┘
+                                ▼
+                        ┌───────────────┐
+                        │   API Gateway │
+                        │    (.NET)     │
+                        └───────┬───────┘
+                                │
+            ┌───────────────────┼───────────────────┐
+            ▼                   ▼                   ▼
+    ┌──────────────┐   ┌──────────────┐   ┌──────────────┐
+    │ Auth Service │   │ Finance API  │   │ Goals API    │
+    │              │   │              │   │              │
+    │ Login        │   │ Receitas     │   │ Metas        │
+    │ Cadastro     │   │ Despesas     │   │ Cofrinhos    │
+    │ Sessões      │   │ Categorias   │   │ Progresso    │
+    │              │   │ Relatórios   │   │              │
+    └──────┬───────┘   └──────┬───────┘   └──────┬───────┘
+           │                  │                  │
+           └───────────────┬──┴──────────────────┘
+                           ▼
+                   ┌───────────────┐
+                   │   Database    │
+                   │  PostgreSQL   │
+                   └───────────────┘
 ```
 
 O sistema PoupaBem será desenvolvido utilizando uma arquitetura distribuída baseada em microsserviços.
@@ -241,11 +238,11 @@ A arquitetura da aplicação será composta pelos seguintes componentes:
 
 Fluxo básico de funcionamento:
 
-1. O usuário acessa o sistema através do navegador.
-2. O front-end envia uma requisição para a API.
+1. O usuário acessa o sistema pelo navegador web ou aplicativo mobile.
+2. O front-end (web ou mobile) envia uma requisição para a API.
 3. A API encaminha a requisição para o microsserviço responsável.
 4. O serviço processa a solicitação e consulta o banco de dados.
-5. A resposta é enviada de volta ao usuário através do front-end.
+5. A resposta é enviada de volta ao usuário através do front-end correspondente.
 
 Essa arquitetura permite que cada serviço seja desenvolvido, atualizado e escalado de forma independente.
 
@@ -272,9 +269,11 @@ Responsável pela lógica de negócio da aplicação e implementação dos micro
 
 Tecnologias:
 
-- Node.js
-- Express
-- APIs REST
+- C#
+- ASP.NET Core (.NET)
+- Entity Framework Core
+- APIs RESTful
+- JWT (autenticação e autorização)
 
 Cada microsserviço será implementado como uma API independente.
 
@@ -282,9 +281,9 @@ Cada microsserviço será implementado como uma API independente.
 
 Responsável pelo armazenamento das informações financeiras do sistema.
 
-Tecnologias possíveis:
+Tecnologias:
 
-- MongoDB
+- PostgreSQL
 
 O banco de dados armazenará informações como usuários, transações financeiras e metas de economia.
 
