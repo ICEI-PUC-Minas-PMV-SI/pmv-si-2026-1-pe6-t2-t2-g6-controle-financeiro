@@ -8,11 +8,11 @@
 | 16/02 - 22/02 | Gestão de Serviços de TI - Unidade 2 | ✅ |  |  |
 | 23/02 - 01/03 | Arquitetura de Software Distribuído - Unidade 1 e 2 | ✅ | Definição de escopo junto com equipe | Brainstorm com levantamento e divisão de tarefas |
 | 02/03 - 08/03 | Arquitetura de Software Distribuído - Unidade 3 | ✅ | Definição e correção do conteúdo de Justificativa, Problema e Hospedagem da documentação | Definição e correção do conteúdo de Justificativa, Problema e Hospedagem da documentação |
-| 09/03 - 15/03 | APIs e Web Services - Unidade 1 | ⬜ |  |  |
-| 16/03 - 22/03 | APIs e Web Services - Unidade 2 | ⬜ |  |  |
-| 23/03 - 29/03 | APIs e Web Services - Unidade 2 | ⬜ |  |  |
-| 30/03 - 05/04 | Recuperação de Informação na Web e Redes Sociais - Unidade 1 | ⬜ |  |  |
-| 06/04 - 12/04 | Recuperação de Informação na Web e Redes Sociais - Unidade 2 | ⬜ |  |  |
+| 09/03 - 15/03 | APIs e Web Services - Unidade 1 | ✅ |  |  |
+| 16/03 - 22/03 | APIs e Web Services - Unidade 2 | ✅ |  |  |
+| 23/03 - 29/03 | APIs e Web Services - Unidade 2 | ✅ |Criação de testes unitários  | Criação de testes unitários |
+| 30/03 - 05/04 | Recuperação de Informação na Web e Redes Sociais - Unidade 1 | ✅ | Criação de testes de integração | criação de testes integração |
+| 06/04 - 12/04 | Recuperação de Informação na Web e Redes Sociais - Unidade 2 | ✅ | realização de testes manuais | realização de testes manuais |
 | 13/04 - 19/04 | Computação Ubíqua e Pervasiva e IoT - Unidade 1 | ⬜ |  |  |
 | 20/04 - 26/04 | Computação Ubíqua e Pervasiva e IoT - Unidade 2 | ⬜ |  |  |
 | 27/04 - 03/05 | Desenvolvimento de Aplicações Móveis - Unidade 1 | ⬜ |  |  |
