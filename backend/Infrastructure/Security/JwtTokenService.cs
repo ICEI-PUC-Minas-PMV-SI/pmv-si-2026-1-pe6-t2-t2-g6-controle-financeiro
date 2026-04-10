@@ -12,7 +12,7 @@ public class JwtTokenService(IOptions<JwtOptions> jwtOptions) : IJwtTokenService
 {
     private readonly JwtOptions _jwtOptions = jwtOptions.Value;
 
-    public string GeneratorAccessToken(
+    public string GenerateAccessToken(
         Guid userId,
         string email,
         string userName,
@@ -46,7 +46,7 @@ public class JwtTokenService(IOptions<JwtOptions> jwtOptions) : IJwtTokenService
         return new JwtSecurityTokenHandler().WriteToken(token);
     }
 
-    public string GeneratorRefreshToken()
+    public string GenerateRefreshToken()
     {
         var randomBytes = RandomNumberGenerator.GetBytes(64);
         return Convert.ToBase64String(randomBytes);

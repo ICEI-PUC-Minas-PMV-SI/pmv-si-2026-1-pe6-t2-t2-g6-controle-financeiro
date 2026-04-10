@@ -2,6 +2,7 @@
 using Application.Interfaces.Security;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using PoupaBem.API.Extensions;
 
 namespace PoupaBem.API.Controllers;
 
@@ -43,9 +44,11 @@ public class AuthController : ControllerBase
     [HttpGet("me")]
     public IActionResult Me()
     {
+        var hasUserId = User.TryGetUserId(out var userId);
+
         return Ok(new
         {
-            userId = User.FindFirst("sub")?.Value,
+            userId = hasUserId ? userId.ToString() : null,
             email = User.FindFirst("email")?.Value,
             userName = User.FindFirst("unique_name")?.Value,
 

@@ -29,7 +29,7 @@ public class AuthService(UserManager<ApplicationUser> userManager, IJwtTokenServ
 
         var roles = await _userManager.GetRolesAsync(user);
 
-        var accessToken = _jwtTokenService.GeneratorAccessToken(
+        var accessToken = _jwtTokenService.GenerateAccessToken(
             user.Id,
             user.Email!,
             user.UserName!,
@@ -38,7 +38,7 @@ public class AuthService(UserManager<ApplicationUser> userManager, IJwtTokenServ
             roles
         );
 
-        var refreshToken = _jwtTokenService.GeneratorRefreshToken();
+        var refreshToken = _jwtTokenService.GenerateRefreshToken();
 
         user.RefreshToken = refreshToken;
         user.RefreshTokenExpiresAt = DateTime.UtcNow.AddDays(_jwtOptions.RefreshTokenExpirationDays);
@@ -90,7 +90,7 @@ public class AuthService(UserManager<ApplicationUser> userManager, IJwtTokenServ
 
         var roles = await _userManager.GetRolesAsync(user);
 
-        var accessToken = _jwtTokenService.GeneratorAccessToken(
+        var accessToken = _jwtTokenService.GenerateAccessToken(
             user.Id,
             user.Email!,
             user.UserName!,
@@ -99,7 +99,7 @@ public class AuthService(UserManager<ApplicationUser> userManager, IJwtTokenServ
             roles
         );
 
-        var refreshToken = _jwtTokenService.GeneratorRefreshToken();
+        var refreshToken = _jwtTokenService.GenerateRefreshToken();
 
         user.RefreshToken = refreshToken;
         user.RefreshTokenExpiresAt = DateTime.UtcNow.AddDays( _jwtOptions.RefreshTokenExpirationDays);
@@ -144,7 +144,7 @@ public class AuthService(UserManager<ApplicationUser> userManager, IJwtTokenServ
     private async Task<AuthResponse> GenerateAuthResponseAsync(ApplicationUser user)
     {
         var roles = await _userManager.GetRolesAsync(user);
-        var accessToken = _jwtTokenService.GeneratorAccessToken(
+        var accessToken = _jwtTokenService.GenerateAccessToken(
             user.Id,
             user.Email!,
             user.UserName!,
@@ -153,7 +153,7 @@ public class AuthService(UserManager<ApplicationUser> userManager, IJwtTokenServ
             roles
         );
 
-        var refreshToken = _jwtTokenService.GeneratorRefreshToken();
+        var refreshToken = _jwtTokenService.GenerateRefreshToken();
 
         user.RefreshToken = refreshToken;
         user.RefreshTokenExpiresAt = DateTime.UtcNow.AddDays( _jwtOptions.RefreshTokenExpirationDays );

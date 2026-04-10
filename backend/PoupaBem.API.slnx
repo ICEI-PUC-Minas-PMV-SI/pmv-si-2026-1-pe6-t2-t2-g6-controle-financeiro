@@ -2,5 +2,6 @@
   <Project Path="Application/Application.csproj" />
   <Project Path="Domain/Domain.csproj" />
   <Project Path="Infrastructure/Infrastructure.csproj" />
+  <Project Path="PoupaBem.API.Tests/PoupaBem.API.Tests.csproj" />
   <Project Path="PoupaBem.API/PoupaBem.API.csproj" />
 </Solution>

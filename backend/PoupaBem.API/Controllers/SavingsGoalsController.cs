@@ -3,6 +3,7 @@ using Application.Interfaces.Repositories;
 using Domain.Entites;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using PoupaBem.API.Extensions;
 
 namespace PoupaBem.API.Controllers;
 
@@ -17,9 +18,7 @@ public class SavingsGoalsController : ControllerBase
         [FromBody] CreateSavingsGoalRequest request,
         CancellationToken cancellationToken)
     {
-        var userIdValue = User.FindFirst("sub")?.Value;
-
-        if (!Guid.TryParse(userIdValue, out var userId))
+        if (!User.TryGetUserId(out var userId))
             return Unauthorized();
 
         var goal = new SavingsGoal(request.Name, request.TargetAmount, userId);
@@ -33,9 +32,7 @@ public class SavingsGoalsController : ControllerBase
         [FromServices] ISavingsGoalRepository savingsGoalRepository,
         CancellationToken cancellationToken)
     {
-        var userIdValue = User.FindFirst("sub")?.Value;
-
-        if (!Guid.TryParse(userIdValue, out var userId))
+        if (!User.TryGetUserId(out var userId))
             return Unauthorized();
 
         var goals = await savingsGoalRepository.GetByUserAsync(userId, cancellationToken);
@@ -48,9 +45,7 @@ public class SavingsGoalsController : ControllerBase
         [FromServices] ISavingsGoalRepository savingsGoalRepository,
         CancellationToken cancellationToken)
     {
-        var userIdValue = User.FindFirst("sub")?.Value;
-
-        if (!Guid.TryParse(userIdValue, out var userId))
+        if (!User.TryGetUserId(out var userId))
             return Unauthorized();
 
         var goal = await savingsGoalRepository.GetByIdForUserAsync(id, userId, cancellationToken)
@@ -66,9 +61,7 @@ public class SavingsGoalsController : ControllerBase
         [FromBody] UpdateSavingsGoalRequest request,
         CancellationToken cancellationToken)
     {
-        var userIdValue = User.FindFirst("sub")?.Value;
-
-        if (!Guid.TryParse(userIdValue, out var userId))
+        if (!User.TryGetUserId(out var userId))
             return Unauthorized();
 
         var goal = await savingsGoalRepository.GetTrackedByIdForUserAsync(id, userId, cancellationToken)
@@ -87,9 +80,7 @@ public class SavingsGoalsController : ControllerBase
         [FromBody] DepositSavingsGoalRequest request,
         CancellationToken cancellationToken)
     {
-        var userIdValue = User.FindFirst("sub")?.Value;
-
-        if (!Guid.TryParse(userIdValue, out var userId))
+        if (!User.TryGetUserId(out var userId))
             return Unauthorized();
 
         var goal = await savingsGoalRepository.GetTrackedByIdForUserAsync(id, userId, cancellationToken)
@@ -107,9 +98,7 @@ public class SavingsGoalsController : ControllerBase
         [FromServices] ISavingsGoalRepository savingsGoalRepository,
         CancellationToken cancellationToken)
     {
-        var userIdValue = User.FindFirst("sub")?.Value;
-
-        if (!Guid.TryParse(userIdValue, out var userId))
+        if (!User.TryGetUserId(out var userId))
             return Unauthorized();
 
         var goal = await savingsGoalRepository.GetTrackedByIdForUserAsync(id, userId, cancellationToken)

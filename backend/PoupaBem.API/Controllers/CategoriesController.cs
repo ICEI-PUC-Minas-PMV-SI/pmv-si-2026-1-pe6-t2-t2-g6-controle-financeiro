@@ -3,6 +3,7 @@ using Application.Interfaces.Repositories;
 using Domain.Entites;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using PoupaBem.API.Extensions;
 
 namespace PoupaBem.API.Controllers;
 
@@ -17,9 +18,7 @@ public class CategoriesController : ControllerBase
         [FromBody] CreateCategoryRequest request,
         CancellationToken cancellationToken)
     {
-        var userIdValue = User.FindFirst("sub")?.Value;
-
-        if (!Guid.TryParse(userIdValue, out var userId))
+        if (!User.TryGetUserId(out var userId))
             return Unauthorized();
 
         var exists = await categoryRepository.ExistsByNameAsync(request.Name, userId, cancellationToken);
@@ -39,9 +38,7 @@ public class CategoriesController : ControllerBase
         [FromServices] ICategoryRepository categoryRepository,
         CancellationToken cancellationToken)
     {
-        var userIdValue = User.FindFirst("sub")?.Value;
-
-        if (!Guid.TryParse(userIdValue, out var userId))
+        if (!User.TryGetUserId(out var userId))
             return Unauthorized();
 
         var categories = await categoryRepository.GetByUserAsync(userId, cancellationToken);
@@ -57,9 +54,7 @@ public class CategoriesController : ControllerBase
         [FromBody] UpdateCategoryRequest request,
         CancellationToken cancellationToken)
     {
-        var userIdValue = User.FindFirst("sub")?.Value;
-
-        if (!Guid.TryParse(userIdValue, out var userId))
+        if (!User.TryGetUserId(out var userId))
             return Unauthorized();
 
         var category = await categoryRepository.GetOwnedTrackedByIdAsync(id, userId, cancellationToken)
@@ -87,9 +82,7 @@ public class CategoriesController : ControllerBase
         [FromServices] ICategoryRepository categoryRepository,
         CancellationToken cancellationToken)
     {
-        var userIdValue = User.FindFirst("sub")?.Value;
-
-        if (!Guid.TryParse(userIdValue, out var userId))
+        if (!User.TryGetUserId(out var userId))
             return Unauthorized();
 
         var category = await categoryRepository.GetOwnedTrackedByIdAsync(id, userId, cancellationToken)
