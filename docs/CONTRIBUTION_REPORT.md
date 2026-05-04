@@ -1,6 +1,6 @@
 # 📊 Relatório de Contribuições do Projeto
 
-**Última atualização:** 27/04/2026 13:16
+**Última atualização:** 04/05/2026 00:35
 
 ---
 
@@ -15,13 +15,15 @@
 | João Pedro Pimenta    |         4 |        59 |         9 |          2 |              3 |               1 |
 | Maryana Morato        |         2 |         9 |         9 |          1 |              2 |               1 |
 | acpcampos-gif         |         2 |       145 |        64 |          2 |              2 |               2 |
-| github-actions[bot]   |        22 |       154 |       145 |          3 |             22 |               1 |
+| github-actions[bot]   |        23 |       158 |       149 |          3 |             23 |               1 |
 | github-classroom[bot] |         1 |      2152 |         0 |         45 |              1 |              13 |
 
 
 ## 📅 Contribuições Semanais (Todo o Semestre)
 
-**2026-04-20**: JoaoJangola: 1, João Pedro Pimenta: 2, github-actions[bot]: 2
+**2026-04-27**: JoaoJangola: 1, github-actions[bot]: 1
+
+**2026-04-20**: João Pedro Pimenta: 2, github-actions[bot]: 2
 
 **2026-04-13**: João Pedro Pimenta: 1, github-actions[bot]: 1
 
