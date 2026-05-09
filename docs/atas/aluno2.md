@@ -13,11 +13,11 @@
 | 23/03 - 29/03 | APIs e Web Services - Unidade 2 | ✅ | Planejamento da Estruturação e Modelagem | Planejamento da Estruturação e Modelagem |
 | 30/03 - 05/04 | Recuperação de Informação na Web e Redes Sociais - Unidade 1 | ✅ | Revisão da implementação do backend nos modulos de login, transações e categorias | Revisão da implementação do backend nos modulos de login, transações e categorias |
 | 06/04 - 12/04 | Recuperação de Informação na Web e Redes Sociais - Unidade 2 | ✅ | Criação dos modulos de objetivos e reports no backend mais ajustes nos CRUDs de categorias e transaçoes | Criação dos modulos de objetivos e reports no backend mais ajustes nos CRUDs de categorias e transaçoes |
-| 13/04 - 19/04 | Computação Ubíqua e Pervasiva e IoT - Unidade 1 | ⬜ |  |  |
-| 20/04 - 26/04 | Computação Ubíqua e Pervasiva e IoT - Unidade 2 | ⬜ |  |  |
-| 27/04 - 03/05 | Desenvolvimento de Aplicações Móveis - Unidade 1 | ⬜ |  |  |
-| 04/05 - 10/05 | Desenvolvimento de Aplicações Móveis - Unidade 2 | ⬜ |  |  |
-| 11/05 - 17/05 | Desenvolvimento de Aplicações Móveis - Unidade 2 | ⬜ |  |  |
+| 13/04 - 19/04 | Computação Ubíqua e Pervasiva e IoT - Unidade 1 | ✅ | Apresentação etapa anterior | Apresentação etapa anterior |
+| 20/04 - 26/04 | Computação Ubíqua e Pervasiva e IoT - Unidade 2 | ✅ | Planejamento da documentação da etapa | Planejamento da documentação da etapa |
+| 27/04 - 03/05 | Desenvolvimento de Aplicações Móveis - Unidade 1 | ✅ | Planejamento da documentação da etapa | Planejamento da documentação da etapa |
+| 04/05 - 10/05 | Desenvolvimento de Aplicações Móveis - Unidade 2 | ✅ | Documentação do frontend | Documentação do frontend |
+| 11/05 - 17/05 | Desenvolvimento de Aplicações Móveis - Unidade 2 | ✅ | Apresentação etapa anterior | Apresentação etapa anterior |
 | 18/05 - 24/05 | Fundamentos de Projeto e Análise de Algoritmos - Unidade 1 | ⬜ |  |  |
 | 25/05 - 31/05 | Fundamentos de Projeto e Análise de Algoritmos - Unidade 2 | ⬜ |  |  |
 | 01/06 - 07/06 |  | ⬜ |  |  |
