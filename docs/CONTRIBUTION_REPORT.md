@@ -1,6 +1,6 @@
 # 📊 Relatório de Contribuições do Projeto
 
-**Última atualização:** 09/05/2026 12:51
+**Última atualização:** 09/05/2026 12:56
 
 ---
 
@@ -9,19 +9,19 @@
 | Aluno                 |   Commits |   Linhas+ |   Linhas- |   Arquivos |   Docs Commits |   Docs Arquivos |
 |-----------------------|-----------|-----------|-----------|------------|----------------|-----------------|
 | Ana Clara Pinheiro    |         8 |      6711 |        23 |         35 |              7 |               3 |
-| Gabriel Santos        |        15 |      3115 |       236 |         59 |             12 |               9 |
+| Gabriel Santos        |        17 |      3257 |       371 |         60 |             14 |              10 |
 | Gustavo Moura         |         8 |       558 |        68 |          3 |              8 |               3 |
 | JoaoJangola           |         5 |      2659 |        28 |         47 |              3 |               1 |
 | João Pedro Pimenta    |         4 |        59 |         9 |          2 |              3 |               1 |
 | Maryana Morato        |         2 |         9 |         9 |          1 |              2 |               1 |
 | acpcampos-gif         |         2 |       145 |        64 |          2 |              2 |               2 |
-| github-actions[bot]   |        28 |       201 |       188 |          3 |             28 |               1 |
+| github-actions[bot]   |        29 |       205 |       192 |          3 |             29 |               1 |
 | github-classroom[bot] |         1 |      2152 |         0 |         45 |              1 |              13 |
 
 
 ## 📅 Contribuições Semanais (Todo o Semestre)
 
-**2026-05-02**: Ana Clara Pinheiro: 3, Gabriel Santos: 6, github-actions[bot]: 5
+**2026-05-02**: Ana Clara Pinheiro: 3, Gabriel Santos: 8, github-actions[bot]: 6
 
 **2026-04-25**: JoaoJangola: 1, github-actions[bot]: 2
 
