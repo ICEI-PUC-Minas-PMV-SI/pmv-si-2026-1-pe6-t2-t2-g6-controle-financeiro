@@ -1,30 +1,91 @@
 # Front-end Web
 
-[Inclua uma breve descrição do projeto e seus objetivos.]
+O PoupaBem é uma plataforma de gestão financeira pessoal focada em simplicidade e clareza. Seu principal objetivo é ajudar os usuários a organizarem suas finanças, monitorarem receitas e despesas com facilidade e alcançarem objetivos financeiros através da funcionalidade de "Cofrinhos". A aplicação visa proporcionar uma experiência de usuário (UX) fluida e intuitiva, entregando uma visão geral e instantânea da saúde financeira para permitir tomadas de decisão mais conscientes.
 
 ## Projeto da Interface Web
 
-[Descreva o projeto da interface Web da aplicação, incluindo o design visual, layout das páginas, interações do usuário e outros aspectos relevantes.]
+A interface web do PoupaBem foi projetada para ser limpa, moderna e orientada aos dados do usuário. Ela utiliza um layout de dashboard clássico e totalmente responsivo.
+
+Layout:
+
+Navegação Lateral (Sidebar): Uma barra lateral fixa à esquerda contém o logotipo e os links de navegação ("Dashboard", "Transações" e "Cofrinhos"). O estado ativo da rota é destacado visualmente. O rodapé da sidebar gerencia o perfil do usuário e a ação de logout.
+
+Área de Conteúdo Principal: Ocupa a maior parte da tela, com um fundo off-white para contraste. No topo, há uma saudação dinâmica baseada no estado de autenticação e um botão primário de Call to Action ("+ Nova") para adicionar transações rapidamente.
+
+Cards de Resumo: Componentes em formato de cards exibem informações-chave sintetizadas: "Saldo Atual", "Receitas" e "Despesas".
+
+Visualização de Dados: Um componente de gráfico exibe a evolução do saldo ao longo do tempo.
+
+Módulos de Acompanhamento: Um painel lateral lista os cofrinhos do usuário, utilizando barras de progresso alimentadas diretamente pelos dados calculados na interface.
+
+Interações do Usuário (UI/UX): A aplicação prioriza a navegação sem recarregamento de página (Single Page Application). A criação de registros ocorre através de modais sobrepostos à tela atual, mantendo o contexto do usuário. O sistema emprega validações em tempo real nos formulários e fornece feedback visual imediato para ações de sucesso ou erro.
 
 ### Wireframes
 
-[Inclua os wireframes das páginas principais da interface, mostrando a disposição dos elementos na página.]
+O wireframe da página do Dashboard (tela principal) segue esta estrutura de componentes estruturais:
+
+<img width="1134" height="689" alt="image" src="https://github.com/user-attachments/assets/65dc703a-a967-45c7-b985-c6fe3c625bfc" />
+
 
 ### Design Visual
 
-[Descreva o estilo visual da interface, incluindo paleta de cores, tipografia, ícones e outros elementos gráficos.]
+Paleta de Cores: Focada na psicologia das cores financeiras e de acessibilidade.
+
+Verde Escuro (#023020): Cor primária, utilizada na barra de navegação e em componentes de destaque (como o Saldo).
+
+Verde Médio (#3EB37C): Cor semântica de sucesso, usada para receitas, gráficos de crescimento e barras de progresso concluídas.
+
+Vermelho (#C53030): Cor semântica de alerta, reservada estritamente para despesas e ações destrutivas na interface (como exclusão de registros).
+
+Off-White (#F5F7FA) e Branco (#FFFFFF): Utilizados para fundos estruturais e cards, garantindo alto contraste com os textos e componentes coloridos.
+
+Tipografia: Uso exclusivo de fontes sans-serif limpas (como Inter ou Roboto) para garantir a legibilidade de dados numéricos e tabelas.
+
+Composição Visual: A interface abusa de espaços em branco (respiro visual) e cantos arredondados suaves (border-radius) para criar um ambiente menos burocrático e mais amigável. Sombras sutis (box-shadow) são aplicadas para criar profundidade e hierarquia entre o fundo e os cards de dados.
 
 ## Fluxo de Dados
 
-[Diagrama ou descrição do fluxo de dados na aplicação.]
+O gerenciamento de dados na interface segue o ciclo de vida e a reatividade de uma Single Page Application (SPA):
+
+Autenticação e Sessão: O usuário realiza login. O front-end captura o token de acesso, armazena-o no localStorage do navegador e inicializa o contexto global de usuário (AuthContext).
+
+Navegação e Requisição (Mounting): Ao acessar uma rota protegida (como o Dashboard), os componentes são montados na tela e disparam requisições assíncronas via HTTP (utilizando Fetch API ou biblioteca equivalente) para consumir os endpoints do back-end. Enquanto aguarda a resposta, a interface exibe indicadores de carregamento (loaders ou skeletons).
+
+Gerenciamento de Estado: Os dados JSON recebidos são armazenados no estado local dos componentes ou em contextos globais. Funções utilitárias do front-end formatam valores brutos (ex: convertendo "5000" para "R$ 5.000,00").
+
+Reatividade (Renderização): O React reage às mudanças de estado e desenha a interface na tela, populando os gráficos, tabelas e barras de progresso.
+
+Ações do Usuário (Mutation): Quando o usuário preenche o formulário de "Nova Transação" e clica em salvar, o front-end valida os dados em tela e envia um POST para a API. Em caso de sucesso, o estado da aplicação é atualizado e o React re-renderiza apenas os componentes necessários (como os valores totais dos cards), sem a necessidade de atualizar a página inteira.
 
 ## Tecnologias Utilizadas
 
-[Lista das tecnologias principais que serão utilizadas no projeto.]
+A pilha tecnológica está concentrada em ferramentas modernas de desenvolvimento Web:
+
+Ecossistema Front-end:
+
+React.js: Biblioteca principal para construção da interface de usuário em componentes.
+
+Vite: Ferramenta de build para um empacotamento rápido e otimizado da aplicação.
+
+React Router: Gerenciamento de rotas e navegação do lado do cliente (SPA).
+
+Context API: Gerenciamento de estado global e compartilhamento de dados (ex: dados do usuário logado e temas).
+
+Consumo de Dados: Requisições HTTP baseadas em Promises para comunicação com a API RESTful do sistema.
+
+Qualidade e Testes de Interface:
+
+Jest e React Testing Library: Para testes unitários de componentes (ex: botões, formatações) e testes de integração de páginas (com API mockada).
+
+Playwright: Para testes de regressão visual, garantindo a integridade do layout do dashboard e modais.
 
 ## Considerações de Segurança
 
-[Discuta as considerações de segurança relevantes para a aplicação distribuída, como autenticação, autorização, proteção contra ataques, etc.]
+Embora o back-end seja o principal responsável pela segurança e integridade dos dados, a interface web implementa diversas camadas de proteção para garantir uma navegação segura e mitigar vulnerabilidades no lado do cliente (navegador):
+
+Autenticação e Gerenciamento de Sessão: A aplicação utiliza tokens JWT (JSON Web Tokens) para controle de sessão. O token recebido após o login é armazenado no localStorage (ou sessionStorage). O contexto global (AuthContext) monitora a presença e a validade desse token para manter o usuário logado.
+
+Autorização e Proteção de Rotas: O sistema de roteamento (React Router) implementa Protected Routes (Rotas Protegidas). Se um usuário tentar acessar diretamente a URL do Dashboard ou qualquer outra página interna sem um token válido, a interface intercepta a navegação e o redireciona automaticamente para a tela de Login (/login), impedindo o acesso não autorizado à interface.
 
 ## Implantação
 
