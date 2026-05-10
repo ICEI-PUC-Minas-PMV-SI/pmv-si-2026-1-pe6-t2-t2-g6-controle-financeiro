@@ -2,6 +2,7 @@ using Application.Interfaces.Repositories;
 using Domain.Enums;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using PoupaBem.API.Extensions;
 using System.Globalization;
 using System.Text;
 
@@ -19,11 +20,10 @@ public class ReportsController : ControllerBase
         [FromQuery] DateTime? toUtc,
         CancellationToken cancellationToken)
     {
-        var userId = RequireUserId();
-        if (userId is null)
+        if (!User.TryGetUserId(out var userId))
             return Unauthorized();
 
-        var summary = await reportRepository.GetSummaryAsync(userId.Value, fromUtc, toUtc, cancellationToken);
+        var summary = await reportRepository.GetSummaryAsync(userId, fromUtc, toUtc, cancellationToken);
         return Ok(summary);
     }
 
@@ -34,11 +34,10 @@ public class ReportsController : ControllerBase
         [FromQuery] DateTime? toUtc,
         CancellationToken cancellationToken)
     {
-        var userId = RequireUserId();
-        if (userId is null)
+        if (!User.TryGetUserId(out var userId))
             return Unauthorized();
 
-        var items = await reportRepository.GetExpenseTotalsByCategoryAsync(userId.Value, fromUtc, toUtc, cancellationToken);
+        var items = await reportRepository.GetExpenseTotalsByCategoryAsync(userId, fromUtc, toUtc, cancellationToken);
         return Ok(items);
     }
 
@@ -51,12 +50,11 @@ public class ReportsController : ControllerBase
         [FromQuery] TransactionType? transactionType,
         CancellationToken cancellationToken)
     {
-        var userId = RequireUserId();
-        if (userId is null)
+        if (!User.TryGetUserId(out var userId))
             return Unauthorized();
 
         var transactions = await transactionRepository.GetFilteredAsync(
-            userId.Value,
+            userId,
             fromUtc,
             toUtc,
             categoryId,
@@ -83,12 +81,6 @@ public class ReportsController : ControllerBase
         var bytes = Encoding.UTF8.GetPreamble().Concat(Encoding.UTF8.GetBytes(sb.ToString())).ToArray();
         var fileName = $"transacoes_{DateTime.UtcNow:yyyyMMdd_HHmmss}.csv";
         return File(bytes, "text/csv; charset=utf-8", fileName);
-    }
-
-    private Guid? RequireUserId()
-    {
-        var userIdValue = User.FindFirst("sub")?.Value;
-        return Guid.TryParse(userIdValue, out var userId) ? userId : null;
     }
 
     private static string CsvEscape(string value)

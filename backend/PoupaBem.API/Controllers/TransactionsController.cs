@@ -4,6 +4,7 @@ using Domain.Entites;
 using Domain.Enums;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using PoupaBem.API.Extensions;
 
 namespace PoupaBem.API.Controllers;
 
@@ -19,9 +20,7 @@ public class TransactionsController : ControllerBase
         [FromBody] CreateTransactionRequest request,
         CancellationToken cancellationToken)
     {
-        var userIdValue = User.FindFirst("sub")?.Value;
-
-        if (!Guid.TryParse(userIdValue, out var userId))
+        if (!User.TryGetUserId(out var userId))
             return Unauthorized();
 
         var category = await categoryRepository.GetByIdForUserAsync(request.CategoryId, userId, cancellationToken)
@@ -53,9 +52,7 @@ public class TransactionsController : ControllerBase
         [FromQuery] TransactionType? transactionType,
         CancellationToken cancellationToken)
     {
-        var userIdValue = User.FindFirst("sub")?.Value;
-
-        if (!Guid.TryParse(userIdValue, out var userId))
+        if (!User.TryGetUserId(out var userId))
             return Unauthorized();
 
         var transactions = await transactionRepository.GetFilteredAsync(
@@ -78,9 +75,7 @@ public class TransactionsController : ControllerBase
         [FromBody] UpdateTransactionRequest request,
         CancellationToken cancellationToken)
     {
-        var userIdValue = User.FindFirst("sub")?.Value;
-
-        if (!Guid.TryParse(userIdValue, out var userId))
+        if (!User.TryGetUserId(out var userId))
             return Unauthorized();
 
         var transaction = await transactionRepository.GetTrackedByIdForUserAsync(id, userId, cancellationToken)
@@ -111,9 +106,7 @@ public class TransactionsController : ControllerBase
         [FromServices] ITransactionRepository transactionRepository,
         CancellationToken cancellationToken)
     {
-        var userIdValue = User.FindFirst("sub")?.Value;
-
-        if (!Guid.TryParse(userIdValue, out var userId))
+        if (!User.TryGetUserId(out var userId))
             return Unauthorized();
 
         var transaction = await transactionRepository.GetTrackedByIdForUserAsync(id, userId, cancellationToken)
