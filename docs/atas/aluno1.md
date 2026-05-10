@@ -10,13 +10,13 @@ s# ATA de Acompanhamento - Ana Clara Pinheiro Campos
 | 02/03 - 08/03 | Arquitetura de Software Distribuído - Unidade 3 | ✅ | Preenchimento da documentação (Introdução, Problema, Justificativa, Público Alvo, Especificações) | Preenchimento da documentação (Introdução, Problema, Justificativa, Público Alvo, Especificações) |
 | 09/03 - 15/03 | APIs e Web Services - Unidade 1 | ✅ | Reunião para entender as necessidades do projeto e definir a divisão das tarefas | Reunião para entender as necessidades do projeto e definir a divisão das tarefas |
 | 16/03 - 22/03 | APIs e Web Services - Unidade 2 | ✅ | Revisão e adição de detalhes no tópico "Catálogo de Serviços" | Revisão e adição de detalhes no tópico "Catálogo de Serviços" |
-| 23/03 - 29/03 | APIs e Web Services - Unidade 2 | ⬜ |  |  |
-| 30/03 - 05/04 | Recuperação de Informação na Web e Redes Sociais - Unidade 1 | ⬜ | Planejar e desenvolver o design no figma para o Front End da Aplição Web e Mobile |  |
-| 06/04 - 12/04 | Recuperação de Informação na Web e Redes Sociais - Unidade 2 | ⬜ | Desenvolvimento da Aplicação Web |  |
-| 13/04 - 19/04 | Computação Ubíqua e Pervasiva e IoT - Unidade 1 | ⬜ |  |  |
-| 20/04 - 26/04 | Computação Ubíqua e Pervasiva e IoT - Unidade 2 | ⬜ |  |  |
-| 27/04 - 03/05 | Desenvolvimento de Aplicações Móveis - Unidade 1 | ⬜ |  |  |
-| 04/05 - 10/05 | Desenvolvimento de Aplicações Móveis - Unidade 2 | ⬜ |  |  |
+| 23/03 - 29/03 | APIs e Web Services - Unidade 2 | ✅ | Reunião para entender as necessidades da segunda etapa do projeto e definir atividades | Reunião para entender as necessidades da segunda etapa do projeto e definir atividades |
+| 30/03 - 05/04 | Recuperação de Informação na Web e Redes Sociais - Unidade 1 | ✅ | Planejar e desenvolver o design no figma para o Front End da Aplição Web e Mobile | Planejar o design para o Front End e suporte na entrega da documentação dos testes |
+| 06/04 - 12/04 | Recuperação de Informação na Web e Redes Sociais - Unidade 2 | ✅ | Desenvolvimento da Aplicação Web | Revisão da documentação e entrega da etapa 2 |
+| 13/04 - 19/04 | Computação Ubíqua e Pervasiva e IoT - Unidade 1 | ⬜ | Desenvolver o design para o Front End no Figma para a Aplicação Web e Mobile | Desenvolvimento do design das telas da aplicação Web |
+| 20/04 - 26/04 | Computação Ubíqua e Pervasiva e IoT - Unidade 2 | ⬜ | Desenvolver a Aplicação Web | revisão e remanejamento das telas da aplicação web, desenvolvimento do fluxograma |
+| 27/04 - 03/05 | Desenvolvimento de Aplicações Móveis - Unidade 1 | ⬜ | Desenvolver a Aplicação Web e realizar testes | Desenvolvimento do front end |
+| 04/05 - 10/05 | Desenvolvimento de Aplicações Móveis - Unidade 2 | ⬜ | Desenvolver a Aplicação Web e realizar testes | Desenvolvimento do front end e suporte na realização dos testes |
 | 11/05 - 17/05 | Desenvolvimento de Aplicações Móveis - Unidade 2 | ⬜ |  |  |
 | 18/05 - 24/05 | Fundamentos de Projeto e Análise de Algoritmos - Unidade 1 | ⬜ |  |  |
 | 25/05 - 31/05 | Fundamentos de Projeto e Análise de Algoritmos - Unidade 2 | ⬜ |  |  |

@@ -1,0 +1,65 @@
+name: backend-ci
+
+on:
+  push:
+    paths:
+      - '**/*.cs'
+      - '**/*.csproj'
+      - 'PoupaBem.API.slnx'
+      - '.github/workflows/backend-ci.yml'
+  pull_request:
+    paths:
+      - '**/*.cs'
+      - '**/*.csproj'
+      - 'PoupaBem.API.slnx'
+      - '.github/workflows/backend-ci.yml'
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+
+    services:
+      postgres:
+        image: postgres:16-alpine
+        env:
+          POSTGRES_USER: postgres
+          POSTGRES_PASSWORD: 123
+          POSTGRES_DB: PoupaBem
+        ports:
+          - 5432:5432
+        options: >-
+          --health-cmd "pg_isready -U postgres -d PoupaBem"
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 10
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup .NET
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: 10.0.x
+
+      - name: Restore
+        run: dotnet restore PoupaBem.API.slnx
+
+      - name: Build
+        run: dotnet build PoupaBem.API.slnx --configuration Release --no-restore
+
+      - name: Test
+        env:
+          POUPABEM_TEST_DB_HOST: localhost
+          POUPABEM_TEST_DB_PORT: 5432
+          POUPABEM_TEST_DB_NAME: PoupaBem_test
+          POUPABEM_TEST_DB_USER: postgres
+          POUPABEM_TEST_DB_PASSWORD: 123
+        run: dotnet test PoupaBem.API.slnx --configuration Release --no-build --logger "trx;LogFileName=test-results.trx"
+
+      - name: Upload test results
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: backend-test-results
+          path: '**/TestResults/*.trx'

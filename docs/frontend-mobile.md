@@ -3,6 +3,7 @@
 [Inclua uma breve descrição do projeto e seus objetivos.]
 
 ## Projeto da Interface
+
 [Descreva o projeto da interface móvel da aplicação, incluindo o design visual, layout das páginas, interações do usuário e outros aspectos relevantes.]
 
 ### Wireframes
