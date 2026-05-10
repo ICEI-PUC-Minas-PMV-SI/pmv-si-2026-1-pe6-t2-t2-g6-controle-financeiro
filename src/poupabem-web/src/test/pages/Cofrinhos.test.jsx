@@ -192,4 +192,29 @@ describe('Cofrinhos (integração)', () => {
       expect(deleteGoal).toHaveBeenCalledWith('g1')
     })
   })
+  it('deve criar um novo cofrinho com sucesso', async () => {
+    createGoal.mockResolvedValueOnce({ id: 'cg3', name: 'Viagem', targetAmount: 1000 })
+    renderWithProviders(<Cofrinhos />, { route: '/cofrinhos', path: '/cofrinhos' })
+    await userEvent.click(screen.getByRole('button', { name: /^Novo cofrinho$/i }))
+    await userEvent.type(screen.getByPlaceholderText('Ex: Viagem Europa'), 'Notebook')
+    await userEvent.type(screen.getByPlaceholderText('5000,00'), '3500')
+    await userEvent.click(screen.getByRole('button', { name: /Criar cofrinho/i }))
+    await waitFor(() => {
+      expect(createGoal).toHaveBeenCalledWith({
+        name: 'Notebook',
+        targetAmount: 3500
+      })
+    })
+  })
+  it('deve excluir um cofrinho existente', async () => {
+    deleteGoal.mockResolvedValueOnce({})
+    renderWithProviders(<Cofrinhos />, { route: '/cofrinhos', path: '/cofrinhos' })
+    await screen.findByText('Viagem Europa')
+    const cardViagem = screen.getByText('Viagem Europa').closest('.card')
+    const lixeira = within(cardViagem).getByTitle('Excluir')
+    await userEvent.click(lixeira)
+    await waitFor(() => {
+      expect(deleteGoal).toHaveBeenCalledWith('g1')
+    })
+  })
 })

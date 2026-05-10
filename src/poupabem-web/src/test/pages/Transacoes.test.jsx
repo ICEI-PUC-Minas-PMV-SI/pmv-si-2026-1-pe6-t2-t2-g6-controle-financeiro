@@ -25,6 +25,7 @@ vi.mock('../../api/reports', () => ({
 import {
   listTransactions,
   createTransaction,
+  updateTransaction,
   deleteTransaction
 } from '../../api/transactions'
 import { listCategories, createCategory } from '../../api/categories'
@@ -245,5 +246,40 @@ describe('Transacoes (integração)', () => {
     await waitFor(() => {
       expect(createCategory).toHaveBeenCalledWith({ name: 'Lazer', type: 2 })
     })
+  })
+  it('exibe mensagem de erro quando a listagem de transações falha', async () => {
+    listTransactions.mockRejectedValueOnce(new Error('Erro interno no servidor'))
+    renderWithProviders(<Transacoes />, {
+      route: '/transacoes',
+      path: '/transacoes'
+    })
+    expect(await screen.findByText(/Erro interno no servidor/i)).toBeInTheDocument()
+  })
+  it('aplica filtros de tipo e categoria simultaneamente', async () => {
+    renderWithProviders(<Transacoes />, { route: '/transacoes', path: '/transacoes' })
+
+    await screen.findByText('Mercado Extra')
+    const botaoReceitas = screen.getByRole('button', { name: /Receitas/i })
+    await userEvent.click(botaoReceitas)
+    const selectCategoria = screen.getByRole('combobox')
+    await userEvent.selectOptions(selectCategoria, 'c1')
+    await waitFor(() => {
+      expect(listTransactions).toHaveBeenLastCalledWith(
+        expect.objectContaining({ 
+          transactionType: 1, 
+          categoryId: 'c1' 
+        })
+      )
+    })
+  })
+  it('impede o envio do formulário se o título estiver vazio', async () => {
+    renderWithProviders(<Transacoes />, {
+      route: '/transacoes',
+      path: '/transacoes'
+    })
+    await screen.findByText('Mercado Extra')
+    await userEvent.click(screen.getByRole('button', { name: /Nova/i }))
+    await userEvent.click(screen.getByRole('button', { name: /Salvar transação/i }))
+    expect(createTransaction).not.toHaveBeenCalled()
   })
 })
