@@ -223,6 +223,8 @@ Cada página é renderizada com Router + `AuthProvider` e a API é mockada:
 | CT-WEB-22 | — | Contrato HTTP de cada módulo da camada de API | Unitário | `api/*.test.js` |
 | CT-WEB-23 | — | Padronização de mensagens de erro (`extractError`) | Unitário | `api/client.test.js` |
 
+.
+
 ### Resultado atual
 
 Execução em 09/05/2026:
