@@ -1,6 +1,6 @@
 # 📊 Relatório de Contribuições do Projeto
 
-**Última atualização:** 11/05/2026 00:43
+**Última atualização:** 11/05/2026 21:57
 
 ---
 
@@ -10,32 +10,32 @@
 |-----------------------|-----------|-----------|-----------|------------|----------------|-----------------|
 | Ana Clara Pinheiro    |         9 |      6715 |        27 |         35 |              8 |               3 |
 | Gabriel Santos        |        17 |      3257 |       371 |         60 |             14 |              10 |
-| Gustavo Moura         |        13 |      3375 |       142 |         54 |             11 |               4 |
+| Gustavo Moura         |        14 |      3377 |       144 |         54 |             12 |               4 |
 | JoaoJangola           |         7 |      2731 |        39 |         48 |              5 |               2 |
 | João Pedro Pimenta    |         9 |       131 |        15 |          5 |              6 |               2 |
 | Maryana Morato        |         2 |         9 |         9 |          1 |              2 |               1 |
 | acpcampos-gif         |         2 |       145 |        64 |          2 |              2 |               2 |
-| github-actions[bot]   |        39 |       268 |       255 |          3 |             39 |               1 |
+| github-actions[bot]   |        40 |       272 |       259 |          3 |             40 |               1 |
 | github-classroom[bot] |         1 |      2152 |         0 |         45 |              1 |              13 |
 
 
 ## 📅 Contribuições Semanais (Todo o Semestre)
 
-**2026-05-04**: Ana Clara Pinheiro: 4, Gabriel Santos: 8, Gustavo Moura: 4, JoaoJangola: 2, João Pedro Pimenta: 5, github-actions[bot]: 15
+**2026-05-04**: Ana Clara Pinheiro: 4, Gabriel Santos: 8, Gustavo Moura: 5, JoaoJangola: 2, João Pedro Pimenta: 5, github-actions[bot]: 16
 
-**2026-04-27**: JoaoJangola: 1, github-actions[bot]: 2
+**2026-04-27**: github-actions[bot]: 1
 
-**2026-04-20**: João Pedro Pimenta: 2, github-actions[bot]: 2
+**2026-04-20**: JoaoJangola: 1, João Pedro Pimenta: 1, github-actions[bot]: 3
 
-**2026-04-13**: João Pedro Pimenta: 1, github-actions[bot]: 1
+**2026-04-13**: João Pedro Pimenta: 2, github-actions[bot]: 1
 
 **2026-04-06**: Ana Clara Pinheiro: 1, Gabriel Santos: 2, Gustavo Moura: 3, João Pedro Pimenta: 1, Maryana Morato: 1, github-actions[bot]: 7
 
 **2026-03-30**: Gabriel Santos: 1, github-actions[bot]: 1
 
-**2026-03-23**: Ana Clara Pinheiro: 3, Gabriel Santos: 1, JoaoJangola: 3, github-actions[bot]: 6
+**2026-03-23**: Gabriel Santos: 1, JoaoJangola: 2, github-actions[bot]: 2
 
-**2026-03-16**: Ana Clara Pinheiro: 1, Gabriel Santos: 1, Maryana Morato: 1, github-actions[bot]: 5
+**2026-03-16**: Ana Clara Pinheiro: 4, Gabriel Santos: 1, JoaoJangola: 1, Maryana Morato: 1, github-actions[bot]: 9
 
 **2026-03-09**: Gustavo Moura: 5
 
