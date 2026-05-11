@@ -1,6 +1,6 @@
 # Front-end Web
 
-O PoupaBem é uma plataforma de gestão financeira pessoal focada em simplicidade e clareza. Seu principal objetivo é ajudar os usuários a organizarem suas finanças, monitorarem receitas e despesas com facilidade e alcançarem objetivos financeiros através da funcionalidade de "Cofrinhos". A aplicação visa proporcionar uma experiência de usuário (UX) fluida e intuitiva, entregando uma visão geral e instantânea da saúde financeira para permitir tomadas de decisão mais conscientes.
+O PoupaBem é uma plataforma de gestão financeira pessoal focada em simplicidade, clareza e versatilidade. Seu principal objetivo é ajudar os usuários a organizarem suas finanças, monitorarem receitas e despesas com facilidade e alcançarem objetivos financeiros através da funcionalidade de "Cofrinhos". A aplicação visa proporcionar uma experiência de usuário (UX) fluida e intuitiva, entregando uma visão geral e instantânea da saúde financeira para permitir tomadas de decisão mais conscientes.
 
 ## Projeto da Interface Web
 
