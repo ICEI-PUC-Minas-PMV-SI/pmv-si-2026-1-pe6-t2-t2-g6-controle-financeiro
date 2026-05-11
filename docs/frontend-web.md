@@ -1,6 +1,6 @@
 # Front-end Web
 
-O PoupaBem é uma plataforma de gestão financeira pessoal focada em simplicidade e clareza. Seu principal objetivo é ajudar os usuários a organizarem suas finanças, monitorarem receitas e despesas com facilidade e alcançarem objetivos financeiros através da funcionalidade de "Cofrinhos". A aplicação visa proporcionar uma experiência de usuário (UX) fluida e intuitiva, entregando uma visão geral e instantânea da saúde financeira para permitir tomadas de decisão mais conscientes.
+O PoupaBem é uma plataforma de gestão financeira pessoal focada em simplicidade, clareza e versatilidade. Seu principal objetivo é ajudar os usuários a organizarem suas finanças, monitorarem receitas e despesas com facilidade e alcançarem objetivos financeiros através da funcionalidade de "Cofrinhos". A aplicação visa proporcionar uma experiência de usuário (UX) fluida e intuitiva, entregando uma visão geral e instantânea da saúde financeira para permitir tomadas de decisão mais conscientes.
 
 ## Projeto da Interface Web
 
@@ -200,7 +200,7 @@ Cada página é renderizada com Router + `AuthProvider` e a API é mockada:
 | ID | Requisito | Cenário | Tipo | Arquivo |
 | --- | --- | --- | --- | --- |
 | CT-WEB-01 | RF-001 | Cadastro com payload válido | Integração | `pages/Cadastro.test.jsx` |
-| CT-WEB-02 | RF-001 | Cadastro bloqueado por senhas diferentes | Integração | `pages/Cadastro.test.jsx` |
+| CT-WEB-02 | RF-001 | Cadastro bloqueado por senhas divergentes | Integração | `pages/Cadastro.test.jsx` |
 | CT-WEB-03 | RF-001 | Cadastro bloqueado por senha curta | Integração | `pages/Cadastro.test.jsx` |
 | CT-WEB-04 | RF-001 | Cadastro bloqueado por termos não aceitos | Integração | `pages/Cadastro.test.jsx` |
 | CT-WEB-05 | RF-001 | E-mail duplicado retornado pelo backend | Integração | `pages/Cadastro.test.jsx` |
@@ -222,6 +222,8 @@ Cada página é renderizada com Router + `AuthProvider` e a API é mockada:
 | CT-WEB-21 | — | Compatibilidade do enum `TransactionType` com o backend | Unitário | `format.test.js` |
 | CT-WEB-22 | — | Contrato HTTP de cada módulo da camada de API | Unitário | `api/*.test.js` |
 | CT-WEB-23 | — | Padronização de mensagens de erro (`extractError`) | Unitário | `api/client.test.js` |
+
+.
 
 ### Resultado atual
 
