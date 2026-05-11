@@ -56,7 +56,10 @@ export default function Cofrinhos() {
 
       <div className="px-10 py-8 space-y-5 max-w-[1180px]">
         {error && (
-          <div className="bg-red-50 border border-red-200 text-red-700 text-sm rounded-[10px] px-4 py-3">
+          <div
+            role="alert"
+            className="bg-red-50 border border-red-200 text-red-700 text-sm rounded-[10px] px-4 py-3"
+          >
             {error}
           </div>
         )}
@@ -94,6 +97,8 @@ export default function Cofrinhos() {
                 </div>
                 <button
                   onClick={() => handleDelete(g.id)}
+                  type="button"
+                  aria-label="Excluir cofrinho"
                   className="text-muted hover:text-expense p-1.5 rounded-md hover:bg-red-50"
                   title="Excluir"
                 >
@@ -316,7 +321,12 @@ function Modal({ title, onClose, children }) {
       <div className="bg-white rounded-3xl w-full max-w-[480px] shadow-2xl">
         <div className="p-7 pb-5 flex items-start justify-between border-b border-surface2">
           <h3 className="text-xl font-bold text-ink">{title}</h3>
-          <button onClick={onClose} className="p-2 rounded-[10px] bg-bg hover:bg-surface2">
+          <button
+            onClick={onClose}
+            type="button"
+            aria-label="Fechar modal"
+            className="p-2 rounded-[10px] bg-bg hover:bg-surface2"
+          >
             <X size={18} />
           </button>
         </div>

@@ -3,11 +3,19 @@ import * as authApi from '../api/auth'
 
 const AuthContext = createContext(null)
 
+function readStoredUser() {
+  const stored = localStorage.getItem('poupabem.user')
+  if (!stored) return null
+  try {
+    return JSON.parse(stored)
+  } catch {
+    localStorage.removeItem('poupabem.user')
+    return null
+  }
+}
+
 export function AuthProvider({ children }) {
-  const [user, setUser] = useState(() => {
-    const stored = localStorage.getItem('poupabem.user')
-    return stored ? JSON.parse(stored) : null
-  })
+  const [user, setUser] = useState(() => readStoredUser())
   const [loading, setLoading] = useState(false)
 
   function persist(authResponse) {

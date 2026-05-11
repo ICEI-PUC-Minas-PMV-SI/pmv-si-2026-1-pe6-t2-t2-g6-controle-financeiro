@@ -64,7 +64,10 @@ export default function Dashboard() {
 
       <div className="px-10 py-8 space-y-6 max-w-[1180px]">
         {error && (
-          <div className="bg-red-50 border border-red-200 text-red-700 text-sm rounded-[10px] px-4 py-3">
+          <div
+            role="alert"
+            className="bg-red-50 border border-red-200 text-red-700 text-sm rounded-[10px] px-4 py-3"
+          >
             {error}
           </div>
         )}

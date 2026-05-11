@@ -119,7 +119,10 @@ export default function Transacoes() {
         </div>
 
         {error && (
-          <div className="bg-red-50 border border-red-200 text-red-700 text-sm rounded-[10px] px-4 py-3">
+          <div
+            role="alert"
+            className="bg-red-50 border border-red-200 text-red-700 text-sm rounded-[10px] px-4 py-3"
+          >
             {error}
           </div>
         )}
@@ -162,6 +165,8 @@ export default function Transacoes() {
               </span>
               <button
                 onClick={() => handleDelete(t.id)}
+                type="button"
+                aria-label="Excluir transação"
                 className="text-muted hover:text-expense p-1.5 rounded-md hover:bg-red-50 justify-self-end"
                 title="Excluir"
               >
@@ -268,7 +273,12 @@ function NewTransactionModal({ categories, onClose, onCreated, onCategoriesChang
             <p className="text-[11px] font-bold text-muted tracking-widest">REGISTRAR</p>
             <h3 className="text-[26px] font-bold text-ink mt-1">Nova transação</h3>
           </div>
-          <button onClick={onClose} className="p-2 rounded-[10px] bg-bg hover:bg-surface2">
+          <button
+            onClick={onClose}
+            type="button"
+            aria-label="Fechar modal"
+            className="p-2 rounded-[10px] bg-bg hover:bg-surface2"
+          >
             <X size={18} />
           </button>
         </div>

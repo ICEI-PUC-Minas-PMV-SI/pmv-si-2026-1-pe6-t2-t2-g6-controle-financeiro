@@ -27,7 +27,14 @@ export default function Login() {
         {/* Brand panel */}
         <div className="bg-brand-900 text-white p-12 flex flex-col">
           <div className="flex items-center gap-3 mb-auto">
-            <svg width="46" height="46" viewBox="0 0 46 46" fill="none">
+            <svg
+              width="46"
+              height="46"
+              viewBox="0 0 46 46"
+              fill="none"
+              aria-hidden="true"
+              focusable="false"
+            >
               <ellipse cx="20" cy="22" rx="18" ry="14" fill="#FAFAF7" />
               <circle cx="25" cy="18" r="2" fill="#064E3B" />
               <rect x="9" y="34" width="4" height="7" rx="1.5" fill="#FAFAF7" />
@@ -65,6 +72,7 @@ export default function Login() {
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
                   required
+                  autoComplete="email"
                   placeholder="seu@email.com"
                   className="input"
                 />
@@ -82,13 +90,17 @@ export default function Login() {
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
                   required
+                  autoComplete="current-password"
                   placeholder="••••••••"
                   className="input"
                 />
               </div>
 
               {error && (
-                <div className="bg-red-50 border border-red-200 text-red-700 text-sm rounded-[10px] px-4 py-3">
+                <div
+                  role="alert"
+                  className="bg-red-50 border border-red-200 text-red-700 text-sm rounded-[10px] px-4 py-3"
+                >
                   {error}
                 </div>
               )}

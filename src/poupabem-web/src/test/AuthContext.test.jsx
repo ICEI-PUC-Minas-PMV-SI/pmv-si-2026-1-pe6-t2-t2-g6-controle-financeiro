@@ -22,6 +22,15 @@ describe('AuthContext', () => {
     expect(result.current.user).toEqual(stored)
   })
 
+  it('ignora JSON inválido do localStorage e limpa a chave', () => {
+    localStorage.setItem('poupabem.user', '{invalid-json')
+
+    const { result } = renderHook(() => useAuth(), { wrapper })
+
+    expect(result.current.user).toBeNull()
+    expect(localStorage.getItem('poupabem.user')).toBeNull()
+  })
+
   it('logout limpa o estado e o localStorage', () => {
     localStorage.setItem('poupabem.accessToken', 'token')
     localStorage.setItem(
