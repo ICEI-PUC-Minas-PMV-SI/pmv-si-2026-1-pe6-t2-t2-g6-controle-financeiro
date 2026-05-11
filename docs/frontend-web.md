@@ -200,7 +200,7 @@ Cada página é renderizada com Router + `AuthProvider` e a API é mockada:
 | ID | Requisito | Cenário | Tipo | Arquivo |
 | --- | --- | --- | --- | --- |
 | CT-WEB-01 | RF-001 | Cadastro com payload válido | Integração | `pages/Cadastro.test.jsx` |
-| CT-WEB-02 | RF-001 | Cadastro bloqueado por senhas diferentes | Integração | `pages/Cadastro.test.jsx` |
+| CT-WEB-02 | RF-001 | Cadastro bloqueado por senhas divergentes | Integração | `pages/Cadastro.test.jsx` |
 | CT-WEB-03 | RF-001 | Cadastro bloqueado por senha curta | Integração | `pages/Cadastro.test.jsx` |
 | CT-WEB-04 | RF-001 | Cadastro bloqueado por termos não aceitos | Integração | `pages/Cadastro.test.jsx` |
 | CT-WEB-05 | RF-001 | E-mail duplicado retornado pelo backend | Integração | `pages/Cadastro.test.jsx` |
