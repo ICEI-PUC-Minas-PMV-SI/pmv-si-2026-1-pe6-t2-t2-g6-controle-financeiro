@@ -192,8 +192,8 @@ Cada página é renderizada com Router + `AuthProvider` e a API é mockada:
 - [`pages/Login.test.jsx`](../src/poupabem-web/src/test/pages/Login.test.jsx): renderização dos campos, login com sucesso (verifica persistência no `localStorage`) e exibição de erro do backend.
 - [`pages/Cadastro.test.jsx`](../src/poupabem-web/src/test/pages/Cadastro.test.jsx): validações cliente (senhas diferentes, senha curta, termos não aceitos), cadastro com sucesso e tratamento de erro de e-mail duplicado.
 - [`pages/Dashboard.test.jsx`](../src/poupabem-web/src/test/pages/Dashboard.test.jsx): saudação personalizada, valores formatados em BRL, listagem das últimas transações, mensagem de erro quando o backend falha e estado vazio dos cofrinhos.
-- [`pages/Transacoes.test.jsx`](../src/poupabem-web/src/test/pages/Transacoes.test.jsx): listagem, filtro por tipo, filtro por categoria, exclusão com `confirm`, exportação de CSV, criação de transação via modal, validação de valor inválido e criação de categoria inline.
-- [`pages/Cofrinhos.test.jsx`](../src/poupabem-web/src/test/pages/Cofrinhos.test.jsx): listagem com progresso, total guardado, estado vazio, criação de cofrinho via modal, validação de valor inválido, aporte e exclusão.
+- [`pages/Transacoes.test.jsx`](../src/poupabem-web/src/test/pages/Transacoes.test.jsx): listagem, tratamento de erros de API (resiliência), filtros por tipo e categoria (individuais e simultâneos), exclusão com confirm, exportação de CSV, criação de transação via modal, validação de campos obrigatórios e valor inválido, e criação de categoria inline.
+- [`pages/Cofrinhos.test.jsx`](../src/poupabem-web/src/test/pages/Cofrinhos.test.jsx): listagem com progresso, total guardado, estado vazio, criação de cofrinho via modal, validação de valor inválido, aporte e exclusão segura com verificação de ID.
 
 ### Casos de teste por requisito
 
@@ -222,6 +222,11 @@ Cada página é renderizada com Router + `AuthProvider` e a API é mockada:
 | CT-WEB-21 | — | Compatibilidade do enum `TransactionType` com o backend | Unitário | `format.test.js` |
 | CT-WEB-22 | — | Contrato HTTP de cada módulo da camada de API | Unitário | `api/*.test.js` |
 | CT-WEB-23 | — | Padronização de mensagens de erro (`extractError`) | Unitário | `api/client.test.js` |
+| CT-WEB-24 | RNF-001 | Exibir mensagem de erro quando a listagem de transações falha | Integração | `pages/Transacoes.test.jsx` |
+| CT-WEB-25 | RF-009 | Aplicar filtros de tipo e categoria simultaneamente | Integração | `pages/Transacoes.test.jsx` |
+| CT-WEB-26 | RF-003 | Impedir o envio do formulário se o título estiver vazio | Integração | `pages/Transacoes.test.jsx` |
+| CT-WEB-27 | RF-006 | Criar um novo cofrinho com sucesso via modal | Integração | `pages/Cofrinhos.test.jsx` |
+| CT-WEB-28 | RF-010 | Excluir um cofrinho existente após confirmação | Integração | `pages/Cofrinhos.test.jsx` |
 
 .
 
