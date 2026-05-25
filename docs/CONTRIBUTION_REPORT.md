@@ -1,6 +1,6 @@
 # 📊 Relatório de Contribuições do Projeto
 
-**Última atualização:** 18/05/2026 00:40
+**Última atualização:** 25/05/2026 00:42
 
 ---
 
@@ -12,17 +12,19 @@
 | Gabriel Santos        |        17 |      3257 |       371 |         60 |             14 |              10 |
 | Gustavo Moura         |        14 |      3377 |       144 |         54 |             12 |               4 |
 | JoaoJangola           |         7 |      2731 |        39 |         48 |              5 |               2 |
-| João Pedro Pimenta    |         9 |       131 |        15 |          5 |              6 |               2 |
+| João Pedro Pimenta    |        11 |      9078 |        15 |         18 |              6 |               2 |
 | Maryana Morato        |         2 |         9 |         9 |          1 |              2 |               1 |
 | Maryana Nunes Morato  |         1 |       249 |        29 |          2 |              1 |               2 |
 | acpcampos-gif         |         2 |       145 |        64 |          2 |              2 |               2 |
-| github-actions[bot]   |        42 |       297 |       281 |          3 |             42 |               1 |
+| github-actions[bot]   |        44 |       328 |       310 |          3 |             44 |               1 |
 | github-classroom[bot] |         1 |      2152 |         0 |         45 |              1 |              13 |
 
 
 ## 📅 Contribuições Semanais (Todo o Semestre)
 
-**2026-05-11**: Gustavo Moura: 1, João Pedro Pimenta: 1, Maryana Nunes Morato: 1, github-actions[bot]: 3
+**2026-05-18**: João Pedro Pimenta: 2, github-actions[bot]: 1
+
+**2026-05-11**: Gustavo Moura: 1, João Pedro Pimenta: 1, Maryana Nunes Morato: 1, github-actions[bot]: 4
 
 **2026-05-04**: Ana Clara Pinheiro: 4, Gabriel Santos: 8, Gustavo Moura: 4, JoaoJangola: 2, João Pedro Pimenta: 4, github-actions[bot]: 15
 
