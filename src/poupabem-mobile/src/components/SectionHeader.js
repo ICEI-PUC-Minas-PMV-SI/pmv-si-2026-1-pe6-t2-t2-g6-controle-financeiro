@@ -1,12 +1,12 @@
 import { Pressable, StyleSheet, Text, View } from 'react-native';
 import { colors } from '../styles/theme';
 
-export default function SectionHeader({ title, actionLabel }) {
+export default function SectionHeader({ title, actionLabel, onActionPress }) {
   return (
     <View style={styles.container}>
       <Text style={styles.title}>{title}</Text>
       {actionLabel ? (
-        <Pressable>
+        <Pressable disabled={!onActionPress} onPress={onActionPress}>
           <Text style={styles.action}>{actionLabel}</Text>
         </Pressable>
       ) : null}

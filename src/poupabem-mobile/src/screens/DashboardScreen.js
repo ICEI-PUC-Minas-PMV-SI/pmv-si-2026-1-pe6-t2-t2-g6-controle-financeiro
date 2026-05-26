@@ -12,7 +12,7 @@ import {
 } from '../data/dashboardMock';
 import { colors } from '../styles/theme';
 
-export default function DashboardScreen() {
+export default function DashboardScreen({ onOpenTransactions }) {
   return (
     <SafeAreaView style={styles.safeArea}>
       <ScrollView contentContainerStyle={styles.content} showsVerticalScrollIndicator={false}>
@@ -35,7 +35,11 @@ export default function DashboardScreen() {
           />
         </View>
 
-        <SectionHeader title="Últimas transações" actionLabel="Ver todas" />
+        <SectionHeader
+          title="Últimas transações"
+          actionLabel="Ver todas"
+          onActionPress={onOpenTransactions}
+        />
         <View style={styles.panel}>
           {recentTransactions.map((transaction) => (
             <TransactionItem key={transaction.id} transaction={transaction} />
@@ -60,7 +64,7 @@ const styles = StyleSheet.create({
   },
   content: {
     backgroundColor: colors.bg,
-    paddingBottom: 32,
+    paddingBottom: 96,
     paddingHorizontal: 20,
     paddingTop: 18,
   },
