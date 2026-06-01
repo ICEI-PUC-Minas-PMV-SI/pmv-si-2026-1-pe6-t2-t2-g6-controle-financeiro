@@ -1,37 +1,90 @@
-import { SafeAreaView, ScrollView, StyleSheet, View } from 'react-native';
+import { useEffect, useState } from 'react';
+import { SafeAreaView, ScrollView, StyleSheet, Text, View } from 'react-native';
+import { listCategories } from '../api/categories';
+import { getSummary } from '../api/reports';
+import { listGoals } from '../api/savingsGoals';
+import { listTransactions } from '../api/transactions';
 import BalanceCard from '../components/BalanceCard';
 import DashboardHeader from '../components/DashboardHeader';
 import GoalCard from '../components/GoalCard';
 import SectionHeader from '../components/SectionHeader';
 import SummaryCard from '../components/SummaryCard';
 import TransactionItem from '../components/TransactionItem';
-import {
-  dashboardSummary,
-  recentTransactions,
-  savingsGoals,
-} from '../data/dashboardMock';
 import { colors } from '../styles/theme';
+import { toMobileCategory, toMobileGoal, toMobileTransaction } from '../utils/mappers';
 
-export default function DashboardScreen({ onOpenTransactions }) {
+const emptySummary = {
+  balance: 0,
+  income: 0,
+  expense: 0,
+};
+
+export default function DashboardScreen({ onOpenTransactions, session }) {
+  const [summary, setSummary] = useState(emptySummary);
+  const [transactions, setTransactions] = useState([]);
+  const [goals, setGoals] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState('');
+
+  useEffect(() => {
+    async function loadDashboard() {
+      try {
+        setLoading(true);
+        setError('');
+
+        const [summaryData, categoriesData, transactionsData, goalsData] = await Promise.all([
+          getSummary(session.accessToken),
+          listCategories(session.accessToken),
+          listTransactions(session.accessToken),
+          listGoals(session.accessToken),
+        ]);
+
+        const categories = categoriesData.map(toMobileCategory);
+
+        setSummary({
+          balance: Number(summaryData.balance),
+          income: Number(summaryData.totalIncome),
+          expense: Number(summaryData.totalExpense),
+        });
+        setTransactions(
+          transactionsData
+            .map((transaction) => toMobileTransaction(transaction, categories))
+            .slice(0, 4),
+        );
+        setGoals(goalsData.map(toMobileGoal).slice(0, 3));
+      } catch (err) {
+        setError(err.message || 'Não foi possível carregar o dashboard.');
+      } finally {
+        setLoading(false);
+      }
+    }
+
+    loadDashboard();
+  }, [session.accessToken]);
+
+  const firstName = session.fullName?.split(' ')[0] || 'usuário';
+
   return (
     <SafeAreaView style={styles.safeArea}>
       <ScrollView contentContainerStyle={styles.content} showsVerticalScrollIndicator={false}>
-        <DashboardHeader name="Maryana" />
+        <DashboardHeader name={firstName} />
 
-        <BalanceCard balance={dashboardSummary.balance} />
+        {error ? <Text style={styles.error}>{error}</Text> : null}
+
+        <BalanceCard balance={summary.balance} />
 
         <View style={styles.summaryGrid}>
           <SummaryCard
             label="Receitas"
-            value={dashboardSummary.income}
+            value={summary.income}
             tone="income"
-            helper="4 entradas"
+            helper={loading ? 'Carregando' : 'Entradas'}
           />
           <SummaryCard
             label="Despesas"
-            value={dashboardSummary.expense}
+            value={summary.expense}
             tone="expense"
-            helper="7 saídas"
+            helper={loading ? 'Carregando' : 'Saídas'}
           />
         </View>
 
@@ -41,16 +94,26 @@ export default function DashboardScreen({ onOpenTransactions }) {
           onActionPress={onOpenTransactions}
         />
         <View style={styles.panel}>
-          {recentTransactions.map((transaction) => (
-            <TransactionItem key={transaction.id} transaction={transaction} />
-          ))}
+          {loading ? (
+            <Text style={styles.emptyText}>Carregando...</Text>
+          ) : transactions.length === 0 ? (
+            <Text style={styles.emptyText}>Nenhuma transação encontrada.</Text>
+          ) : (
+            transactions.map((transaction) => (
+              <TransactionItem key={transaction.id} transaction={transaction} />
+            ))
+          )}
         </View>
 
         <SectionHeader title="Cofrinhos" actionLabel="Novo" />
         <View style={styles.goalsList}>
-          {savingsGoals.map((goal) => (
-            <GoalCard key={goal.id} goal={goal} />
-          ))}
+          {loading ? (
+            <Text style={styles.emptyText}>Carregando...</Text>
+          ) : goals.length === 0 ? (
+            <Text style={styles.emptyText}>Você ainda não tem cofrinhos.</Text>
+          ) : (
+            goals.map((goal) => <GoalCard key={goal.id} goal={goal} />)
+          )}
         </View>
       </ScrollView>
     </SafeAreaView>
@@ -80,5 +143,21 @@ const styles = StyleSheet.create({
   },
   goalsList: {
     gap: 12,
+  },
+  error: {
+    backgroundColor: '#FDECEC',
+    borderRadius: 12,
+    color: colors.expense,
+    fontSize: 13,
+    fontWeight: '700',
+    marginTop: 14,
+    padding: 12,
+  },
+  emptyText: {
+    color: colors.muted,
+    fontSize: 14,
+    fontWeight: '700',
+    padding: 20,
+    textAlign: 'center',
   },
 });

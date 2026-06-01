@@ -1,34 +1,84 @@
-import { useMemo, useState } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 import { Pressable, SafeAreaView, ScrollView, StyleSheet, Text, View } from 'react-native';
+import { listCategories } from '../api/categories';
+import {
+  createTransaction,
+  listTransactions,
+} from '../api/transactions';
 import FilterChip from '../components/FilterChip';
 import SectionHeader from '../components/SectionHeader';
 import TransactionFormModal from '../components/TransactionFormModal';
 import TransactionItem from '../components/TransactionItem';
-import { initialTransactions, transactionCategories } from '../data/transactionsMock';
 import { colors } from '../styles/theme';
+import {
+  toCreateTransactionRequest,
+  toMobileCategory,
+  toMobileTransaction,
+  TransactionType,
+} from '../utils/mappers';
 
-export default function TransactionsScreen() {
-  const [transactions, setTransactions] = useState(initialTransactions);
+export default function TransactionsScreen({ session }) {
+  const [transactions, setTransactions] = useState([]);
+  const [categories, setCategories] = useState([]);
   const [filterType, setFilterType] = useState('all');
   const [filterCategoryId, setFilterCategoryId] = useState('all');
   const [modalVisible, setModalVisible] = useState(false);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState('');
+
+  async function loadTransactions() {
+    try {
+      setLoading(true);
+      setError('');
+
+      const transactionType =
+        filterType === 'income'
+          ? TransactionType.Income
+          : filterType === 'expense'
+            ? TransactionType.Expense
+            : undefined;
+
+      const [categoriesData, transactionsData] = await Promise.all([
+        listCategories(session.accessToken),
+        listTransactions(session.accessToken, {
+          categoryId: filterCategoryId === 'all' ? undefined : filterCategoryId,
+          transactionType,
+        }),
+      ]);
+
+      const mappedCategories = categoriesData.map(toMobileCategory);
+      setCategories(mappedCategories);
+      setTransactions(
+        transactionsData.map((transaction) =>
+          toMobileTransaction(transaction, mappedCategories),
+        ),
+      );
+    } catch (err) {
+      setError(err.message || 'Não foi possível carregar as transações.');
+    } finally {
+      setLoading(false);
+    }
+  }
+
+  useEffect(() => {
+    loadTransactions();
+  }, [filterCategoryId, filterType, session.accessToken]);
 
   const filteredTransactions = useMemo(() => {
-    return transactions.filter((transaction) => {
-      const transactionType = transaction.amount > 0 ? 'income' : 'expense';
-      const matchesType = filterType === 'all' || filterType === transactionType;
-      const matchesCategory =
-        filterCategoryId === 'all' || filterCategoryId === transaction.categoryId;
+    return transactions;
+  }, [transactions]);
 
-      return matchesType && matchesCategory;
-    });
-  }, [filterCategoryId, filterType, transactions]);
-
-  function handleCreate(transaction) {
-    setTransactions((current) => [transaction, ...current]);
-    setFilterType('all');
-    setFilterCategoryId('all');
-    setModalVisible(false);
+  async function handleCreate(transaction) {
+    try {
+      setError('');
+      await createTransaction(session.accessToken, toCreateTransactionRequest(transaction));
+      setModalVisible(false);
+      setFilterType('all');
+      setFilterCategoryId('all');
+      await loadTransactions();
+    } catch (err) {
+      setError(err.message || 'Não foi possível criar a transação.');
+    }
   }
 
   return (
@@ -44,6 +94,8 @@ export default function TransactionsScreen() {
             <Text style={styles.newButtonText}>Nova</Text>
           </Pressable>
         </View>
+
+        {error ? <Text style={styles.error}>{error}</Text> : null}
 
         <View style={styles.filters}>
           <FilterChip label="Todas" active={filterType === 'all'} onPress={() => setFilterType('all')} />
@@ -69,7 +121,7 @@ export default function TransactionsScreen() {
             active={filterCategoryId === 'all'}
             onPress={() => setFilterCategoryId('all')}
           />
-          {transactionCategories.map((category) => (
+          {categories.map((category) => (
             <FilterChip
               key={category.id}
               label={category.name}
@@ -82,7 +134,9 @@ export default function TransactionsScreen() {
         <SectionHeader title="Listagem" actionLabel={`${filteredTransactions.length} itens`} />
 
         <View style={styles.panel}>
-          {filteredTransactions.length === 0 ? (
+          {loading ? (
+            <Text style={styles.emptyText}>Carregando...</Text>
+          ) : filteredTransactions.length === 0 ? (
             <Text style={styles.emptyText}>Nenhuma transação encontrada.</Text>
           ) : (
             filteredTransactions.map((transaction) => (
@@ -93,7 +147,7 @@ export default function TransactionsScreen() {
       </ScrollView>
 
       <TransactionFormModal
-        categories={transactionCategories}
+        categories={categories}
         visible={modalVisible}
         onClose={() => setModalVisible(false)}
         onSubmit={handleCreate}
@@ -160,6 +214,15 @@ const styles = StyleSheet.create({
     backgroundColor: colors.surface,
     borderRadius: 16,
     overflow: 'hidden',
+  },
+  error: {
+    backgroundColor: '#FDECEC',
+    borderRadius: 12,
+    color: colors.expense,
+    fontSize: 13,
+    fontWeight: '700',
+    marginTop: 14,
+    padding: 12,
   },
   emptyText: {
     color: colors.muted,
