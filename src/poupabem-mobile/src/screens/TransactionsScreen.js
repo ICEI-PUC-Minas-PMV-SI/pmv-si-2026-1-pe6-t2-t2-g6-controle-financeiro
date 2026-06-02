@@ -26,6 +26,15 @@ export default function TransactionsScreen({ session }) {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState('');
 
+  async function refreshCategoriesOnly() {
+    try {
+      const categoriesData = await listCategories(session.accessToken);
+      setCategories(categoriesData.map(toMobileCategory));
+    } catch (err) {
+      console.error(err);
+    }
+  }
+
   async function loadTransactions() {
     try {
       setLoading(true);
@@ -151,6 +160,8 @@ export default function TransactionsScreen({ session }) {
         visible={modalVisible}
         onClose={() => setModalVisible(false)}
         onSubmit={handleCreate}
+        onRefreshCategories={refreshCategoriesOnly}
+        token={session.accessToken}
       />
     </SafeAreaView>
   );

@@ -6,3 +6,10 @@ export function login({ email, password }) {
     body: { email, password },
   });
 }
+
+export function registerUser({ firstName, lastName, email, password, confirmPassword }) {
+  return request('/api/auth/register', {
+    method: 'POST',
+    body: { firstName, lastName, email, password, confirmPassword },
+  });
+}

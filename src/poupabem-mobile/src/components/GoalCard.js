@@ -2,7 +2,7 @@ import { Pressable, StyleSheet, Text, View } from 'react-native';
 import { colors } from '../styles/theme';
 import { formatCurrency } from '../utils/format';
 
-export default function GoalCard({ goal }) {
+export default function GoalCard({ goal, onDeposit }) {
   const progress = Math.min(goal.currentAmount / goal.targetAmount, 1);
 
   return (
@@ -20,7 +20,7 @@ export default function GoalCard({ goal }) {
         <View style={[styles.progressFill, { width: `${progress * 100}%` }]} />
       </View>
 
-      <Pressable style={styles.button}>
+      <Pressable style={styles.button} onPress={onDeposit}>
         <Text style={styles.buttonText}>Adicionar valor</Text>
       </Pressable>
     </View>

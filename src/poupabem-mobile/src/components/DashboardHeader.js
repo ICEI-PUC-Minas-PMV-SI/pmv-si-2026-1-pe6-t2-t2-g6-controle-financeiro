@@ -1,7 +1,7 @@
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, Text, View, TouchableOpacity } from 'react-native';
 import { colors } from '../styles/theme';
 
-export default function DashboardHeader({ name = 'Maryana' }) {
+export default function DashboardHeader({ name = 'Maryana', onPressAvatar }) {
   return (
     <View style={styles.header}>
       <View>
@@ -9,9 +9,9 @@ export default function DashboardHeader({ name = 'Maryana' }) {
         <Text style={styles.subtitle}>Seu resumo financeiro</Text>
       </View>
 
-      <View style={styles.avatar}>
+      <TouchableOpacity style={styles.avatar} onPress={onPressAvatar}>
         <Text style={styles.avatarText}>{name.charAt(0).toUpperCase()}</Text>
-      </View>
+      </TouchableOpacity>
     </View>
   );
 }

@@ -9,17 +9,23 @@ import {
   Text,
   TextInput,
   View,
+  Alert,
+  TouchableOpacity,
 } from 'react-native';
 import FilterChip from './FilterChip';
 import { colors } from '../styles/theme';
+import { createCategory } from '../api/categories';
 
-export default function TransactionFormModal({ categories, visible, onClose, onSubmit }) {
+export default function TransactionFormModal({ categories, visible, onClose, onSubmit, onRefreshCategories, token }) {
   const [type, setType] = useState('expense');
   const [title, setTitle] = useState('');
   const [amount, setAmount] = useState('');
   const [categoryId, setCategoryId] = useState('');
   const [description, setDescription] = useState('');
   const [error, setError] = useState('');
+
+  const [innerModalVisible, setInnerModalVisible] = useState(false);
+  const [newCategoryName, setNewCategoryName] = useState('');
 
   const filteredCategories = useMemo(
     () => categories.filter((category) => category.type === type),
@@ -30,6 +36,32 @@ export default function TransactionFormModal({ categories, visible, onClose, onS
     setType(nextType);
     setCategoryId('');
     setError('');
+  }
+
+  async function handleCreateInnerCategory() {
+    if (!newCategoryName.trim()) {
+      Alert.alert('Aviso', 'Informe o nome da categoria.');
+      return;
+    }
+
+    try {
+      const payload = {
+        name: newCategoryName.trim(),
+        type: type === 'income' ? 1 : 2,
+      };
+
+      await createCategory(token, payload);
+      
+      Alert.alert('Sucesso', 'Categoria criada com sucesso!');
+      setInnerModalVisible(false);
+      setNewCategoryName('');
+      
+      if (onRefreshCategories) {
+        await onRefreshCategories();
+      }
+    } catch (err) {
+      Alert.alert('Erro', err.message || 'Não foi possível criar a categoria.');
+    }
   }
 
   function handleSubmit() {
@@ -127,6 +159,11 @@ export default function TransactionFormModal({ categories, visible, onClose, onS
                   onPress={() => setCategoryId(category.id)}
                 />
               ))}
+              <FilterChip
+                label="+ Nova"
+                active={false}
+                onPress={() => setInnerModalVisible(true)}
+              />
             </View>
 
             <Text style={styles.label}>Descrição</Text>
@@ -147,6 +184,42 @@ export default function TransactionFormModal({ categories, visible, onClose, onS
           </ScrollView>
         </View>
       </KeyboardAvoidingView>
+
+      <Modal visible={innerModalVisible} transparent animationType="fade">
+        <View style={styles.innerOverlay}>
+          <View style={styles.innerContent}>
+            <Text style={styles.innerTitle}>Nova Categoria ({type === 'income' ? 'Receita' : 'Despesa'})</Text>
+            
+            <TextInput
+              style={styles.innerInput}
+              placeholder="Nome da categoria (ex: Vestuário)"
+              placeholderTextColor="#999"
+              value={newCategoryName}
+              onChangeText={setNewCategoryName}
+              autoFocus
+            />
+
+            <View style={styles.innerButtonsRow}>
+              <TouchableOpacity 
+                style={[styles.innerButton, { backgroundColor: '#CFD8DC' }]} 
+                onPress={() => {
+                  setInnerModalVisible(false);
+                  setNewCategoryName('');
+                }}
+              >
+                <Text style={[styles.innerButtonText, { color: '#37474F' }]}>Cancelar</Text>
+              </TouchableOpacity>
+
+              <TouchableOpacity 
+                style={[styles.innerButton, { backgroundColor: colors.brand900 }]} 
+                onPress={handleCreateInnerCategory}
+              >
+                <Text style={[styles.innerButtonText, { color: '#FFF' }]}>Criar</Text>
+              </TouchableOpacity>
+            </View>
+          </View>
+        </View>
+      </Modal>
     </Modal>
   );
 }
@@ -233,5 +306,49 @@ const styles = StyleSheet.create({
     color: colors.surface,
     fontSize: 15,
     fontWeight: '900',
+  },
+  innerOverlay: {
+    flex: 1,
+    backgroundColor: 'rgba(0,0,0,0.5)',
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  innerContent: {
+    backgroundColor: '#FFF',
+    width: '80%',
+    padding: 24,
+    borderRadius: 16,
+    alignItems: 'center',
+  },
+  innerTitle: {
+    fontSize: 16,
+    fontWeight: '800',
+    color: '#212121',
+    marginBottom: 16,
+  },
+  innerInput: {
+    width: '100%',
+    borderBottomWidth: 2,
+    borderBottomColor: colors.brand900,
+    fontSize: 16,
+    paddingVertical: 8,
+    marginBottom: 24,
+    color: '#212121',
+  },
+  innerButtonsRow: {
+    flexDirection: 'row',
+    width: '100%',
+    justifyContent: 'space-between',
+    gap: 8,
+  },
+  innerButton: {
+    flex: 1,
+    padding: 12,
+    borderRadius: 8,
+    alignItems: 'center',
+  },
+  innerButtonText: {
+    fontWeight: '800',
+    fontSize: 14,
   },
 });

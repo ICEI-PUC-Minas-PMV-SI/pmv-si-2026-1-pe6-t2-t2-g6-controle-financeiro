@@ -10,7 +10,7 @@ import {
   SafeAreaView,
   Alert 
 } from 'react-native';
-import api from '../api/api'; // Configuração do Axios apontando para o IP do seu PC
+import api from '../api/api';
 
 export default function Login(props) {
   const [email, setEmail] = useState('');
@@ -18,7 +18,6 @@ export default function Login(props) {
   const [loading, setLoading] = useState(false); 
 
   const handleLogin = async () => {
-    // 1. Validação simples local antes de disparar a requisição
     if (!email.trim() || !password.trim()) {
       Alert.alert('Campos Obrigatórios', 'Por favor, preencha o e-mail e a senha.');
       return;
@@ -27,20 +26,16 @@ export default function Login(props) {
     setLoading(true);
 
     try {
-      // 2. Dispara os dados para o endpoint correto do .NET
       const response = await api.post('/api/auth/login', {
         email: email,
         password: password 
       });
 
-      // 3. Sucesso (Status 200) - Coleta a propriedade real vinda do C#
       console.log('Login bem-sucedido:', response.data);
       
       const nomeUsuario = response.data.firstName || 'Usuário';
       Alert.alert('Sucesso', `Bem-vindo de volta, ${nomeUsuario}!`);
 
-      // 4. Integração com o fluxo de navegação do App.js
-      // Envia os dados da sessão (dados do usuário/token) para destravar o Dashboard
       if (props.onLogin) {
         props.onLogin(response.data);
       }
@@ -48,12 +43,9 @@ export default function Login(props) {
     } catch (error) {
       console.error('Erro ao tentar logar:', error);
 
-      // 5. Tratamento inteligente de erros da API .NET
       let mensagemErro = 'Não foi possível conectar ao servidor. Verifique se o Back-end está ligado e na mesma rede.';
       
       if (error.response) {
-        // O servidor respondeu com um status de erro (Ex: 400 - Credenciais Inválidas)
-        // Captura a mensagem enviada pelo controller ou middleware do back-end
         mensagemErro = error.response.data?.message || error.response.data || 'E-mail ou senha inválidos.';
       }
 
@@ -71,13 +63,11 @@ export default function Login(props) {
       >
         <View style={styles.innerContainer}>
           
-          {/* Header/Logo */}
           <View style={styles.logoContainer}>
             <Text style={styles.title}>PoupaBem</Text>
             <Text style={styles.subtitle}>Controle Financeiro Inteligente</Text>
           </View>
 
-          {/* Formulário */}
           <View style={styles.formContainer}>
             <TextInput
               style={styles.input}
@@ -112,7 +102,11 @@ export default function Login(props) {
               </Text>
             </TouchableOpacity>
 
-            <TouchableOpacity style={styles.registerLink} disabled={loading}>
+            <TouchableOpacity 
+              style={styles.registerLink} 
+              onPress={props.onNavigateToSignUp} 
+              disabled={loading}
+            >
               <Text style={styles.registerText}>
                 Não tem uma conta? <Text style={styles.registerTextBold}>Cadastre-se</Text>
               </Text>
