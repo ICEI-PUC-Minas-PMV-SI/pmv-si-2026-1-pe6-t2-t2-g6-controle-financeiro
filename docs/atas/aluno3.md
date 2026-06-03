@@ -15,9 +15,9 @@
 | 06/04 - 12/04 | Recuperação de Informação na Web e Redes Sociais - Unidade 2 | ✅ | realização de testes manuais | realização de testes manuais |
 | 13/04 - 19/04 | Computação Ubíqua e Pervasiva e IoT - Unidade 1 | ✅|  |  |
 | 20/04 - 26/04 | Computação Ubíqua e Pervasiva e IoT - Unidade 2 |✅| Refatoração do frontend | Refatoração do frontend |
-| 27/04 - 03/05 | Desenvolvimento de Aplicações Móveis - Unidade 1 | ⬜ |  |  |
-| 04/05 - 10/05 | Desenvolvimento de Aplicações Móveis - Unidade 2 | ⬜ |  |  |
-| 11/05 - 17/05 | Desenvolvimento de Aplicações Móveis - Unidade 2 | ⬜ |  |  |
+| 27/04 - 03/05 | Desenvolvimento de Aplicações Móveis - Unidade 1 | ✅ | Centralizei o tratamento de erros e a autenticação na tela de login para alinhar com o padrão do aplicativo. | Centralizei o tratamento de erros e a autenticação na tela de login para alinhar com o padrão do aplicativo. |
+| 04/05 - 10/05 | Desenvolvimento de Aplicações Móveis - Unidade 2 | ✅ | Criei tokens de tema para padronizar cores e implementei utilitários globais de validação e formatação de moeda. | Criei tokens de tema para padronizar cores e implementei utilitários globais de validação e formatação de moeda. |
+| 11/05 - 17/05 | Desenvolvimento de Aplicações Móveis - Unidade 2 | ✅ | Refatorei modais e substituí strings mágicas por constantes, reduzindo a complexidade dos componentes. | Refatorei modais e substituí strings mágicas por constantes, reduzindo a complexidade dos componentes. |
 | 18/05 - 24/05 | Fundamentos de Projeto e Análise de Algoritmos - Unidade 1 | ⬜ |  |  |
 | 25/05 - 31/05 | Fundamentos de Projeto e Análise de Algoritmos - Unidade 2 | ⬜ |  |  |
 | 01/06 - 07/06 |  | ⬜ |  |  |
