@@ -11,7 +11,9 @@ import SectionHeader from '../components/SectionHeader';
 import SummaryCard from '../components/SummaryCard';
 import TransactionItem from '../components/TransactionItem';
 import { colors } from '../styles/theme';
+import { parseCurrencyInput } from '../utils/format';
 import { toMobileCategory, toMobileGoal, toMobileTransaction } from '../utils/mappers';
+import { isPositiveNumber, isRequired } from '../utils/validators';
 
 const emptySummary = {
   balance: 0,
@@ -73,19 +75,19 @@ export default function DashboardScreen({ onOpenTransactions, session, onLogout 
   }, [session.accessToken]);
 
   const handleDeposit = async () => {
-    if (!depositAmount || isNaN(depositAmount.replace(',', '.'))) {
+    const parsedAmount = parseCurrencyInput(depositAmount);
+
+    if (parsedAmount === null) {
       Alert.alert('Aviso', 'Por favor, insira um valor válido.');
       return;
     }
 
+    if (!isPositiveNumber(parsedAmount)) {
+      Alert.alert('Aviso', 'O valor deve ser maior que zero.');
+      return;
+    }
+
     try {
-      const parsedAmount = parseFloat(depositAmount.replace(',', '.'));
-
-      if (parsedAmount <= 0) {
-        Alert.alert('Aviso', 'O valor deve ser maior que zero.');
-        return;
-      }
-
       await depositGoal(session.accessToken, selectedGoal.id, parsedAmount);
 
       Alert.alert('Sucesso', 'Valor adicionado ao cofrinho!');
@@ -101,27 +103,28 @@ export default function DashboardScreen({ onOpenTransactions, session, onLogout 
   };
 
   const handleCreateGoal = async () => {
-    if (!newGoalName.trim()) {
+    if (!isRequired(newGoalName)) {
       Alert.alert('Aviso', 'Por favor, insira um nome para o objetivo.');
       return;
     }
 
-    if (!newGoalTarget || isNaN(newGoalTarget.replace(',', '.'))) {
+    const parsedTarget = parseCurrencyInput(newGoalTarget);
+
+    if (parsedTarget === null) {
       Alert.alert('Aviso', 'Por favor, insira um valor de meta válido.');
       return;
     }
 
+    if (!isPositiveNumber(parsedTarget)) {
+      Alert.alert('Aviso', 'O valor da meta deve ser maior que zero.');
+      return;
+    }
+
     try {
-      const parsedTarget = parseFloat(newGoalTarget.replace(',', '.'));
-
-      if (parsedTarget <= 0) {
-        Alert.alert('Aviso', 'O valor da meta deve ser maior que zero.');
-        return;
-      }
-
+      const trimmedName = newGoalName.trim();
       const payload = {
-        name: newGoalName,
-        description: `Meta para ${newGoalName}`,
+        name: trimmedName,
+        description: `Meta para ${trimmedName}`,
         targetAmount: parsedTarget,
         currentAmount: 0,
         deadlineUtc: new Date(new Date().setFullYear(new Date().getFullYear() + 1)).toISOString(),

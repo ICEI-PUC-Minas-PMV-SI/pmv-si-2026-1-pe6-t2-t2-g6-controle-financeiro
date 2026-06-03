@@ -12,6 +12,7 @@ import {
 } from 'react-native';
 import { registerUser } from '../api/auth';
 import { colors } from '../styles/theme';
+import { isRequired } from '../utils/validators';
 
 export default function SignUpScreen({ onNavigateToLogin }) {
   const [fullName, setFullName] = useState('');
@@ -21,17 +22,27 @@ export default function SignUpScreen({ onNavigateToLogin }) {
   const [loading, setLoading] = useState(false);
 
   async function handleSignUp() {
-    if (!fullName.trim() || !email.trim() || !password.trim() || !confirmPassword.trim()) {
+    const trimmedName = fullName.trim();
+    const trimmedEmail = email.trim();
+    const trimmedPassword = password.trim();
+    const trimmedConfirm = confirmPassword.trim();
+
+    if (
+      !isRequired(trimmedName) ||
+      !isRequired(trimmedEmail) ||
+      !isRequired(trimmedPassword) ||
+      !isRequired(trimmedConfirm)
+    ) {
       Alert.alert('Aviso', 'Por favor, preencha todos os campos.');
       return;
     }
 
-    if (password !== confirmPassword) {
+    if (trimmedPassword !== trimmedConfirm) {
       Alert.alert('Aviso', 'As senhas informadas não coincidem.');
       return;
     }
 
-    const nameParts = fullName.trim().split(' ');
+    const nameParts = trimmedName.split(' ');
     const firstName = nameParts[0];
     const lastName = nameParts.slice(1).join(' ') || 'Silva';
 
@@ -40,9 +51,9 @@ export default function SignUpScreen({ onNavigateToLogin }) {
       await registerUser({
         firstName,
         lastName,
-        email: email.trim(),
-        password: password.trim(),
-        confirmPassword: confirmPassword.trim(),
+        email: trimmedEmail,
+        password: trimmedPassword,
+        confirmPassword: trimmedConfirm,
       });
 
       Alert.alert('Sucesso', 'Conta criada com sucesso! Faça seu login.');
