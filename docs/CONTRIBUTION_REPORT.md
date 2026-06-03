@@ -1,6 +1,6 @@
 # 📊 Relatório de Contribuições do Projeto
 
-**Última atualização:** 03/06/2026 21:27
+**Última atualização:** 03/06/2026 21:31
 
 ---
 
@@ -9,20 +9,20 @@
 | Aluno                 |   Commits |   Linhas+ |   Linhas- |   Arquivos |   Docs Commits |   Docs Arquivos |
 |-----------------------|-----------|-----------|-----------|------------|----------------|-----------------|
 | Ana Clara Pinheiro    |         9 |      6715 |        27 |         35 |              8 |               3 |
-| Gabriel Santos        |        24 |     10536 |      2616 |         83 |             19 |              11 |
+| Gabriel Santos        |        25 |     10568 |      2627 |         83 |             20 |              11 |
 | Gustavo Moura         |        14 |      3377 |       144 |         54 |             12 |               4 |
 | JoaoJangola           |         7 |      2731 |        39 |         48 |              5 |               2 |
 | João Pedro Pimenta    |        14 |     10352 |        99 |         31 |              6 |               2 |
 | Maryana Morato        |         2 |         9 |         9 |          1 |              2 |               1 |
 | Maryana Nunes Morato  |         8 |      1812 |        94 |         28 |              5 |               3 |
 | acpcampos-gif         |         2 |       145 |        64 |          2 |              2 |               2 |
-| github-actions[bot]   |        54 |       449 |       429 |          3 |             54 |               1 |
+| github-actions[bot]   |        55 |       453 |       433 |          3 |             55 |               1 |
 | github-classroom[bot] |         1 |      2152 |         0 |         45 |              1 |              13 |
 
 
 ## 📅 Contribuições Semanais (Todo o Semestre)
 
-**2026-05-27**: Gabriel Santos: 7, João Pedro Pimenta: 3, Maryana Nunes Morato: 1, github-actions[bot]: 7
+**2026-05-27**: Gabriel Santos: 8, João Pedro Pimenta: 3, Maryana Nunes Morato: 1, github-actions[bot]: 8
 
 **2026-05-20**: João Pedro Pimenta: 2, Maryana Nunes Morato: 4, github-actions[bot]: 4
 
