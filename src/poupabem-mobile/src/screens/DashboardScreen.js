@@ -219,7 +219,7 @@ export default function DashboardScreen({ onOpenTransactions, session, onLogout 
             <TextInput
               style={styles.modalInput}
               placeholder="R$ 0,00"
-              placeholderTextColor="#999"
+              placeholderTextColor={colors.placeholder}
               keyboardType="numeric"
               value={depositAmount}
               onChangeText={setDepositAmount}
@@ -228,7 +228,7 @@ export default function DashboardScreen({ onOpenTransactions, session, onLogout 
 
             <View style={styles.modalButtonsRow}>
               <TouchableOpacity 
-                style={[styles.modalButton, { backgroundColor: '#CFD8DC' }]} 
+                style={[styles.modalButton, { backgroundColor: colors.neutral200 }]}
                 onPress={() => {
                   setIsModalVisible(false);
                   setDepositAmount('');
@@ -256,7 +256,7 @@ export default function DashboardScreen({ onOpenTransactions, session, onLogout 
             <TextInput
               style={styles.modalInputForm}
               placeholder="Nome do objetivo (ex: Carro)"
-              placeholderTextColor="#999"
+              placeholderTextColor={colors.placeholder}
               value={newGoalName}
               onChangeText={setNewGoalName}
             />
@@ -264,7 +264,7 @@ export default function DashboardScreen({ onOpenTransactions, session, onLogout 
             <TextInput
               style={styles.modalInputForm}
               placeholder="Valor da meta (R$)"
-              placeholderTextColor="#999"
+              placeholderTextColor={colors.placeholder}
               keyboardType="numeric"
               value={newGoalTarget}
               onChangeText={setNewGoalTarget}
@@ -272,7 +272,7 @@ export default function DashboardScreen({ onOpenTransactions, session, onLogout 
 
             <View style={styles.modalButtonsRow}>
               <TouchableOpacity 
-                style={[styles.modalButton, { backgroundColor: '#CFD8DC' }]} 
+                style={[styles.modalButton, { backgroundColor: colors.neutral200 }]}
                 onPress={() => {
                   setIsNewGoalModalVisible(false);
                   setNewGoalName('');
@@ -353,7 +353,7 @@ const styles = StyleSheet.create({
     gap: 12,
   },
   error: {
-    backgroundColor: '#FDECEC',
+    backgroundColor: colors.dangerBg,
     borderRadius: 12,
     color: colors.expense,
     fontSize: 13,
@@ -370,25 +370,25 @@ const styles = StyleSheet.create({
   },
   modalOverlay: {
     flex: 1,
-    backgroundColor: 'rgba(0,0,0,0.5)',
+    backgroundColor: colors.overlay,
     justifyContent: 'center',
     alignItems: 'center',
   },
   modalContent: {
-    backgroundColor: colors.surface || '#FFF',
+    backgroundColor: colors.surface,
     width: '85%',
     padding: 24,
     borderRadius: 16,
     alignItems: 'center',
   },
   modalTitle: {
-    color: colors.muted || '#757575',
+    color: colors.muted,
     fontSize: 14,
   },
   modalGoalName: {
     fontSize: 18,
     fontWeight: '800',
-    color: colors.ink || '#212121',
+    color: colors.ink,
     marginBottom: 16,
     marginTop: 2,
   },
@@ -401,7 +401,7 @@ const styles = StyleSheet.create({
     textAlign: 'center',
     paddingVertical: 8,
     marginBottom: 24,
-    color: colors.ink || '#212121',
+    color: colors.ink,
   },
   modalInputForm: {
     width: '100%',
@@ -410,7 +410,7 @@ const styles = StyleSheet.create({
     fontSize: 16,
     paddingVertical: 8,
     marginBottom: 20,
-    color: colors.ink || '#212121',
+    color: colors.ink,
   },
   modalButtonsRow: {
     flexDirection: 'row',
@@ -427,16 +427,16 @@ const styles = StyleSheet.create({
   modalCancelText: {
     fontWeight: '800',
     fontSize: 14,
-    color: colors.muted || '#37474F',
+    color: colors.muted,
   },
   modalConfirmText: {
     fontWeight: '800',
     fontSize: 14,
-    color: colors.surface || '#FFF',
+    color: colors.surface,
   },
   profileCard: {
     width: '85%',
-    backgroundColor: '#FFF',
+    backgroundColor: colors.surface,
     borderRadius: 20,
     padding: 20,
     shadowColor: '#000',
@@ -453,7 +453,7 @@ const styles = StyleSheet.create({
     width: 52,
     height: 52,
     borderRadius: 26,
-    backgroundColor: colors.brand500 || '#2E7D32',
+    backgroundColor: colors.brand500,
     justifyContent: 'center',
     alignItems: 'center',
     marginRight: 14,
@@ -469,27 +469,27 @@ const styles = StyleSheet.create({
   profileName: {
     fontSize: 16,
     fontWeight: '800',
-    color: colors.ink || '#212121',
+    color: colors.ink,
   },
   profileEmail: {
     fontSize: 13,
-    color: '#666',
+    color: colors.textMuted,
     marginTop: 2,
   },
   profileDivider: {
     height: 1,
-    backgroundColor: '#E0E0E0',
+    backgroundColor: colors.border,
     width: '100%',
     marginVertical: 16,
   },
   logoutButton: {
-    backgroundColor: '#FFEBEE',
+    backgroundColor: colors.dangerBgStrong,
     paddingVertical: 12,
     borderRadius: 12,
     alignItems: 'center',
   },
   logoutText: {
-    color: '#C62828',
+    color: colors.dangerText,
     fontSize: 15,
     fontWeight: '800',
   },

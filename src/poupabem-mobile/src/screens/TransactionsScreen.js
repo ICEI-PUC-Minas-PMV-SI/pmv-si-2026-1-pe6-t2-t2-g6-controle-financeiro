@@ -197,7 +197,7 @@ const styles = StyleSheet.create({
     fontWeight: '900',
   },
   subtitle: {
-    color: '#B9D8CA',
+    color: colors.brand300,
     fontSize: 14,
     marginTop: 4,
   },
@@ -227,7 +227,7 @@ const styles = StyleSheet.create({
     overflow: 'hidden',
   },
   error: {
-    backgroundColor: '#FDECEC',
+    backgroundColor: colors.dangerBg,
     borderRadius: 12,
     color: colors.expense,
     fontSize: 13,
