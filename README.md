@@ -6,7 +6,9 @@
 
 `SEMESTRE: 6º`
 
-Descrever resumidamente, em um ou dois parágrafos, o projeto que está sendo desenvolvido.
+O **PoupaBem** é um sistema de organização financeira pessoal desenvolvido para auxiliar usuários no registro de receitas e despesas, acompanhamento do saldo, categorização de movimentações e criação de metas de economia por meio de cofrinhos virtuais.
+
+A solução é composta por uma API em ASP.NET Core, um front-end web em React e o planejamento de uma aplicação móvel. O objetivo é oferecer uma experiência simples e acessível para que o usuário acompanhe sua vida financeira em diferentes dispositivos, mantendo autenticação segura, isolamento dos dados por usuário e integração com banco de dados PostgreSQL.
 
 ## Integrantes
 
@@ -57,6 +59,7 @@ Instale as seguintes ferramentas (uma vez por máquina):
 | Node.js | 18 ou superior | https://nodejs.org |
 | Visual Studio 2022/2026 Community | com workloads "ASP.NET e desenvolvimento Web" e "Desenvolvimento para desktop com .NET" | https://visualstudio.microsoft.com |
 | PostgreSQL | 16 ou 17 | https://www.postgresql.org/download/windows/ |
+| Expo Go | opcional | https://expo.dev/client |
 
 > ⚠️ **Importante:** durante a instalação do PostgreSQL, defina a senha do usuário `postgres` como `123` para bater com a connection string padrão do projeto. Caso use outra senha, ajuste o arquivo `backend/PoupaBem.API/appsettings.Development.json`.
 
@@ -115,6 +118,10 @@ Após o setup inicial, o ciclo diário fica simples:
 | PostgreSQL | já roda como serviço do Windows automaticamente |
 | Backend | abre a solution no Visual Studio → ▶ |
 | Front-end | `cd src/poupabem-web && npm run dev` |
+
+### 4. Consultar o planejamento mobile
+
+A etapa mobile está documentada em [docs/frontend-mobile.md](docs/frontend-mobile.md). Ela descreve as telas previstas, fluxo de dados, endpoints consumidos, tecnologias propostas, cuidados de segurança e casos de teste iniciais para a aplicação móvel.
 
 # Código
 

@@ -1,6 +1,6 @@
 # Front-end Web
 
-O PoupaBem é uma plataforma de gestão financeira pessoal focada em simplicidade e clareza. Seu principal objetivo é ajudar os usuários a organizarem suas finanças, monitorarem receitas e despesas com facilidade e alcançarem objetivos financeiros através da funcionalidade de "Cofrinhos". A aplicação visa proporcionar uma experiência de usuário (UX) fluida e intuitiva, entregando uma visão geral e instantânea da saúde financeira para permitir tomadas de decisão mais conscientes.
+O PoupaBem é uma plataforma de gestão financeira pessoal focada em simplicidade, clareza e versatilidade. Seu principal objetivo é ajudar os usuários a organizarem suas finanças, monitorarem receitas e despesas com facilidade e alcançarem objetivos financeiros através da funcionalidade de "Cofrinhos". A aplicação visa proporcionar uma experiência de usuário (UX) fluida e intuitiva, entregando uma visão geral e instantânea da saúde financeira para permitir tomadas de decisão mais conscientes.
 
 ## Projeto da Interface Web
 
@@ -25,7 +25,6 @@ Interações do Usuário (UI/UX): A aplicação prioriza a navegação sem recar
 O wireframe da página do Dashboard (tela principal) segue esta estrutura de componentes estruturais:
 
 <img width="1134" height="689" alt="image" src="https://github.com/user-attachments/assets/65dc703a-a967-45c7-b985-c6fe3c625bfc" />
-
 
 ### Design Visual
 
@@ -192,15 +191,15 @@ Cada página é renderizada com Router + `AuthProvider` e a API é mockada:
 - [`pages/Login.test.jsx`](../src/poupabem-web/src/test/pages/Login.test.jsx): renderização dos campos, login com sucesso (verifica persistência no `localStorage`) e exibição de erro do backend.
 - [`pages/Cadastro.test.jsx`](../src/poupabem-web/src/test/pages/Cadastro.test.jsx): validações cliente (senhas diferentes, senha curta, termos não aceitos), cadastro com sucesso e tratamento de erro de e-mail duplicado.
 - [`pages/Dashboard.test.jsx`](../src/poupabem-web/src/test/pages/Dashboard.test.jsx): saudação personalizada, valores formatados em BRL, listagem das últimas transações, mensagem de erro quando o backend falha e estado vazio dos cofrinhos.
-- [`pages/Transacoes.test.jsx`](../src/poupabem-web/src/test/pages/Transacoes.test.jsx): listagem, filtro por tipo, filtro por categoria, exclusão com `confirm`, exportação de CSV, criação de transação via modal, validação de valor inválido e criação de categoria inline.
-- [`pages/Cofrinhos.test.jsx`](../src/poupabem-web/src/test/pages/Cofrinhos.test.jsx): listagem com progresso, total guardado, estado vazio, criação de cofrinho via modal, validação de valor inválido, aporte e exclusão.
+- [`pages/Transacoes.test.jsx`](../src/poupabem-web/src/test/pages/Transacoes.test.jsx): listagem, tratamento de erros de API (resiliência), filtros por tipo e categoria (individuais e simultâneos), exclusão com confirm, exportação de CSV, criação de transação via modal, validação de campos obrigatórios e valor inválido, e criação de categoria inline.
+- [`pages/Cofrinhos.test.jsx`](../src/poupabem-web/src/test/pages/Cofrinhos.test.jsx): listagem com progresso, total guardado, estado vazio, criação de cofrinho via modal, validação de valor inválido, aporte e exclusão segura com verificação de ID.
 
 ### Casos de teste por requisito
 
 | ID | Requisito | Cenário | Tipo | Arquivo |
 | --- | --- | --- | --- | --- |
 | CT-WEB-01 | RF-001 | Cadastro com payload válido | Integração | `pages/Cadastro.test.jsx` |
-| CT-WEB-02 | RF-001 | Cadastro bloqueado por senhas diferentes | Integração | `pages/Cadastro.test.jsx` |
+| CT-WEB-02 | RF-001 | Cadastro bloqueado por senhas divergentes | Integração | `pages/Cadastro.test.jsx` |
 | CT-WEB-03 | RF-001 | Cadastro bloqueado por senha curta | Integração | `pages/Cadastro.test.jsx` |
 | CT-WEB-04 | RF-001 | Cadastro bloqueado por termos não aceitos | Integração | `pages/Cadastro.test.jsx` |
 | CT-WEB-05 | RF-001 | E-mail duplicado retornado pelo backend | Integração | `pages/Cadastro.test.jsx` |
@@ -222,6 +221,13 @@ Cada página é renderizada com Router + `AuthProvider` e a API é mockada:
 | CT-WEB-21 | — | Compatibilidade do enum `TransactionType` com o backend | Unitário | `format.test.js` |
 | CT-WEB-22 | — | Contrato HTTP de cada módulo da camada de API | Unitário | `api/*.test.js` |
 | CT-WEB-23 | — | Padronização de mensagens de erro (`extractError`) | Unitário | `api/client.test.js` |
+| CT-WEB-24 | RNF-001 | Exibir mensagem de erro quando a listagem de transações falha | Integração | `pages/Transacoes.test.jsx` |
+| CT-WEB-25 | RF-009 | Aplicar filtros de tipo e categoria simultaneamente | Integração | `pages/Transacoes.test.jsx` |
+| CT-WEB-26 | RF-003 | Impedir o envio do formulário se o título estiver vazio | Integração | `pages/Transacoes.test.jsx` |
+| CT-WEB-27 | RF-006 | Criar um novo cofrinho com sucesso via modal | Integração | `pages/Cofrinhos.test.jsx` |
+| CT-WEB-28 | RF-010 | Excluir um cofrinho existente após confirmação | Integração | `pages/Cofrinhos.test.jsx` |
+
+.
 
 ### Resultado atual
 
