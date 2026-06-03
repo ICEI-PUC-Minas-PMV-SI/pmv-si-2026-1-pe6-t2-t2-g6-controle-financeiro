@@ -15,11 +15,12 @@ import {
 import FilterChip from './FilterChip';
 import { colors } from '../styles/theme';
 import { createCategory } from '../api/categories';
+import { TransactionKind } from '../utils/constants';
 import { parseCurrencyInput } from '../utils/format';
 import { isPositiveNumber, isRequired } from '../utils/validators';
 
 export default function TransactionFormModal({ categories, visible, onClose, onSubmit, onRefreshCategories, token }) {
-  const [type, setType] = useState('expense');
+  const [type, setType] = useState(TransactionKind.Expense);
   const [title, setTitle] = useState('');
   const [amount, setAmount] = useState('');
   const [categoryId, setCategoryId] = useState('');
@@ -50,7 +51,7 @@ export default function TransactionFormModal({ categories, visible, onClose, onS
       const trimmedName = newCategoryName.trim();
       const payload = {
         name: trimmedName,
-        type: type === 'income' ? 1 : 2,
+        type: type === TransactionKind.Income ? 1 : 2,
       };
 
       await createCategory(token, payload);
@@ -94,7 +95,7 @@ export default function TransactionFormModal({ categories, visible, onClose, onS
       categoryId: category.id,
       category: category.name,
       date: 'Hoje',
-      amount: type === 'income' ? normalizedAmount : -normalizedAmount,
+      amount: type === TransactionKind.Income ? normalizedAmount : -normalizedAmount,
     });
 
     setTitle('');
@@ -102,7 +103,7 @@ export default function TransactionFormModal({ categories, visible, onClose, onS
     setCategoryId('');
     setDescription('');
     setError('');
-    setType('expense');
+    setType(TransactionKind.Expense);
   }
 
   return (
@@ -124,13 +125,13 @@ export default function TransactionFormModal({ categories, visible, onClose, onS
             <View style={styles.row}>
               <FilterChip
                 label="Despesa"
-                active={type === 'expense'}
-                onPress={() => handleTypeChange('expense')}
+                active={type === TransactionKind.Expense}
+                onPress={() => handleTypeChange(TransactionKind.Expense)}
               />
               <FilterChip
                 label="Receita"
-                active={type === 'income'}
-                onPress={() => handleTypeChange('income')}
+                active={type === TransactionKind.Income}
+                onPress={() => handleTypeChange(TransactionKind.Income)}
               />
             </View>
 
@@ -192,7 +193,9 @@ export default function TransactionFormModal({ categories, visible, onClose, onS
       <Modal visible={innerModalVisible} transparent animationType="fade">
         <View style={styles.innerOverlay}>
           <View style={styles.innerContent}>
-            <Text style={styles.innerTitle}>Nova Categoria ({type === 'income' ? 'Receita' : 'Despesa'})</Text>
+            <Text style={styles.innerTitle}>
+              Nova Categoria ({type === TransactionKind.Income ? 'Receita' : 'Despesa'})
+            </Text>
             
             <TextInput
               style={styles.innerInput}

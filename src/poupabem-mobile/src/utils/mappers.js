@@ -1,3 +1,5 @@
+import { TransactionKind } from './constants';
+
 export const TransactionType = {
   Income: 1,
   Expense: 2,
@@ -23,7 +25,7 @@ export function toMobileTransaction(transaction, categories = []) {
     category: category?.name || 'Categoria',
     date: formatShortDate(transaction.ocurredAt),
     amount:
-      type === 'income'
+      type === TransactionKind.Income
         ? Number(transaction.amount)
         : -Math.abs(Number(transaction.amount)),
     occurredAt: transaction.ocurredAt,
@@ -55,11 +57,15 @@ export function toMobileGoal(goal) {
 }
 
 export function normalizeType(type) {
-  if (type === TransactionType.Income || type === 'Income' || type === 'income') {
-    return 'income';
+  if (
+    type === TransactionType.Income ||
+    type === 'Income' ||
+    type === TransactionKind.Income
+  ) {
+    return TransactionKind.Income;
   }
 
-  return 'expense';
+  return TransactionKind.Expense;
 }
 
 function formatShortDate(isoDate) {
