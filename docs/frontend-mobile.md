@@ -277,21 +277,27 @@ src/test/
 │   ├── transactions.test.js          # listagem com filtros e criação
 │   ├── savingsGoals.test.js          # metas, criação e aporte
 │   └── reports.test.js               # resumo financeiro
-└── components/
-    ├── BalanceCard.test.js           # Saldo no dashboard
-    ├── SummaryCard.test.js           # Cards de receitas/despesas
-    ├── TransactionItem.test.js       # Item de transação (sinal +/-)
-    ├── FilterChip.test.js            # Chips de filtro por tipo
-    ├── GoalCard.test.js              # Cofrinho com progresso e aporte
-    └── BottomNav.test.js             # Navegação por abas
+├── components/
+│   ├── BalanceCard.test.js           # Saldo no dashboard
+│   ├── SummaryCard.test.js           # Cards de receitas/despesas
+│   ├── TransactionItem.test.js       # Item de transação (sinal +/-)
+│   ├── FilterChip.test.js            # Chips de filtro por tipo
+│   ├── GoalCard.test.js              # Cofrinho com progresso e aporte
+│   └── BottomNav.test.js             # Navegação por abas
+└── screens/
+    ├── LoginScreen.test.js           # Integração de login
+    ├── SignUpScreen.test.js          # Integração de cadastro
+    ├── DashboardScreen.test.js       # Integração do dashboard
+    └── TransactionsScreen.test.js    # Integração de transações + modal
 ```
 
 ### Estratégia de mock
 
 - **API client (`src/api/client.js`)**: os testes de `client.test.js` mockam `global.fetch` e validam montagem de URL (`API_BASE_URL`), query params, header `Authorization: Bearer`, body JSON, resposta `204` e propagação de `message` em erros HTTP.
-- **Módulos de API (`src/api/*.js`)**: cada arquivo de teste faz `jest.mock('../../api/client')` e injeta `request` mockado, verificando método, path, token e payload — mesmo padrão adotado no front-end web.
+- **Módulos de API (`src/api/*.js`)**: cada arquivo de teste faz `jest.mock('../../api/client')` e injeta `request` mockado, verificando método, path, token e payload.
 - **Mapeadores (`src/utils/mappers.js`)**: testes isolados sem rede, com `jest.useFakeTimers()` em `toCreateTransactionRequest` para fixar `ocurredAt`.
 - **Componentes**: renderizados com `@testing-library/react-native`; callbacks (`onChangeTab`, `onPress`, `onDeposit`) validados com `fireEvent.press`.
+- **Telas (`src/screens/*.js`)**: cada teste de integração mocka os módulos de API consumidos pela tela (`jest.mock('../../api/auth')`, etc.) e controla as respostas, permitindo verificar caminho feliz, validações locais e tratamento de erros.
 
 ### Tipos de testes implementados
 
@@ -319,9 +325,14 @@ Verificam que cada função da pasta `src/api/` envia a requisição correta e d
 - [`GoalCard.test.js`](../src/poupabem-mobile/src/test/components/GoalCard.test.js): percentual, valores formatados, botão "Adicionar valor" e limite de 100% quando a meta é superada.
 - [`BottomNav.test.js`](../src/poupabem-mobile/src/test/components/BottomNav.test.js): abas visíveis e troca para `transactions` via `onChangeTab`.
 
-#### 4. Testes de integração de tela (planejados)
+#### 4. Testes de integração — telas
 
-Fluxos completos em `LoginScreen`, `SignUpScreen`, `DashboardScreen` e `TransactionsScreen` serão cobertos em uma próxima iteração com a mesma biblioteca (`@testing-library/react-native`), mockando os módulos de API consumidos por cada tela — seguindo o padrão das páginas testadas no [front-end web](frontend-web.md).
+Cada tela é renderizada com `@testing-library/react-native` e a API é mockada:
+
+- [`screens/LoginScreen.test.js`](../src/poupabem-mobile/src/test/screens/LoginScreen.test.js): renderização dos campos, validação de campos vazios, login com sucesso (verifica callback `onLogin`) e exibição de erro do backend.
+- [`screens/SignUpScreen.test.js`](../src/poupabem-mobile/src/test/screens/SignUpScreen.test.js): renderização dos campos, validações cliente (campos vazios, senhas diferentes via `Alert`), cadastro com sucesso (navegação para login) e tratamento de erro de e-mail duplicado.
+- [`screens/DashboardScreen.test.js`](../src/poupabem-mobile/src/test/screens/DashboardScreen.test.js): saudação personalizada, valores formatados em BRL, listagem das últimas transações, mensagem de erro quando o backend falha, estado vazio dos cofrinhos e ação "Ver todas".
+- [`screens/TransactionsScreen.test.js`](../src/poupabem-mobile/src/test/screens/TransactionsScreen.test.js): listagem, tratamento de erros de API, filtros por tipo e categoria, abertura do modal, validação de campos obrigatórios e valor inválido, e criação de transação via modal.
 
 #### 5. Testes manuais, de segurança e de carga
 
@@ -357,12 +368,22 @@ Fluxos completos em `LoginScreen`, `SignUpScreen`, `DashboardScreen` e `Transact
 | CT-MOB-20 | — | Contrato HTTP dos módulos `auth`, `transactions`, `savingsGoals`, `reports` | Unitário | `api/*.test.js` |
 | CT-MOB-21 | — | Padronização de mensagens (`extractErrorMessage`) | Unitário | `api/client.test.js` |
 | CT-MOB-22 | — | Formatação monetária em BRL (`formatCurrency`) | Unitário | `utils/format.test.js` |
+| CT-MOB-23 | RF-002 | Login com sucesso repassa sessão via `onLogin` | Integração | `screens/LoginScreen.test.js` |
+| CT-MOB-24 | RF-002 | Login com credenciais inválidas exibe erro | Integração | `screens/LoginScreen.test.js` |
+| CT-MOB-25 | RF-001 | Cadastro bloqueado por senhas divergentes | Integração | `screens/SignUpScreen.test.js` |
+| CT-MOB-26 | RF-001 | Cadastro com sucesso e navegação para login | Integração | `screens/SignUpScreen.test.js` |
+| CT-MOB-27 | RF-008 | Exibir resumo financeiro no dashboard | Integração | `screens/DashboardScreen.test.js` |
+| CT-MOB-28 | RF-009 | Listar últimas transações no dashboard | Integração | `screens/DashboardScreen.test.js` |
+| CT-MOB-29 | RF-004 | Criar transação (despesa) via modal | Integração | `screens/TransactionsScreen.test.js` |
+| CT-MOB-30 | RF-005 | Filtrar transações por tipo e categoria | Integração | `screens/TransactionsScreen.test.js` |
+| CT-MOB-31 | RF-003 | Impedir envio do formulário com título vazio | Integração | `screens/TransactionsScreen.test.js` |
+| CT-MOB-32 | — | Exibir mensagem de erro quando a listagem de transações falha | Integração | `screens/TransactionsScreen.test.js` |
 
 ### Resultado atual
 
 Execução em 03/06/2026:
 
-<img width="651" height="385" alt="image" src="https://github.com/user-attachments/assets/2d122588-84f9-4f1b-8b9d-7d16645d1fb5" />
+<img width="360" height="98" alt="image" src="https://github.com/user-attachments/assets/ed33b51c-8239-4706-83af-98306b7bd4bb" />
 
 # Referencias
 
