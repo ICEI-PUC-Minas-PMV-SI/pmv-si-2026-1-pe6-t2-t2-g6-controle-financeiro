@@ -1,6 +1,6 @@
 # 📊 Relatório de Contribuições do Projeto
 
-**Última atualização:** 03/06/2026 22:10
+**Última atualização:** 03/06/2026 22:19
 
 ---
 
@@ -10,19 +10,19 @@
 |-----------------------|-----------|-----------|-----------|------------|----------------|-----------------|
 | Ana Clara Pinheiro    |         9 |      6715 |        27 |         35 |              8 |               3 |
 | Gabriel Santos        |        25 |     10568 |      2627 |         83 |             20 |              11 |
-| Gustavo Moura         |        19 |      3552 |       183 |         72 |             12 |               4 |
+| Gustavo Moura         |        21 |      3631 |       244 |         77 |             12 |               4 |
 | JoaoJangola           |         7 |      2731 |        39 |         48 |              5 |               2 |
 | João Pedro Pimenta    |        14 |     10352 |        99 |         31 |              6 |               2 |
 | Maryana Morato        |         2 |         9 |         9 |          1 |              2 |               1 |
 | Maryana Nunes Morato  |         8 |      1812 |        94 |         28 |              5 |               3 |
 | acpcampos-gif         |         2 |       145 |        64 |          2 |              2 |               2 |
-| github-actions[bot]   |        56 |       457 |       437 |          3 |             56 |               1 |
+| github-actions[bot]   |        57 |       465 |       443 |          3 |             57 |               1 |
 | github-classroom[bot] |         1 |      2152 |         0 |         45 |              1 |              13 |
 
 
 ## 📅 Contribuições Semanais (Todo o Semestre)
 
-**2026-05-27**: Gabriel Santos: 8, Gustavo Moura: 3, João Pedro Pimenta: 3, Maryana Nunes Morato: 1, github-actions[bot]: 9
+**2026-05-27**: Gabriel Santos: 8, Gustavo Moura: 5, João Pedro Pimenta: 3, Maryana Nunes Morato: 1, github-actions[bot]: 10
 
 **2026-05-20**: João Pedro Pimenta: 2, Maryana Nunes Morato: 4, github-actions[bot]: 4
 
