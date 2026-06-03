@@ -9,101 +9,81 @@ import {
   Text,
   TextInput,
   View,
-  Alert,
-  TouchableOpacity,
 } from 'react-native';
 import FilterChip from './FilterChip';
+import NewCategoryModal from './NewCategoryModal';
 import { colors } from '../styles/theme';
-import { createCategory } from '../api/categories';
 import { TransactionKind } from '../utils/constants';
 import { parseCurrencyInput } from '../utils/format';
 import { isPositiveNumber, isRequired } from '../utils/validators';
 
+const initialForm = {
+  type: TransactionKind.Expense,
+  title: '',
+  amount: '',
+  categoryId: '',
+  description: '',
+};
+
+const errorMessages = {
+  titleRequired: 'Informe um título.',
+  amountInvalid: 'Informe um valor válido.',
+  categoryRequired: 'Selecione uma categoria.',
+};
+
 export default function TransactionFormModal({ categories, visible, onClose, onSubmit, onRefreshCategories, token }) {
-  const [type, setType] = useState(TransactionKind.Expense);
-  const [title, setTitle] = useState('');
-  const [amount, setAmount] = useState('');
-  const [categoryId, setCategoryId] = useState('');
-  const [description, setDescription] = useState('');
+  const [form, setForm] = useState({ ...initialForm });
   const [error, setError] = useState('');
 
-  const [innerModalVisible, setInnerModalVisible] = useState(false);
-  const [newCategoryName, setNewCategoryName] = useState('');
+  const [newCategoryModalVisible, setNewCategoryModalVisible] = useState(false);
 
   const filteredCategories = useMemo(
-    () => categories.filter((category) => category.type === type),
-    [categories, type],
+    () => categories.filter((category) => category.type === form.type),
+    [categories, form.type],
   );
 
+  function updateForm(nextValues) {
+    setForm((current) => ({ ...current, ...nextValues }));
+  }
+
   function handleTypeChange(nextType) {
-    setType(nextType);
-    setCategoryId('');
+    updateForm({ type: nextType, categoryId: '' });
     setError('');
   }
 
-  async function handleCreateInnerCategory() {
-    if (!isRequired(newCategoryName)) {
-      Alert.alert('Aviso', 'Informe o nome da categoria.');
-      return;
-    }
-
-    try {
-      const trimmedName = newCategoryName.trim();
-      const payload = {
-        name: trimmedName,
-        type: type === TransactionKind.Income ? 1 : 2,
-      };
-
-      await createCategory(token, payload);
-      
-      Alert.alert('Sucesso', 'Categoria criada com sucesso!');
-      setInnerModalVisible(false);
-      setNewCategoryName('');
-      
-      if (onRefreshCategories) {
-        await onRefreshCategories();
-      }
-    } catch (err) {
-      Alert.alert('Erro', err.message || 'Não foi possível criar a categoria.');
-    }
-  }
-
   function handleSubmit() {
-    const normalizedAmount = parseCurrencyInput(amount);
-    const trimmedTitle = title.trim();
+    const normalizedAmount = parseCurrencyInput(form.amount);
+    const trimmedTitle = form.title.trim();
+    const trimmedDescription = form.description.trim();
 
     if (!isRequired(trimmedTitle)) {
-      setError('Informe um título.');
+      setError(errorMessages.titleRequired);
       return;
     }
 
     if (!isPositiveNumber(normalizedAmount)) {
-      setError('Informe um valor válido.');
+      setError(errorMessages.amountInvalid);
       return;
     }
 
-    const category = categories.find((item) => item.id === categoryId);
+    const category = categories.find((item) => item.id === form.categoryId);
     if (!category) {
-      setError('Selecione uma categoria.');
+      setError(errorMessages.categoryRequired);
       return;
     }
 
     onSubmit({
       id: String(Date.now()),
       title: trimmedTitle,
-      description: description.trim(),
+      description: trimmedDescription,
       categoryId: category.id,
       category: category.name,
       date: 'Hoje',
-      amount: type === TransactionKind.Income ? normalizedAmount : -normalizedAmount,
+      amount: form.type === TransactionKind.Income ? normalizedAmount : -normalizedAmount,
     });
 
-    setTitle('');
-    setAmount('');
-    setCategoryId('');
-    setDescription('');
+    setForm({ ...initialForm });
     setError('');
-    setType(TransactionKind.Expense);
   }
 
   return (
@@ -125,20 +105,20 @@ export default function TransactionFormModal({ categories, visible, onClose, onS
             <View style={styles.row}>
               <FilterChip
                 label="Despesa"
-                active={type === TransactionKind.Expense}
+                active={form.type === TransactionKind.Expense}
                 onPress={() => handleTypeChange(TransactionKind.Expense)}
               />
               <FilterChip
                 label="Receita"
-                active={type === TransactionKind.Income}
+                active={form.type === TransactionKind.Income}
                 onPress={() => handleTypeChange(TransactionKind.Income)}
               />
             </View>
 
             <Text style={styles.label}>Título</Text>
             <TextInput
-              value={title}
-              onChangeText={setTitle}
+              value={form.title}
+              onChangeText={(value) => updateForm({ title: value })}
               placeholder="Ex: Mercado"
               placeholderTextColor={colors.muted}
               style={styles.input}
@@ -146,8 +126,8 @@ export default function TransactionFormModal({ categories, visible, onClose, onS
 
             <Text style={styles.label}>Valor</Text>
             <TextInput
-              value={amount}
-              onChangeText={setAmount}
+              value={form.amount}
+              onChangeText={(value) => updateForm({ amount: value })}
               keyboardType="decimal-pad"
               placeholder="80,00"
               placeholderTextColor={colors.muted}
@@ -160,21 +140,21 @@ export default function TransactionFormModal({ categories, visible, onClose, onS
                 <FilterChip
                   key={category.id}
                   label={category.name}
-                  active={categoryId === category.id}
-                  onPress={() => setCategoryId(category.id)}
+                  active={form.categoryId === category.id}
+                  onPress={() => updateForm({ categoryId: category.id })}
                 />
               ))}
               <FilterChip
                 label="+ Nova"
                 active={false}
-                onPress={() => setInnerModalVisible(true)}
+                onPress={() => setNewCategoryModalVisible(true)}
               />
             </View>
 
             <Text style={styles.label}>Descrição</Text>
             <TextInput
-              value={description}
-              onChangeText={setDescription}
+              value={form.description}
+              onChangeText={(value) => updateForm({ description: value })}
               multiline
               placeholder="Opcional"
               placeholderTextColor={colors.muted}
@@ -190,43 +170,13 @@ export default function TransactionFormModal({ categories, visible, onClose, onS
         </View>
       </KeyboardAvoidingView>
 
-      <Modal visible={innerModalVisible} transparent animationType="fade">
-        <View style={styles.innerOverlay}>
-          <View style={styles.innerContent}>
-            <Text style={styles.innerTitle}>
-              Nova Categoria ({type === TransactionKind.Income ? 'Receita' : 'Despesa'})
-            </Text>
-            
-            <TextInput
-              style={styles.innerInput}
-              placeholder="Nome da categoria (ex: Vestuário)"
-              placeholderTextColor={colors.placeholder}
-              value={newCategoryName}
-              onChangeText={setNewCategoryName}
-              autoFocus
-            />
-
-            <View style={styles.innerButtonsRow}>
-              <TouchableOpacity 
-                style={[styles.innerButton, { backgroundColor: colors.neutral200 }]}
-                onPress={() => {
-                  setInnerModalVisible(false);
-                  setNewCategoryName('');
-                }}
-              >
-                <Text style={[styles.innerButtonText, { color: colors.neutral700 }]}>Cancelar</Text>
-              </TouchableOpacity>
-
-              <TouchableOpacity 
-                style={[styles.innerButton, { backgroundColor: colors.brand900 }]} 
-                onPress={handleCreateInnerCategory}
-              >
-                <Text style={[styles.innerButtonText, { color: colors.surface }]}>Criar</Text>
-              </TouchableOpacity>
-            </View>
-          </View>
-        </View>
-      </Modal>
+      <NewCategoryModal
+        visible={newCategoryModalVisible}
+        onClose={() => setNewCategoryModalVisible(false)}
+        token={token}
+        transactionType={form.type}
+        onCreated={onRefreshCategories}
+      />
     </Modal>
   );
 }
@@ -313,49 +263,5 @@ const styles = StyleSheet.create({
     color: colors.surface,
     fontSize: 15,
     fontWeight: '900',
-  },
-  innerOverlay: {
-    flex: 1,
-    backgroundColor: colors.overlay,
-    justifyContent: 'center',
-    alignItems: 'center',
-  },
-  innerContent: {
-    backgroundColor: colors.surface,
-    width: '80%',
-    padding: 24,
-    borderRadius: 16,
-    alignItems: 'center',
-  },
-  innerTitle: {
-    fontSize: 16,
-    fontWeight: '800',
-    color: colors.ink,
-    marginBottom: 16,
-  },
-  innerInput: {
-    width: '100%',
-    borderBottomWidth: 2,
-    borderBottomColor: colors.brand900,
-    fontSize: 16,
-    paddingVertical: 8,
-    marginBottom: 24,
-    color: colors.ink,
-  },
-  innerButtonsRow: {
-    flexDirection: 'row',
-    width: '100%',
-    justifyContent: 'space-between',
-    gap: 8,
-  },
-  innerButton: {
-    flex: 1,
-    padding: 12,
-    borderRadius: 8,
-    alignItems: 'center',
-  },
-  innerButtonText: {
-    fontWeight: '800',
-    fontSize: 14,
   },
 });
