@@ -362,6 +362,8 @@ Fluxos completos em `LoginScreen`, `SignUpScreen`, `DashboardScreen` e `Transact
 
 Execução em 03/06/2026:
 
+<img width="651" height="385" alt="image" src="https://github.com/user-attachments/assets/2d122588-84f9-4f1b-8b9d-7d16645d1fb5" />
+
 # Referencias
 
 - Documentacao do projeto PoupaBem: `docs/contexto.md`
