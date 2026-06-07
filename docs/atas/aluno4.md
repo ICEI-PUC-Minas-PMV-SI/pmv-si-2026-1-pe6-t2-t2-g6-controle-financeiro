@@ -18,7 +18,7 @@
 | 27/04 - 03/05 | Desenvolvimento de Aplicações Móveis - Unidade 1 | ✅ | Planejar aplicação Mobile | Planejar aplicação Mobile |
 | 04/05 - 10/05 | Desenvolvimento de Aplicações Móveis - Unidade 2 | ✅ | Documentação e Testes | Execução de testes e atualização da documentação | 
 | 11/05 - 17/05 | Desenvolvimento de Aplicações Móveis - Unidade 2 | ✅ | Desenvolvimento Mobile | Estudar Microfundamentos |
-| 18/05 - 24/05 | Fundamentos de Projeto e Análise de Algoritmos - Unidade 1 | ✅ | Desenvolvimento Mobile | Configuração do SDK do Expo e correção de dependências para compatibilidade com o Expo Go |
+| 18/05 - 24/05 | Fundamentos de Projeto e Análise de Algoritmos - Unidade 1 | ✅ | Desenvolvimento Mobile | Configuração do SDK do Expo e resolução de conflitos para compatibilidade com o Expo Go |
 | 25/05 - 31/05 | Fundamentos de Projeto e Análise de Algoritmos - Unidade 2 | ✅ | Desenvolvimento Mobile | Integração da tela de Login com o Dashboard e configuração de variáveis de ambiente |
 | 01/06 - 07/06 |  | ✅ | Desenvolvimento Mobile | Implementação do cadastro de usuários, perfil com logout e conexão das rotas de cofrinhos e transações com a API |
 | 08/06 - 14/06 |  | ⬜ | Preparação da Apresentação |  |
