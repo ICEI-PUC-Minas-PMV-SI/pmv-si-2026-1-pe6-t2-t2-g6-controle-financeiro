@@ -21,6 +21,6 @@
 | 18/05 - 24/05 | Fundamentos de Projeto e Análise de Algoritmos - Unidade 1 | ✅ | Desenvolvimento Mobile | Configuração do SDK do Expo e correção de dependências para compatibilidade com o Expo Go |
 | 25/05 - 31/05 | Fundamentos de Projeto e Análise de Algoritmos - Unidade 2 | ✅ | Desenvolvimento Mobile | Integração da tela de Login com o Dashboard e configuração de variáveis de ambiente |
 | 01/06 - 07/06 |  | ✅ | Desenvolvimento Mobile | Implementação do cadastro de usuários, perfil com logout e conexão das rotas de cofrinhos e transações com a API |
-| 08/06 - 14/06 |  | ⬜ | Preparar Apresentação |  |
+| 08/06 - 14/06 |  | ⬜ | Preparação da Apresentação |  |
 
 **Legenda:** ✅ Estudou | ⬜ Não estudou
