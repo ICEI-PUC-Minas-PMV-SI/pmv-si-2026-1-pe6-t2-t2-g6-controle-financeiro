@@ -1,33 +1,25 @@
 # Front-end Movel
 
-O front-end movel do PoupaBem tem como objetivo permitir que o usuario acompanhe suas financas pessoais diretamente pelo smartphone, mantendo acesso rapido aos mesmos recursos principais da aplicacao web: cadastro, login, dashboard financeiro, registro de receitas e despesas, categorias, relatorios e cofrinhos.
+O PoupaBem Mobile é a versão para smartphones do sistema de organização financeira pessoal. O objetivo é oferecer aos usuários a mesma experiência completa da versão web, com adaptações específicas para uso em telas pequenas e em mobilidade: cadastrar uma despesa enquanto está no caixa do supermercado, conferir o saldo no ônibus, aportar em um cofrinho no fim do dia.
 
-A proposta mobile prioriza consultas e lancamentos rapidos, pois o uso em celular normalmente acontece em momentos curtos do dia, como logo apos uma compra, ao receber uma receita ou ao acompanhar o progresso de uma meta financeira. Por isso, a interface foi planejada para ser objetiva, responsiva e orientada a tarefas frequentes.
+A proposta mobile prioriza consultas e lançamentos rápidos, pois o uso em celular normalmente acontece em momentos curtos do dia, como logo após uma compra, ao receber uma receita ou ao acompanhar o progresso de uma meta financeira. Por isso, a interface foi planejada para ser objetiva, responsiva e orientada a tarefas frequentes.
 
 ## Projeto da Interface
 
-A aplicacao movel sera organizada em uma navegacao simples, com telas focadas em uma acao principal por vez. O usuario deve conseguir entrar no sistema, visualizar sua situacao financeira e registrar movimentacoes com poucos toques.
+A aplicação móvel será organizada em uma navegação simples, com telas focadas em uma ação principal por vez. O usuário deve conseguir entrar no sistema, visualizar sua situação financeira e registrar movimentações com poucos toques.
 
 Telas previstas:
 
 | Tela | Objetivo | Funcionalidades principais |
 | --- | --- | --- |
-| Login | Autenticar usuario cadastrado | Entrada de e-mail e senha, validacao de campos e acesso ao app |
-| Cadastro | Criar uma nova conta | Nome, sobrenome, e-mail, senha, confirmacao de senha e aceite dos termos |
-| Dashboard | Exibir resumo financeiro | Saldo atual, receitas, despesas, ultimas transacoes e progresso dos cofrinhos |
-| Transacoes | Registrar e consultar movimentacoes | Listagem, filtros por tipo/categoria, criacao e exclusao de transacoes |
-| Nova transacao | Inserir receita ou despesa | Tipo, titulo, valor, categoria, data e descricao opcional |
+| Login | Autenticar usuário cadastrado | Entrada de e-mail e senha, validação de campos e acesso ao app |
+| Cadastro | Criar uma nova conta | Nome, sobrenome, e-mail, senha, confirmação de senha e aceite dos termos |
+| Dashboard | Exibir resumo financeiro | Saldo atual, receitas, despesas, últimos transações e progresso dos cofrinhos |
+| Transações | Registrar e consultar movimentações | Listagem, filtros por tipo/categoria, criação e exclusação de transações|
+| Nova transação | Inserir receita ou despesa | Tipo, título, valor, categoria, data e descrição opcional |
 | Cofrinhos | Acompanhar metas financeiras | Listagem de metas, percentual de progresso, novo cofrinho e aporte |
-| Perfil | Gerenciar sessao | Dados basicos do usuario e opcao de sair |
+| Perfil | Gerenciar sessão | Dados básicos do usuárops e opção de sair |
 
-A navegacao principal sera feita por abas inferiores, adequadas ao uso com uma mao:
-
-- Dashboard
-- Transacoes
-- Cofrinhos
-- Perfil
-
-As acoes de criacao, como nova transacao e novo cofrinho, devem aparecer como botoes de destaque nas telas correspondentes, evitando menus profundos.
 
 ### Wireframes
 
@@ -35,122 +27,48 @@ Os wireframes abaixo descrevem a estrutura planejada para as principais telas mo
 
 #### Login
 
-```text
-+----------------------------------+
-| PoupaBem                         |
-| Organize suas financas           |
-|                                  |
-| [ E-mail                       ] |
-| [ Senha                       ] |
-|                                  |
-| [ Entrar                       ] |
-| Criar conta                      |
-+----------------------------------+
-```
+<img width="390" height="844" alt="m01-login 1" src="https://github.com/user-attachments/assets/74a82aad-4032-43bb-84f7-68ddb3de1e6f" />
+
+
+#### Cadastro
+<img width="1440" height="900" alt="02-cadastro" src="https://github.com/user-attachments/assets/2845ec03-1220-439f-8989-b931ff01b17b" />
+
 
 #### Dashboard
 
-```text
-+----------------------------------+
-| Ola, Maryana                     |
-|                                  |
-| Saldo atual                      |
-| R$ 2.350,00                      |
-|                                  |
-| [ Receitas ] [ Despesas ]        |
-|                                  |
-| Ultimas transacoes               |
-| - Mercado             -R$ 80,00  |
-| - Salario           +R$ 2500,00  |
-|                                  |
-| Cofrinhos                        |
-| Viagem internacional       45%   |
-|                                  |
-| Dashboard | Transacoes | Metas   |
-+----------------------------------+
-```
+<img width="390" height="844" alt="m03-dashboard 1" src="https://github.com/user-attachments/assets/2cd80bc0-2c28-4855-a42b-b8a538948d39" />
 
-#### Transacoes
 
-```text
-+----------------------------------+
-| Transacoes                    +  |
-| [ Todas ] [ Receitas ] [ Desp ] |
-| [ Categoria                  v ] |
-|                                  |
-| 14/05  Alimentacao   -R$ 42,90  |
-| 13/05  Transporte    -R$ 12,00  |
-| 10/05  Freelance    +R$ 600,00  |
-|                                  |
-| Dashboard | Transacoes | Metas   |
-+----------------------------------+
-```
+#### Transações
 
-#### Nova Transacao
 
-```text
-+----------------------------------+
-| Nova transacao                   |
-|                                  |
-| ( ) Receita   ( ) Despesa        |
-| [ Titulo                      ]  |
-| [ Valor                       ]  |
-| [ Categoria                  v ] |
-| [ Data                        ]  |
-| [ Descricao opcional          ]  |
-|                                  |
-| [ Salvar transacao             ] |
-+----------------------------------+
-```
+<img width="390" height="844" alt="m04-transacoes 1" src="https://github.com/user-attachments/assets/eb75dd4e-c032-4fc2-8474-3e1bc366fbab" />
 
-#### Cofrinhos
 
-```text
-+----------------------------------+
-| Cofrinhos                     +  |
-|                                  |
-| Viagem internacional             |
-| R$ 1.500,00 de R$ 5.000,00       |
-| [==========------] 30%           |
-| [ Aportar ]                      |
-|                                  |
-| Reserva de emergencia            |
-| R$ 800,00 de R$ 3.000,00         |
-| [=====-----------] 26%           |
-| [ Aportar ]                      |
-|                                  |
-| Dashboard | Transacoes | Metas   |
-+----------------------------------+
-```
+#### Cofrinho
+
+<img width="390" height="844" alt="m05-cofrinhos 1" src="https://github.com/user-attachments/assets/33f1d343-acac-471e-a736-bce42c4f07ce" />
+
 
 ### Design Visual
 
-O design visual da aplicacao movel segue a identidade definida para o PoupaBem na aplicacao web, mantendo consistencia entre plataformas.
+A paleta, tipografia e linguagem visual são idênticas à versão web, garantindo **consistência de marca** entre as duas plataformas:
 
-Paleta de cores:
-
-| Cor                    | Uso                                                     |
-| ---------------------- | ------------------------------------------------------- |
-| Verde escuro `#023020` | Cabecalhos, botoes principais e elementos de identidade |
-| Verde medio `#3EB37C`  | Receitas, progresso positivo e confirmacoes             |
-| Vermelho `#C53030`     | Despesas, alertas e acoes destrutivas                   |
-| Off-white `#F5F7FA`    | Fundo geral da aplicacao                                |
-| Branco `#FFFFFF`       | Cartoes, formularios e areas de conteudo                |
-
-A tipografia deve usar fonte sans-serif, com boa leitura em telas pequenas. Valores monetarios terao maior peso visual, pois sao as informacoes mais consultadas pelo usuario.
-
-Diretrizes de interface:
-
-- Botoes principais com area de toque confortavel.
-- Textos curtos e objetivos.
-- Cards compactos para resumo financeiro e cofrinhos.
-- Indicadores de carregamento nas consultas a API.
-- Mensagens de erro claras em formularios e operacoes.
-- Contraste adequado para leitura em ambientes externos.
+| Função | Cor | Hex |
+|---|---|---|
+| Marca primária | Verde esmeralda profundo | `#064E3B` |
+| Marca 700 | Verde escuro | `#047857` |
+| Marca 500 | Verde médio | `#10B981` |
+| Receita | Verde escuro | `#047857` |
+| Despesa | Vermelho discreto | `#B91C1C` |
+| Fundo | Off-white quente | `#FAFAF7` |
+| Superfície | Branco puro | `#FFFFFF` |
+| Texto principal | Quase preto | `#1C1917` |
+| Texto secundário | Cinza médio | `#57534E` |
 
 ## Fluxo de Dados
 
-O aplicativo movel consumira a mesma API REST utilizada pelo front-end web. A base de comunicacao sera a API ASP.NET Core localizada no backend do projeto.
+O aplicativo móvel consumirá a mesma API REST utilizada pelo front-end web. A base de comunicação será a API ASP.NET Core localizada no backend do projeto.
 
 Fluxo de autenticacao:
 
@@ -186,7 +104,7 @@ Endpoints consumidos:
 
 ## Tecnologias Utilizadas
 
-A implementacao mobile podera ser desenvolvida com React Native, mantendo proximidade com o ecossistema React ja utilizado no front-end web.
+A implementação mobile poderá ser desenvolvida com React Native, mantendo proximidade com o ecossistema React já utilizado no front-end web. A escolha por React Native favorece o reaproveitamento de conhecimento da equipe, pois o projeto web já utiliza conceitos de React, componentes reutilizáveis, consumo de APIs REST e gerenciamento de estado por contexto.
 
 Tecnologias propostas:
 
@@ -204,7 +122,7 @@ A escolha por React Native favorece reaproveitamento de conhecimento da equipe, 
 
 ## Consideracoes de Seguranca
 
-A aplicacao movel deve seguir os mesmos principios de seguranca definidos para o sistema web e backend, com atencao especial ao armazenamento local no dispositivo.
+A aplicação móvel deve seguir os mesmos princípios de segurança definidos para o sistema web e backend, com atenção especial ao armazenamento local no dispositivo.
 
 Medidas previstas:
 
@@ -217,11 +135,11 @@ Medidas previstas:
 - Isolamento de dados por usuario garantido pelo backend.
 - Exibicao de mensagens de erro sem revelar dados sensiveis.
 
-Como o aplicativo manipula dados financeiros pessoais, nenhuma senha deve ser armazenada localmente. O app tambem nao deve registrar tokens ou dados sensiveis em logs.
+Como o aplicativo manipula dados financeiros pessoais, nenhuma senha deve ser armazenada localmente. O app também não deve registrar tokens ou dados sensíveis em logs.
 
 ## Implantacao
 
-A implantacao da aplicacao movel devera considerar ambientes de desenvolvimento, homologacao e producao.
+A implantação da aplicação móvel deverá considerar ambientes de desenvolvimento, homologação e produção.
 
 Passos previstos:
 
@@ -232,7 +150,7 @@ Passos previstos:
 5. Ajustar permissoes e configuracoes de rede.
 6. Gerar versao final para distribuicao conforme a plataforma escolhida.
 
-Durante o desenvolvimento local, a API deve estar acessivel pelo dispositivo ou emulador. Em celulares fisicos, pode ser necessario usar o IP da maquina na rede local em vez de `localhost`.
+Nota: Durante o desenvolvimento local, a API deve estar acessível pelo dispositivo ou emulador. Em celulares físicos, pode ser necessário usar o IP da máquina na rede local em vez de `localhost`.
 
 ## Testes
 
