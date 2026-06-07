@@ -1,6 +1,6 @@
 # 📊 Relatório de Contribuições do Projeto
 
-**Última atualização:** 07/06/2026 22:06
+**Última atualização:** 07/06/2026 22:09
 
 ---
 
@@ -8,7 +8,7 @@
 
 | Aluno                 |   Commits |   Linhas+ |   Linhas- |   Arquivos |   Docs Commits |   Docs Arquivos |
 |-----------------------|-----------|-----------|-----------|------------|----------------|-----------------|
-| Ana Clara Pinheiro    |        10 |      6747 |       141 |         36 |              9 |               4 |
+| Ana Clara Pinheiro    |        11 |      6756 |       150 |         36 |             10 |               4 |
 | Gabriel Santos        |        25 |     10568 |      2627 |         83 |             20 |              11 |
 | Gustavo Moura         |        28 |      3981 |       451 |         82 |             13 |               4 |
 | JoaoJangola           |         8 |      2737 |        45 |         48 |              6 |               2 |
@@ -16,13 +16,13 @@
 | Maryana Morato        |         2 |         9 |         9 |          1 |              2 |               1 |
 | Maryana Nunes Morato  |         8 |      1812 |        94 |         28 |              5 |               3 |
 | acpcampos-gif         |         2 |       145 |        64 |          2 |              2 |               2 |
-| github-actions[bot]   |        64 |       511 |       489 |          3 |             64 |               1 |
+| github-actions[bot]   |        65 |       515 |       493 |          3 |             65 |               1 |
 | github-classroom[bot] |         1 |      2152 |         0 |         45 |              1 |              13 |
 
 
 ## 📅 Contribuições Semanais (Todo o Semestre)
 
-**2026-05-31**: Ana Clara Pinheiro: 1, Gabriel Santos: 8, Gustavo Moura: 12, JoaoJangola: 1, João Pedro Pimenta: 5, Maryana Nunes Morato: 1, github-actions[bot]: 17
+**2026-05-31**: Ana Clara Pinheiro: 2, Gabriel Santos: 8, Gustavo Moura: 12, JoaoJangola: 1, João Pedro Pimenta: 5, Maryana Nunes Morato: 1, github-actions[bot]: 18
 
 **2026-05-24**: Maryana Nunes Morato: 3, github-actions[bot]: 3
 
