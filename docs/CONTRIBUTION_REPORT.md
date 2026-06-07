@@ -1,6 +1,6 @@
 # 📊 Relatório de Contribuições do Projeto
 
-**Última atualização:** 07/06/2026 22:30
+**Última atualização:** 07/06/2026 22:45
 
 ---
 
@@ -12,25 +12,25 @@
 | Gabriel Santos        |        25 |     10568 |      2627 |         83 |             20 |              11 |
 | Gustavo Moura         |        28 |      3981 |       451 |         82 |             13 |               4 |
 | JoaoJangola           |         9 |      2743 |        51 |         49 |              7 |               3 |
-| João Pedro Pimenta    |        18 |     10360 |       107 |         31 |             10 |               2 |
+| João Pedro Pimenta    |        20 |     10361 |       108 |         31 |             12 |               2 |
 | Maryana Morato        |         2 |         9 |         9 |          1 |              2 |               1 |
 | Maryana Nunes Morato  |         8 |      1812 |        94 |         28 |              5 |               3 |
 | acpcampos-gif         |         2 |       145 |        64 |          2 |              2 |               2 |
-| github-actions[bot]   |        67 |       523 |       501 |          3 |             67 |               1 |
+| github-actions[bot]   |        68 |       527 |       505 |          3 |             68 |               1 |
 | github-classroom[bot] |         1 |      2152 |         0 |         45 |              1 |              13 |
 
 
 ## 📅 Contribuições Semanais (Todo o Semestre)
 
-**2026-05-31**: Ana Clara Pinheiro: 2, Gabriel Santos: 8, Gustavo Moura: 12, JoaoJangola: 2, João Pedro Pimenta: 7, Maryana Nunes Morato: 1, github-actions[bot]: 20
+**2026-05-31**: Ana Clara Pinheiro: 2, Gabriel Santos: 8, Gustavo Moura: 12, JoaoJangola: 2, João Pedro Pimenta: 9, Maryana Nunes Morato: 1, github-actions[bot]: 21
 
 **2026-05-24**: Maryana Nunes Morato: 3, github-actions[bot]: 3
 
 **2026-05-17**: João Pedro Pimenta: 2, Maryana Nunes Morato: 1, github-actions[bot]: 2
 
-**2026-05-10**: Ana Clara Pinheiro: 1, Gustavo Moura: 7, João Pedro Pimenta: 5, Maryana Nunes Morato: 3, github-actions[bot]: 10
+**2026-05-10**: Gustavo Moura: 7, João Pedro Pimenta: 5, Maryana Nunes Morato: 3, github-actions[bot]: 9
 
-**2026-05-03**: Ana Clara Pinheiro: 3, Gabriel Santos: 8, JoaoJangola: 2, github-actions[bot]: 9
+**2026-05-03**: Ana Clara Pinheiro: 4, Gabriel Santos: 8, JoaoJangola: 2, github-actions[bot]: 10
 
 **2026-04-26**: JoaoJangola: 1, github-actions[bot]: 2
 
