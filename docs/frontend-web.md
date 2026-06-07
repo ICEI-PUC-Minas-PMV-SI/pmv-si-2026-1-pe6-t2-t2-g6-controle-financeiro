@@ -26,7 +26,6 @@ O wireframe da página do Dashboard (tela principal) segue esta estrutura de com
 
 <img width="1134" height="689" alt="image" src="https://github.com/user-attachments/assets/65dc703a-a967-45c7-b985-c6fe3c625bfc" />
 
-
 ### Design Visual
 
 Paleta de Cores: Focada na psicologia das cores financeiras e de acessibilidade.

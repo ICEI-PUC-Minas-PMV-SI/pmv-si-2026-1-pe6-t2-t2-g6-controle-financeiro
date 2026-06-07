@@ -16,12 +16,13 @@ import {
   toMobileTransaction,
   TransactionType,
 } from '../utils/mappers';
+import { FilterType } from '../utils/constants';
 
 export default function TransactionsScreen({ session }) {
   const [transactions, setTransactions] = useState([]);
   const [categories, setCategories] = useState([]);
-  const [filterType, setFilterType] = useState('all');
-  const [filterCategoryId, setFilterCategoryId] = useState('all');
+  const [filterType, setFilterType] = useState(FilterType.All);
+  const [filterCategoryId, setFilterCategoryId] = useState(FilterType.All);
   const [modalVisible, setModalVisible] = useState(false);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState('');
@@ -41,16 +42,16 @@ export default function TransactionsScreen({ session }) {
       setError('');
 
       const transactionType =
-        filterType === 'income'
+        filterType === FilterType.Income
           ? TransactionType.Income
-          : filterType === 'expense'
+          : filterType === FilterType.Expense
             ? TransactionType.Expense
             : undefined;
 
       const [categoriesData, transactionsData] = await Promise.all([
         listCategories(session.accessToken),
         listTransactions(session.accessToken, {
-          categoryId: filterCategoryId === 'all' ? undefined : filterCategoryId,
+          categoryId: filterCategoryId === FilterType.All ? undefined : filterCategoryId,
           transactionType,
         }),
       ]);
@@ -82,8 +83,8 @@ export default function TransactionsScreen({ session }) {
       setError('');
       await createTransaction(session.accessToken, toCreateTransactionRequest(transaction));
       setModalVisible(false);
-      setFilterType('all');
-      setFilterCategoryId('all');
+      setFilterType(FilterType.All);
+      setFilterCategoryId(FilterType.All);
       await loadTransactions();
     } catch (err) {
       setError(err.message || 'Não foi possível criar a transação.');
@@ -107,16 +108,20 @@ export default function TransactionsScreen({ session }) {
         {error ? <Text style={styles.error}>{error}</Text> : null}
 
         <View style={styles.filters}>
-          <FilterChip label="Todas" active={filterType === 'all'} onPress={() => setFilterType('all')} />
+          <FilterChip
+            label="Todas"
+            active={filterType === FilterType.All}
+            onPress={() => setFilterType(FilterType.All)}
+          />
           <FilterChip
             label="Receitas"
-            active={filterType === 'income'}
-            onPress={() => setFilterType('income')}
+            active={filterType === FilterType.Income}
+            onPress={() => setFilterType(FilterType.Income)}
           />
           <FilterChip
             label="Despesas"
-            active={filterType === 'expense'}
-            onPress={() => setFilterType('expense')}
+            active={filterType === FilterType.Expense}
+            onPress={() => setFilterType(FilterType.Expense)}
           />
         </View>
 
@@ -127,8 +132,8 @@ export default function TransactionsScreen({ session }) {
         >
           <FilterChip
             label="Todas categorias"
-            active={filterCategoryId === 'all'}
-            onPress={() => setFilterCategoryId('all')}
+            active={filterCategoryId === FilterType.All}
+            onPress={() => setFilterCategoryId(FilterType.All)}
           />
           {categories.map((category) => (
             <FilterChip
@@ -197,7 +202,7 @@ const styles = StyleSheet.create({
     fontWeight: '900',
   },
   subtitle: {
-    color: '#B9D8CA',
+    color: colors.brand300,
     fontSize: 14,
     marginTop: 4,
   },
@@ -227,7 +232,7 @@ const styles = StyleSheet.create({
     overflow: 'hidden',
   },
   error: {
-    backgroundColor: '#FDECEC',
+    backgroundColor: colors.dangerBg,
     borderRadius: 12,
     color: colors.expense,
     fontSize: 13,

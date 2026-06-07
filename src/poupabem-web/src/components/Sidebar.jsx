@@ -17,7 +17,14 @@ export default function Sidebar() {
       {/* Logo */}
       <div className="p-7 flex items-center gap-3">
         <div className="relative">
-          <svg width="46" height="46" viewBox="0 0 46 46" fill="none">
+          <svg
+            width="46"
+            height="46"
+            viewBox="0 0 46 46"
+            fill="none"
+            aria-hidden="true"
+            focusable="false"
+          >
             <ellipse cx="20" cy="22" rx="18" ry="14" fill="#FAFAF7" />
             <circle cx="25" cy="18" r="2" fill="#064E3B" />
             <rect x="9" y="34" width="4" height="7" rx="1.5" fill="#FAFAF7" />
@@ -69,6 +76,8 @@ export default function Sidebar() {
           </div>
           <button
             onClick={logout}
+            type="button"
+            aria-label="Sair"
             className="p-2 hover:bg-white/10 rounded-lg transition-colors"
             title="Sair"
           >

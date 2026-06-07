@@ -4,54 +4,52 @@ import {
   Text, 
   TextInput, 
   TouchableOpacity, 
+  import { colors } from '../styles/theme';
   View, 
   KeyboardAvoidingView, 
   Platform,
   SafeAreaView,
   Alert 
 } from 'react-native';
-import api from '../api/api';
+import { login } from '../api/auth';
+import { extractErrorMessage } from '../api/client';
 
 export default function Login(props) {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const [loading, setLoading] = useState(false); 
-
-  const handleLogin = async () => {
-    if (!email.trim() || !password.trim()) {
-      Alert.alert('Campos Obrigatórios', 'Por favor, preencha o e-mail e a senha.');
-      return;
-    }
-
-    setLoading(true);
-
-    try {
-      const response = await api.post('/api/auth/login', {
-        email: email,
-        password: password 
+            <View style={styles.formContainer}>
+              <TextInput
+                style={styles.input}
+                placeholder="E-mail"
+                placeholderTextColor="#999"
+                value={email}
+                onChangeText={setEmail}
+                keyboardType="email-address"
+                autoCapitalize="none"
+                autoCorrect={false}
+                editable={!loading}
+              />
+        email: email.trim(),
+        password: password.trim(),
       });
 
-      console.log('Login bem-sucedido:', response.data);
-      
-      const nomeUsuario = response.data.firstName || 'Usuário';
+      console.log('Login bem-sucedido:', auth);
+
+      const nomeUsuario = auth.firstName || auth.fullName?.split(' ')[0] || 'Usuário';
       Alert.alert('Sucesso', `Bem-vindo de volta, ${nomeUsuario}!`);
 
       if (props.onLogin) {
-        props.onLogin(response.data);
+        props.onLogin(auth);
       }
-
     } catch (error) {
       console.error('Erro ao tentar logar:', error);
 
-      let mensagemErro = 'Não foi possível conectar ao servidor. Verifique se o Back-end está ligado e na mesma rede.';
-      
-      if (error.response) {
-        mensagemErro = error.response.data?.message || error.response.data || 'E-mail ou senha inválidos.';
-      }
+      const mensagemErro = extractErrorMessage(error);
+      const fallback = 'Não foi possível conectar ao servidor. Verifique se o Back-end está ligado e na mesma rede.';
 
-      Alert.alert('Falha no Login', mensagemErro);
+      Alert.alert('Falha no Login', mensagemErro === 'Erro inesperado' ? fallback : mensagemErro);
     } finally {
-      loading && setLoading(false);
+      setLoading(false);
     }
   };
 
@@ -72,8 +70,8 @@ export default function Login(props) {
             <TextInput
               style={styles.input}
               placeholder="E-mail"
-              placeholderTextColor="#999"
-              value={email}
+              placeholderTextColor={colors.placeholder}
+      backgroundColor: colors.bgAlt,
               onChangeText={setEmail}
               keyboardType="email-address"
               autoCapitalize="none"
@@ -84,22 +82,22 @@ export default function Login(props) {
             <TextInput
               style={styles.input}
               placeholder="Senha"
-              placeholderTextColor="#999"
+              placeholderTextColor={colors.placeholder}
               secureTextEntry
               value={password}
               onChangeText={setPassword}
               autoCapitalize="none"
               editable={!loading}
-            />
+      color: colors.brand600,
 
             <TouchableOpacity 
               style={[styles.button, loading && styles.buttonDisabled]} 
               onPress={handleLogin}
-              disabled={loading}
+      color: colors.textMuted,
             >
               <Text style={styles.buttonText}>
                 {loading ? 'Carregando...' : 'Entrar'}
-              </Text>
+      backgroundColor: colors.surface,
             </TouchableOpacity>
 
             <TouchableOpacity 
@@ -110,28 +108,28 @@ export default function Login(props) {
               <Text style={styles.registerText}>
                 Não tem uma conta? <Text style={styles.registerTextBold}>Cadastre-se</Text>
               </Text>
-            </TouchableOpacity>
+      borderColor: colors.border,
           </View>
 
         </View>
       </KeyboardAvoidingView>
     </SafeAreaView>
-  );
-}
+      backgroundColor: colors.surfaceMuted,
+      color: colors.textStrong,
 
 const styles = StyleSheet.create({
   safeArea: {
-    flex: 1,
+      backgroundColor: colors.brand600,
     backgroundColor: '#F5F5F5',
   },
   container: {
     flex: 1,
   },
   innerContainer: {
-    flex: 1,
+      backgroundColor: colors.brand200,
     justifyContent: 'center',
     paddingHorizontal: 24,
-  },
+      color: colors.surface,
   logoContainer: {
     alignItems: 'center',
     marginBottom: 40,
@@ -141,10 +139,10 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
     color: '#2E7D32',
     letterSpacing: 0.5,
-  },
+      color: colors.textMuted,
   subtitle: {
     fontSize: 16,
-    color: '#666',
+      color: colors.brand600,
     marginTop: 8,
   },
   formContainer: {

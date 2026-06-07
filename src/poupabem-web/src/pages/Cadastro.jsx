@@ -51,7 +51,14 @@ export default function Cadastro() {
         {/* Brand panel */}
         <div className="bg-brand-900 text-white p-10 flex flex-col">
           <div className="flex items-center gap-3 mb-auto">
-            <svg width="46" height="46" viewBox="0 0 46 46" fill="none">
+            <svg
+              width="46"
+              height="46"
+              viewBox="0 0 46 46"
+              fill="none"
+              aria-hidden="true"
+              focusable="false"
+            >
               <ellipse cx="20" cy="22" rx="18" ry="14" fill="#FAFAF7" />
               <circle cx="25" cy="18" r="2" fill="#064E3B" />
               <rect x="9" y="34" width="4" height="7" rx="1.5" fill="#FAFAF7" />
@@ -88,6 +95,7 @@ export default function Cadastro() {
                   value={form.firstName}
                   onChange={update('firstName')}
                   required
+                  autoComplete="given-name"
                   placeholder="Seu nome"
                   className="input"
                 />
@@ -99,6 +107,7 @@ export default function Cadastro() {
                   value={form.lastName}
                   onChange={update('lastName')}
                   required
+                  autoComplete="family-name"
                   placeholder="Seu sobrenome"
                   className="input"
                 />
@@ -111,6 +120,7 @@ export default function Cadastro() {
                   value={form.email}
                   onChange={update('email')}
                   required
+                  autoComplete="email"
                   placeholder="seu@email.com"
                   className="input"
                 />
@@ -123,6 +133,7 @@ export default function Cadastro() {
                   value={form.password}
                   onChange={update('password')}
                   required
+                  autoComplete="new-password"
                   placeholder="••••••••"
                   className="input"
                 />
@@ -135,6 +146,7 @@ export default function Cadastro() {
                   value={form.confirmPassword}
                   onChange={update('confirmPassword')}
                   required
+                  autoComplete="new-password"
                   placeholder="••••••••"
                   className="input"
                 />
@@ -152,7 +164,10 @@ export default function Cadastro() {
             </label>
 
             {error && (
-              <div className="mt-4 bg-red-50 border border-red-200 text-red-700 text-sm rounded-[10px] px-4 py-3">
+              <div
+                role="alert"
+                className="mt-4 bg-red-50 border border-red-200 text-red-700 text-sm rounded-[10px] px-4 py-3"
+              >
                 {error}
               </div>
             )}

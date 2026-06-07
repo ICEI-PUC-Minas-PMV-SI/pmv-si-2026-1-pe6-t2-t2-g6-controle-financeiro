@@ -9,9 +9,11 @@ A solução está organizada em camadas (Domain, Application, Infrastructure e A
 ## Objetivos da API
 
 Objetivo geral da API:
+
 - Disponibilizar endpoints REST para suportar as funcionalidades principais do PoupaBem com autenticação segura, isolamento de dados por usuário e operações financeiras do dia a dia.
 
 Objetivos específicos da API:
+
 - Permitir cadastro, login, refresh de token e consulta do usuário autenticado.
 - Permitir CRUD de categorias financeiras por usuário.
 - Permitir CRUD de transações (receitas e despesas), com filtros por período, categoria e tipo.
@@ -66,27 +68,32 @@ Objetivos específicos da API:
 ## Tecnologias Utilizadas
 
 Backend e arquitetura:
+
 - C#
 - ASP.NET Core Web API
 - Arquitetura em camadas (Domain, Application, Infrastructure, API)
 
 Persistência e dados:
+
 - Entity Framework Core
 - Npgsql (PostgreSQL provider)
 - PostgreSQL 16 (container local via Docker Compose)
 - ASP.NET Core Identity
 
 Segurança:
+
 - JWT Bearer Authentication
 - Refresh Token
 - Autorização com [Authorize]
 
 Documentação e desenvolvimento:
+
 - Swagger / OpenAPI
 - Docker Compose
 - Git e GitHub
 
 Testes e CI:
+
 - xUnit
 - Moq
 - Microsoft.AspNetCore.Mvc.Testing
@@ -97,12 +104,15 @@ Testes e CI:
 ## API Endpoints
 
 Base URL (desenvolvimento):
+
 - https://localhost:{porta}/api
 
 Padrão de autenticação:
+
 - Endpoints protegidos exigem header Authorization: Bearer {access_token}.
 
 Padrão de erros:
+
 - Erros de regra de negócio e exceções tratadas pelo middleware global retornam JSON no formato:
 
 ```json
@@ -120,6 +130,7 @@ Padrão de erros:
 ### 1) Autenticação
 
 #### Endpoint 1.1 - Registrar usuário
+
 - Método: POST
 - URL: /auth/register
 - Autenticação: Não
@@ -143,11 +154,12 @@ Padrão de erros:
 }
 ```
 
-  - Erro (400)
-    - Validação de entrada
-    - Regra de negócio (email duplicado, senhas diferentes)
+- Erro (400)
+  - Validação de entrada
+  - Regra de negócio (email duplicado, senhas diferentes)
 
 #### Endpoint 1.2 - Login
+
 - Método: POST
 - URL: /auth/login
 - Autenticação: Não
@@ -159,6 +171,7 @@ Padrão de erros:
   - Erro (400/401)
 
 #### Endpoint 1.3 - Refresh token
+
 - Método: POST
 - URL: /auth/refresh
 - Autenticação: Não
@@ -169,6 +182,7 @@ Padrão de erros:
   - Erro (400/401)
 
 #### Endpoint 1.4 - Usuário autenticado
+
 - Método: GET
 - URL: /auth/me
 - Autenticação: Sim
@@ -181,15 +195,14 @@ Padrão de erros:
   "userId": "guid",
   "email": "user@email.com",
   "userName": "user@email.com",
-  "claims": [
-    { "type": "sub", "value": "guid" }
-  ]
+  "claims": [{ "type": "sub", "value": "guid" }]
 }
 ```
 
 ### 2) Categorias
 
 #### Endpoint 2.1 - Criar categoria
+
 - Método: POST
 - URL: /categories
 - Autenticação: Sim
@@ -207,10 +220,11 @@ Padrão de erros:
 }
 ```
 
-  - Erro (400)
-    - Nome duplicado para o mesmo usuário
+- Erro (400)
+  - Nome duplicado para o mesmo usuário
 
 #### Endpoint 2.2 - Listar categorias do usuário
+
 - Método: GET
 - URL: /categories
 - Autenticação: Sim
@@ -219,6 +233,7 @@ Padrão de erros:
   - Sucesso (200 OK): lista de CategoryResponse
 
 #### Endpoint 2.3 - Atualizar categoria
+
 - Método: PUT
 - URL: /categories/{id}
 - Autenticação: Sim
@@ -232,6 +247,7 @@ Padrão de erros:
   - Erro (400/404)
 
 #### Endpoint 2.4 - Excluir categoria
+
 - Método: DELETE
 - URL: /categories/{id}
 - Autenticação: Sim
@@ -245,6 +261,7 @@ Padrão de erros:
 ### 3) Transações Financeiras
 
 #### Endpoint 3.1 - Criar transação
+
 - Método: POST
 - URL: /transactions
 - Autenticação: Sim
@@ -263,18 +280,19 @@ Padrão de erros:
   "id": "guid",
   "title": "Salário",
   "description": "Pagamento mensal",
-  "amount": 4500.00,
+  "amount": 4500.0,
   "transactionType": "Income",
   "categoryId": "guid",
   "ocurredAt": "2026-04-01T10:00:00Z"
 }
 ```
 
-  - Erro (400)
-    - Categoria inexistente ou sem permissão
-    - Tipo da transação diferente do tipo da categoria
+- Erro (400)
+  - Categoria inexistente ou sem permissão
+  - Tipo da transação diferente do tipo da categoria
 
 #### Endpoint 3.2 - Listar transações com filtros
+
 - Método: GET
 - URL: /transactions
 - Autenticação: Sim
@@ -287,6 +305,7 @@ Padrão de erros:
   - Sucesso (200 OK): lista de TransactionResponse ordenada por ocurredAt desc
 
 #### Endpoint 3.3 - Atualizar transação
+
 - Método: PUT
 - URL: /transactions/{id}
 - Autenticação: Sim
@@ -298,6 +317,7 @@ Padrão de erros:
   - Erro (400/404)
 
 #### Endpoint 3.4 - Excluir transação
+
 - Método: DELETE
 - URL: /transactions/{id}
 - Autenticação: Sim
@@ -310,6 +330,7 @@ Padrão de erros:
 ### 4) Metas Financeiras (Cofrinhos)
 
 #### Endpoint 4.1 - Criar meta
+
 - Método: POST
 - URL: /savings-goals
 - Autenticação: Sim
@@ -320,6 +341,7 @@ Padrão de erros:
   - Sucesso (200 OK): SavingsGoalResponse
 
 #### Endpoint 4.2 - Listar metas
+
 - Método: GET
 - URL: /savings-goals
 - Autenticação: Sim
@@ -327,6 +349,7 @@ Padrão de erros:
   - Sucesso (200 OK): lista de SavingsGoalResponse
 
 #### Endpoint 4.3 - Obter meta por id
+
 - Método: GET
 - URL: /savings-goals/{id}
 - Autenticação: Sim
@@ -337,6 +360,7 @@ Padrão de erros:
   - Erro (400/404)
 
 #### Endpoint 4.4 - Atualizar meta
+
 - Método: PUT
 - URL: /savings-goals/{id}
 - Autenticação: Sim
@@ -349,6 +373,7 @@ Padrão de erros:
   - Sucesso (200 OK): SavingsGoalResponse
 
 #### Endpoint 4.5 - Registrar aporte em meta
+
 - Método: POST
 - URL: /savings-goals/{id}/deposit
 - Autenticação: Sim
@@ -360,6 +385,7 @@ Padrão de erros:
   - Sucesso (200 OK): SavingsGoalResponse com currentAmount e progressPercent atualizados
 
 #### Endpoint 4.6 - Excluir meta
+
 - Método: DELETE
 - URL: /savings-goals/{id}
 - Autenticação: Sim
@@ -371,6 +397,7 @@ Padrão de erros:
 ### 5) Relatórios
 
 #### Endpoint 5.1 - Resumo financeiro
+
 - Método: GET
 - URL: /reports/summary
 - Autenticação: Sim
@@ -382,13 +409,14 @@ Padrão de erros:
 
 ```json
 {
-  "totalIncome": 6500.00,
-  "totalExpense": 3200.00,
-  "balance": 3300.00
+  "totalIncome": 6500.0,
+  "totalExpense": 3200.0,
+  "balance": 3300.0
 }
 ```
 
 #### Endpoint 5.2 - Despesas por categoria
+
 - Método: GET
 - URL: /reports/expenses-by-category
 - Autenticação: Sim
@@ -403,12 +431,13 @@ Padrão de erros:
   {
     "categoryId": "guid",
     "categoryName": "Alimentação",
-    "totalAmount": 1200.50
+    "totalAmount": 1200.5
   }
 ]
 ```
 
 #### Endpoint 5.3 - Exportar transações em CSV
+
 - Método: GET
 - URL: /reports/transactions-export
 - Autenticação: Sim
@@ -425,6 +454,7 @@ Padrão de erros:
 ## Considerações de Segurança
 
 Aspectos implementados:
+
 - Autenticação com JWT Bearer.
 - Refresh token armazenado por usuário com expiração.
 - ASP.NET Identity para gestão de usuários e senha com regras fortes:
@@ -447,12 +477,12 @@ Fluxo atual de implantação:
    - PostgreSQL 16 (local com compose ou gerenciado em nuvem)
 2. Provisionar banco de dados PostgreSQL.
 3. Configurar variáveis de ambiente da API:
-   - ConnectionStrings__DefaultConnection
-   - Jwt__Issuer
-   - Jwt__Audience
-   - Jwt__SecretKey
-   - Jwt__AccessTokenExpirationMinutes
-   - Jwt__RefreshTokenExpirationDays
+   - ConnectionStrings\_\_DefaultConnection
+   - Jwt\_\_Issuer
+   - Jwt\_\_Audience
+   - Jwt\_\_SecretKey
+   - Jwt\_\_AccessTokenExpirationMinutes
+   - Jwt\_\_RefreshTokenExpirationDays
 4. Aplicar migrations do EF Core no ambiente alvo.
 5. Publicar a API e iniciar o serviço.
 6. Executar smoke tests de autenticação e endpoints principais.
@@ -467,6 +497,7 @@ dotnet test PoupaBem.API.slnx
 ```
 
 Observações de estado atual:
+
 - O repositório possui docker-compose para banco PostgreSQL.
 - O pipeline de CI (GitHub Actions) já executa restore, build e testes automatizados com PostgreSQL em serviço.
 
@@ -475,6 +506,7 @@ Observações de estado atual:
 A estratégia de testes foi estruturada para cobrir requisitos funcionais (RF) e não funcionais (RNF), combinando validações automatizadas e manuais.
 
 Foram criados casos de teste para validar:
+
 - Fluxos de negócio principais (cadastro, autenticação, transações, categorias, metas e relatórios).
 - Regras de consistência de dados e segurança.
 - Comportamento da aplicação sob carga.
@@ -569,4 +601,3 @@ A combinação de testes unitários, integração, ponta a ponta, carga, regress
 - Microsoft Learn. JWT Bearer Authentication em ASP.NET Core.
 - Microsoft Learn. Entity Framework Core com PostgreSQL.
 - Swagger/OpenAPI Specification.
-
