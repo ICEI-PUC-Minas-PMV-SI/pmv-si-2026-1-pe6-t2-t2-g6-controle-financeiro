@@ -68,7 +68,7 @@ A paleta, tipografia e linguagem visual são idênticas à versão web, garantin
 
 ## Fluxo de Dados
 
-O aplicativo movel consumira a mesma API REST utilizada pelo front-end web. A base de comunicacao sera a API ASP.NET Core localizada no backend do projeto.
+O aplicativo móvel consumirá a mesma API REST utilizada pelo front-end web. A base de comunicação será a API ASP.NET Core localizada no backend do projeto.
 
 Fluxo de autenticacao:
 
@@ -104,7 +104,7 @@ Endpoints consumidos:
 
 ## Tecnologias Utilizadas
 
-A implementacao mobile podera ser desenvolvida com React Native, mantendo proximidade com o ecossistema React ja utilizado no front-end web.
+A implementação mobile poderá ser desenvolvida com React Native, mantendo proximidade com o ecossistema React já utilizado no front-end web. A escolha por React Native favorece o reaproveitamento de conhecimento da equipe, pois o projeto web já utiliza conceitos de React, componentes reutilizáveis, consumo de APIs REST e gerenciamento de estado por contexto.
 
 Tecnologias propostas:
 
@@ -122,7 +122,7 @@ A escolha por React Native favorece reaproveitamento de conhecimento da equipe, 
 
 ## Consideracoes de Seguranca
 
-A aplicacao movel deve seguir os mesmos principios de seguranca definidos para o sistema web e backend, com atencao especial ao armazenamento local no dispositivo.
+A aplicação móvel deve seguir os mesmos princípios de segurança definidos para o sistema web e backend, com atenção especial ao armazenamento local no dispositivo.
 
 Medidas previstas:
 
@@ -135,11 +135,11 @@ Medidas previstas:
 - Isolamento de dados por usuario garantido pelo backend.
 - Exibicao de mensagens de erro sem revelar dados sensiveis.
 
-Como o aplicativo manipula dados financeiros pessoais, nenhuma senha deve ser armazenada localmente. O app tambem nao deve registrar tokens ou dados sensiveis em logs.
+Como o aplicativo manipula dados financeiros pessoais, nenhuma senha deve ser armazenada localmente. O app também não deve registrar tokens ou dados sensíveis em logs.
 
 ## Implantacao
 
-A implantacao da aplicacao movel devera considerar ambientes de desenvolvimento, homologacao e producao.
+A implantação da aplicação móvel deverá considerar ambientes de desenvolvimento, homologação e produção.
 
 Passos previstos:
 
@@ -150,7 +150,7 @@ Passos previstos:
 5. Ajustar permissoes e configuracoes de rede.
 6. Gerar versao final para distribuicao conforme a plataforma escolhida.
 
-Durante o desenvolvimento local, a API deve estar acessivel pelo dispositivo ou emulador. Em celulares fisicos, pode ser necessario usar o IP da maquina na rede local em vez de `localhost`.
+Nota: Durante o desenvolvimento local, a API deve estar acessível pelo dispositivo ou emulador. Em celulares físicos, pode ser necessário usar o IP da máquina na rede local em vez de `localhost`.
 
 ## Testes
 
