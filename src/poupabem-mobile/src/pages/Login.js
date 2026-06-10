@@ -10,8 +10,7 @@ import {
   SafeAreaView,
   Alert 
 } from 'react-native';
-import { login } from '../api/auth';
-import { extractErrorMessage } from '../api/client';
+import api from '../api/api';
 
 export default function Login(props) {
   const [email, setEmail] = useState('');
@@ -27,28 +26,32 @@ export default function Login(props) {
     setLoading(true);
 
     try {
-      const auth = await login({
-        email: email.trim(),
-        password: password.trim(),
+      const response = await api.post('/api/auth/login', {
+        email: email,
+        password: password 
       });
 
-      console.log('Login bem-sucedido:', auth);
-
-      const nomeUsuario = auth.firstName || auth.fullName?.split(' ')[0] || 'Usuário';
+      console.log('Login bem-sucedido:', response.data);
+      
+      const nomeUsuario = response.data.firstName || 'Usuário';
       Alert.alert('Sucesso', `Bem-vindo de volta, ${nomeUsuario}!`);
 
       if (props.onLogin) {
-        props.onLogin(auth);
+        props.onLogin(response.data);
       }
+
     } catch (error) {
       console.error('Erro ao tentar logar:', error);
 
-      const mensagemErro = extractErrorMessage(error);
-      const fallback = 'Não foi possível conectar ao servidor. Verifique se o Back-end está ligado e na mesma rede.';
+      let mensagemErro = 'Não foi possível conectar ao servidor. Verifique se o Back-end está ligado e na mesma rede.';
+      
+      if (error.response) {
+        mensagemErro = error.response.data?.message || error.response.data || 'E-mail ou senha inválidos.';
+      }
 
-      Alert.alert('Falha no Login', mensagemErro === 'Erro inesperado' ? fallback : mensagemErro);
+      Alert.alert('Falha no Login', mensagemErro);
     } finally {
-      setLoading(false);
+      loading && setLoading(false);
     }
   };
 
