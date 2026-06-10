@@ -18,8 +18,8 @@
 | 27/04 - 03/05 | Desenvolvimento de Aplicações Móveis - Unidade 1 | ✅ | Planejamento da documentação da etapa | Planejamento da documentação da etapa |
 | 04/05 - 10/05 | Desenvolvimento de Aplicações Móveis - Unidade 2 | ✅ | Implementação e documentação dos testes do frontend | Implementação e documentação dos testes do frontend |
 | 11/05 - 17/05 | Desenvolvimento de Aplicações Móveis - Unidade 2 | ✅ | Apresentação etapa anterior | Apresentação etapa anterior |
-| 18/05 - 24/05 | Fundamentos de Projeto e Análise de Algoritmos - Unidade 1 | ⬜ | Planejamento da documentação da etapa | Planejamento da documentação da etapa |
-| 25/05 - 31/05 | Fundamentos de Projeto e Análise de Algoritmos - Unidade 2 | ⬜ | Planejamento da documentação da etapa | Planejamento da documentação da etapa |
+| 18/05 - 24/05 | Fundamentos de Projeto e Análise de Algoritmos - Unidade 1 | ✅ | Planejamento da documentação da etapa | Planejamento da documentação da etapa |
+| 25/05 - 31/05 | Fundamentos de Projeto e Análise de Algoritmos - Unidade 2 | ✅ | Planejamento da documentação da etapa | Planejamento da documentação da etapa |
 | 01/06 - 07/06 |  | ⬜ | Implementação e documentação dos testes do frontend mobile | Implementação e documentação dos testes do frontend mobile |
 | 08/06 - 14/06 |  | ⬜ | Apresentação final |  |
 
