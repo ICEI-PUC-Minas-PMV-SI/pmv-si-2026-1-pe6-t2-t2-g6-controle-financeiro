@@ -193,7 +193,7 @@ export default function TransactionFormModal({ categories, visible, onClose, onS
             <TextInput
               style={styles.innerInput}
               placeholder="Nome da categoria (ex: Vestuário)"
-              placeholderTextColor={colors.placeholder}
+              placeholderTextColor="#999"
               value={newCategoryName}
               onChangeText={setNewCategoryName}
               autoFocus
@@ -201,20 +201,20 @@ export default function TransactionFormModal({ categories, visible, onClose, onS
 
             <View style={styles.innerButtonsRow}>
               <TouchableOpacity 
-                style={[styles.innerButton, { backgroundColor: colors.neutral200 }]}
+                style={[styles.innerButton, { backgroundColor: '#CFD8DC' }]} 
                 onPress={() => {
                   setInnerModalVisible(false);
                   setNewCategoryName('');
                 }}
               >
-                <Text style={[styles.innerButtonText, { color: colors.neutral700 }]}>Cancelar</Text>
+                <Text style={[styles.innerButtonText, { color: '#37474F' }]}>Cancelar</Text>
               </TouchableOpacity>
 
               <TouchableOpacity 
                 style={[styles.innerButton, { backgroundColor: colors.brand900 }]} 
                 onPress={handleCreateInnerCategory}
               >
-                <Text style={[styles.innerButtonText, { color: colors.surface }]}>Criar</Text>
+                <Text style={[styles.innerButtonText, { color: '#FFF' }]}>Criar</Text>
               </TouchableOpacity>
             </View>
           </View>
@@ -226,7 +226,7 @@ export default function TransactionFormModal({ categories, visible, onClose, onS
 
 const styles = StyleSheet.create({
   overlay: {
-    backgroundColor: colors.overlaySoft,
+    backgroundColor: 'rgba(2, 48, 32, 0.36)',
     flex: 1,
     justifyContent: 'flex-end',
   },
@@ -309,12 +309,12 @@ const styles = StyleSheet.create({
   },
   innerOverlay: {
     flex: 1,
-    backgroundColor: colors.overlay,
+    backgroundColor: 'rgba(0,0,0,0.5)',
     justifyContent: 'center',
     alignItems: 'center',
   },
   innerContent: {
-    backgroundColor: colors.surface,
+    backgroundColor: '#FFF',
     width: '80%',
     padding: 24,
     borderRadius: 16,
@@ -323,7 +323,7 @@ const styles = StyleSheet.create({
   innerTitle: {
     fontSize: 16,
     fontWeight: '800',
-    color: colors.ink,
+    color: '#212121',
     marginBottom: 16,
   },
   innerInput: {
@@ -333,7 +333,7 @@ const styles = StyleSheet.create({
     fontSize: 16,
     paddingVertical: 8,
     marginBottom: 24,
-    color: colors.ink,
+    color: '#212121',
   },
   innerButtonsRow: {
     flexDirection: 'row',

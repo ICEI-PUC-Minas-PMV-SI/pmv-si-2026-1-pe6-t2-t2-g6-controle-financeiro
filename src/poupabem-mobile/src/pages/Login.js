@@ -4,7 +4,6 @@ import {
   Text, 
   TextInput, 
   TouchableOpacity, 
-  import { colors } from '../styles/theme';
   View, 
   KeyboardAvoidingView, 
   Platform,
@@ -17,18 +16,18 @@ import { extractErrorMessage } from '../api/client';
 export default function Login(props) {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-            <View style={styles.formContainer}>
-              <TextInput
-                style={styles.input}
-                placeholder="E-mail"
-                placeholderTextColor="#999"
-                value={email}
-                onChangeText={setEmail}
-                keyboardType="email-address"
-                autoCapitalize="none"
-                autoCorrect={false}
-                editable={!loading}
-              />
+  const [loading, setLoading] = useState(false); 
+
+  const handleLogin = async () => {
+    if (!email.trim() || !password.trim()) {
+      Alert.alert('Campos Obrigatórios', 'Por favor, preencha o e-mail e a senha.');
+      return;
+    }
+
+    setLoading(true);
+
+    try {
+      const auth = await login({
         email: email.trim(),
         password: password.trim(),
       });
@@ -70,8 +69,8 @@ export default function Login(props) {
             <TextInput
               style={styles.input}
               placeholder="E-mail"
-              placeholderTextColor={colors.placeholder}
-      backgroundColor: colors.bgAlt,
+              placeholderTextColor="#999"
+              value={email}
               onChangeText={setEmail}
               keyboardType="email-address"
               autoCapitalize="none"
@@ -82,22 +81,22 @@ export default function Login(props) {
             <TextInput
               style={styles.input}
               placeholder="Senha"
-              placeholderTextColor={colors.placeholder}
+              placeholderTextColor="#999"
               secureTextEntry
               value={password}
               onChangeText={setPassword}
               autoCapitalize="none"
               editable={!loading}
-      color: colors.brand600,
+            />
 
             <TouchableOpacity 
               style={[styles.button, loading && styles.buttonDisabled]} 
               onPress={handleLogin}
-      color: colors.textMuted,
+              disabled={loading}
             >
               <Text style={styles.buttonText}>
                 {loading ? 'Carregando...' : 'Entrar'}
-      backgroundColor: colors.surface,
+              </Text>
             </TouchableOpacity>
 
             <TouchableOpacity 
@@ -108,28 +107,28 @@ export default function Login(props) {
               <Text style={styles.registerText}>
                 Não tem uma conta? <Text style={styles.registerTextBold}>Cadastre-se</Text>
               </Text>
-      borderColor: colors.border,
+            </TouchableOpacity>
           </View>
 
         </View>
       </KeyboardAvoidingView>
     </SafeAreaView>
-      backgroundColor: colors.surfaceMuted,
-      color: colors.textStrong,
+  );
+}
 
 const styles = StyleSheet.create({
   safeArea: {
-      backgroundColor: colors.brand600,
+    flex: 1,
     backgroundColor: '#F5F5F5',
   },
   container: {
     flex: 1,
   },
   innerContainer: {
-      backgroundColor: colors.brand200,
+    flex: 1,
     justifyContent: 'center',
     paddingHorizontal: 24,
-      color: colors.surface,
+  },
   logoContainer: {
     alignItems: 'center',
     marginBottom: 40,
@@ -139,10 +138,10 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
     color: '#2E7D32',
     letterSpacing: 0.5,
-      color: colors.textMuted,
+  },
   subtitle: {
     fontSize: 16,
-      color: colors.brand600,
+    color: '#666',
     marginTop: 8,
   },
   formContainer: {

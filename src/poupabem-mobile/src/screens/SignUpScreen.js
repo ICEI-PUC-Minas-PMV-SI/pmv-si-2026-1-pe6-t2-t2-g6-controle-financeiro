@@ -144,7 +144,7 @@ const styles = StyleSheet.create({
     textAlign: 'center',
   },
   subtitle: {
-    color: colors.ink2,
+    color: colors.ink2 || '#666',
     fontSize: 14,
     fontWeight: '700',
     marginTop: 6,
@@ -156,7 +156,7 @@ const styles = StyleSheet.create({
     borderRadius: 24,
     padding: 24,
     width: '100%',
-    shadowColor: colors.brand900,
+    shadowColor: '#023020',
     shadowOffset: { width: 0, height: 4 },
     shadowOpacity: 0.08,
     shadowRadius: 12,
@@ -198,7 +198,7 @@ const styles = StyleSheet.create({
     paddingVertical: 8,
   },
   linkText: {
-    color: colors.ink2,
+    color: colors.ink2 || '#666',
     fontSize: 14,
     fontWeight: '700',
   },
