@@ -15,8 +15,6 @@ import {
 import FilterChip from './FilterChip';
 import { colors } from '../styles/theme';
 import { createCategory } from '../api/categories';
-import { parseCurrencyInput } from '../utils/format';
-import { isPositiveNumber, isRequired } from '../utils/validators';
 
 export default function TransactionFormModal({ categories, visible, onClose, onSubmit, onRefreshCategories, token }) {
   const [type, setType] = useState('expense');
@@ -41,15 +39,14 @@ export default function TransactionFormModal({ categories, visible, onClose, onS
   }
 
   async function handleCreateInnerCategory() {
-    if (!isRequired(newCategoryName)) {
+    if (!newCategoryName.trim()) {
       Alert.alert('Aviso', 'Informe o nome da categoria.');
       return;
     }
 
     try {
-      const trimmedName = newCategoryName.trim();
       const payload = {
-        name: trimmedName,
+        name: newCategoryName.trim(),
         type: type === 'income' ? 1 : 2,
       };
 
@@ -68,15 +65,14 @@ export default function TransactionFormModal({ categories, visible, onClose, onS
   }
 
   function handleSubmit() {
-    const normalizedAmount = parseCurrencyInput(amount);
-    const trimmedTitle = title.trim();
+    const normalizedAmount = Number(amount.replace(',', '.'));
 
-    if (!isRequired(trimmedTitle)) {
+    if (!title.trim()) {
       setError('Informe um título.');
       return;
     }
 
-    if (!isPositiveNumber(normalizedAmount)) {
+    if (!normalizedAmount || normalizedAmount <= 0) {
       setError('Informe um valor válido.');
       return;
     }
@@ -89,7 +85,7 @@ export default function TransactionFormModal({ categories, visible, onClose, onS
 
     onSubmit({
       id: String(Date.now()),
-      title: trimmedTitle,
+      title: title.trim(),
       description: description.trim(),
       categoryId: category.id,
       category: category.name,
