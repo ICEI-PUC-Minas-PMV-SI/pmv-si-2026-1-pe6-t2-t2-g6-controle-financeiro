@@ -21,6 +21,6 @@
 | 18/05 - 24/05 | Fundamentos de Projeto e Análise de Algoritmos - Unidade 1 | ✅ | Estudos dos microfundamentos | 2ª Avaliação dos microfundamentos |
 | 25/05 - 31/05 | Fundamentos de Projeto e Análise de Algoritmos - Unidade 2 | ✅ |Estudos dos microfundamentos  |  |
 | 01/06 - 07/06 |  | ✅ | Preenchimento Documentação etapa 4 |  |
-| 08/06 - 14/06 |  | ⬜ |  |  |
+| 08/06 - 14/06 |  | ✅ | Estudos dos microfundamentos | 3ª Avaliação dos microfundamentos | Entrega Final e Video da aplicação
 
 **Legenda:** ✅ Estudou | ⬜ Não estudou
