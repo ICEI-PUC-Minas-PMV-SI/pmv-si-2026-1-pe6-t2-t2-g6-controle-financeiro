@@ -6,8 +6,8 @@
 |:-------:|:---------------:|:--------:|:------------------:|:-------------------:|
 | 09/02 - 15/02 | Gestão de Serviços de TI - Unidade 1 | ✅ | Discussão do tema | Discussão do tema |
 | 16/02 - 22/02 | Gestão de Serviços de TI - Unidade 2 | ✅ | Discussão do tema | Discussão do tema |
-| 23/02 - 01/03 | Arquitetura de Software Distribuído - Unidade 1 e 2 | ✅ |  |  |
-| 02/03 - 08/03 | Arquitetura de Software Distribuído - Unidade 3 | ✅ |  |  |
+| 23/02 - 01/03 | Arquitetura de Software Distribuído - Unidade 1 e 2 | ✅ | Estudos dos microfundamentos | Estudos dos microfundamentos |
+| 02/03 - 08/03 | Arquitetura de Software Distribuído - Unidade 3 | ✅ | Estudos dos microfundamentos | Estudos dos microfundamentos |
 | 09/03 - 15/03 | APIs e Web Services - Unidade 1 | ✅ | Reunião para entender as necessidades do projeto e definir a divisão das tarefas | Reunião para entender as necessidades do projeto e definir a divisão das tarefas |
 | 16/03 - 22/03 | APIs e Web Services - Unidade 2 | ✅ | Reunião para entender as necessidades do projeto e definir a divisão das tarefas | Reunião para entender as necessidades do projeto e definir a divisão das tarefas |
 | 23/03 - 29/03 | APIs e Web Services - Unidade 2 | ✅| Planejamento da Estruturação e Modelagem | Planejamento da Estruturação e Modelagem |
@@ -19,7 +19,7 @@
 | 04/05 - 10/05 | Desenvolvimento de Aplicações Móveis - Unidade 2 | ✅ | Preenchimento Documentação etapa 3 | Conferencia da Documentação |
 | 11/05 - 17/05 | Desenvolvimento de Aplicações Móveis - Unidade 2 | ✅| Estudos dos microfundamentos |  |
 | 18/05 - 24/05 | Fundamentos de Projeto e Análise de Algoritmos - Unidade 1 | ✅ | Estudos dos microfundamentos | 2ª Avaliação dos microfundamentos |
-| 25/05 - 31/05 | Fundamentos de Projeto e Análise de Algoritmos - Unidade 2 | ✅ |Estudos dos microfundamentos  |  |
+| 25/05 - 31/05 | Fundamentos de Projeto e Análise de Algoritmos - Unidade 2 | ✅ |Estudos dos microfundamentos  | Estudos dos microfundamentos |
 | 01/06 - 07/06 |  | ✅ | Preenchimento Documentação etapa 4 |  |
 | 08/06 - 14/06 |  | ✅ | Estudos dos microfundamentos | 3ª Avaliação dos microfundamentos | Entrega Final e Video da aplicação
 
