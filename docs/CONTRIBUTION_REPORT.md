@@ -1,6 +1,6 @@
 # 📊 Relatório de Contribuições do Projeto
 
-**Última atualização:** 21/09/2026 00:24
+**Última atualização:** 28/09/2026 00:26
 
 ---
 
@@ -16,7 +16,7 @@
 | Maryana Morato        |         2 |         9 |         9 |          1 |              2 |               1 |
 | Maryana Nunes Morato  |         8 |      1812 |        94 |         28 |              5 |               3 |
 | acpcampos-gif         |         2 |       145 |        64 |          2 |              2 |               2 |
-| github-actions[bot]   |        89 |       703 |       665 |          3 |             89 |               1 |
+| github-actions[bot]   |        90 |       707 |       669 |          3 |             90 |               1 |
 | github-classroom[bot] |         1 |      2152 |         0 |         45 |              1 |              13 |
 
 
@@ -27,6 +27,8 @@
 **2026-09-07**: github-actions[bot]: 1
 
 **2026-08-31**: github-actions[bot]: 1
+
+**2026-08-24**: github-actions[bot]: 1
 
 **2026-08-17**: github-actions[bot]: 1
 
@@ -65,8 +67,6 @@
 **2026-04-20**: João Pedro Pimenta: 2, github-actions[bot]: 2
 
 **2026-04-13**: João Pedro Pimenta: 1, github-actions[bot]: 1
-
-**2026-04-06**: Ana Clara Pinheiro: 1, Gabriel Santos: 2, Gustavo Moura: 3, João Pedro Pimenta: 1, Maryana Morato: 1, github-actions[bot]: 7
 
 
 
